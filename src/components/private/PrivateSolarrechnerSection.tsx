@@ -180,7 +180,7 @@ export default function PrivateSolarrechnerSection() {
         const consentWrap = document.createElement('div');
         consentWrap.className = 'form-field';
         const consentId = 'consent_dsgvo';
-        const PRIVACY_URL = 'https://www.alabenergiesysteme.de/datenschutz/';
+        const PRIVACY_URL = '/datenschutz';
         consentWrap.innerHTML = '<label for="' + consentId + '" class="consent-label" style="display:flex;gap:8px;align-items:flex-start"><input type="checkbox" id="' + consentId + '" name="consent" required /><span>Ich habe die <a href="' + PRIVACY_URL + '" class="privacy-link" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.</span></label>';
         consentWrap.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) e.stopPropagation(); });
         const submitBtn = formEl.querySelector('button[type="submit"]');

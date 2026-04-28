@@ -689,7 +689,7 @@ function PWContact() {
                 <label htmlFor="privacy" className="text-xs text-muted">
                   Ich stimme der{" "}
                   <a
-                    href="https://www.alabenergiesysteme.de/datenschutz/"
+                    href="/datenschutz"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-accent underline"

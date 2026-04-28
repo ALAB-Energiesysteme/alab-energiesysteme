@@ -55,13 +55,6 @@ const SERVICES: ServiceItem[] = [
     href: "/gewerbliche-loesungen",
   },
   {
-    image: "/wp-card-installation.png",
-    title: "Wärmepumpen",
-    description:
-      "Energieeffiziente Wärmelösungen für Ihr Unternehmen – nachhaltig und wirtschaftlich.",
-    href: "/waermepumpen",
-  },
-  {
     image: "/img/geschaeftskunden/servicepaketen-geschaeftskunden.png",
     title: "Servicepakete",
     description:
@@ -79,9 +72,9 @@ const SERVICES: ServiceItem[] = [
 
 const GK_HERO_CARDS: HeroCardShowcaseItem[] = [
   {
-    title: "PV fuer Gewerbedaecher",
-    subtitle: "Skalierbar fuer Hallen und Betriebe",
-    text: "Wirtschaftlich geplante Photovoltaiksysteme fuer Gewerbeflaechen, Eigenverbrauch und langfristige Kostensicherheit.",
+    title: "PV für Gewerbedächer",
+    subtitle: "Skalierbar für Hallen und Betriebe",
+    text: "Wirtschaftlich geplante Photovoltaiksysteme für Gewerbeflächen, Eigenverbrauch und langfristige Kostensicherheit.",
     image: "/img/gewerbliche-loesungen/pv-gewerbe-gewerbedach1.png",
     imageMode: "contain",
     imageBgClassName: "bg-[#eef4fc]",
@@ -95,7 +88,7 @@ const GK_HERO_CARDS: HeroCardShowcaseItem[] = [
   {
     title: "Monitoring & Service",
     subtitle: "Dauerhaft wirtschaftlich betreiben",
-    text: "Von Live-Daten bis Wartung: Wir begleiten Ihre Anlage so, dass Verfuegbarkeit, Transparenz und Ertrag zusammenpassen.",
+    text: "Von Live-Daten bis Wartung: Wir begleiten Ihre Anlage so, dass Verfügbarkeit, Transparenz und Ertrag zusammenpassen.",
     image: "/img/gewerbliche-loesungen/pv-gewerbe-gewerbedach3.png",
     imageMode: "contain",
     imageBgClassName: "bg-[#eef4fc]",
@@ -191,53 +184,24 @@ function GKServices() {
           <div className="mx-auto h-[3px] w-14 rounded-full bg-accent" />
         </div>
 
-        {/* Row 1: 3 equal cards */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {SERVICES.slice(0, 3).map((s) => (
+        {/* 4 Karten – 1 / 2 / 4 Spalten responsiv */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {SERVICES.map((s) => (
             <a
               key={s.title}
               href={s.href}
-              className="group relative overflow-hidden rounded-[var(--radius-card)] bg-white shadow-[0_4px_20px_rgba(15,37,51,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(15,37,51,0.12)]"
+              className="group relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-white shadow-[0_4px_20px_rgba(15,37,51,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(15,37,51,0.12)]"
             >
-              <div className="h-[210px] w-full overflow-hidden">
+              <div className="h-[200px] w-full overflow-hidden">
                 <img
                   src={s.image}
                   alt={s.title}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="mb-2 text-[1.15rem] font-bold text-ink">{s.title}</h3>
-                <p className="mb-5 text-[0.92rem] leading-relaxed text-muted">
-                  {s.description}
-                </p>
-                <span className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-all group-hover:gap-3">
-                  Mehr erfahren
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* Row 2: 2 centered wider cards */}
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:mx-auto sm:max-w-[880px] sm:grid-cols-2">
-          {SERVICES.slice(3).map((s) => (
-            <a
-              key={s.title}
-              href={s.href}
-              className="group relative overflow-hidden rounded-[var(--radius-card)] bg-white shadow-[0_4px_20px_rgba(15,37,51,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(15,37,51,0.12)]"
-            >
-              <div className="h-[230px] w-full overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="mb-2 text-[1.15rem] font-bold text-ink">{s.title}</h3>
-                <p className="mb-5 text-[0.92rem] leading-relaxed text-muted">
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="mb-2 text-[1.1rem] font-bold text-ink">{s.title}</h3>
+                <p className="mb-5 flex-1 text-[0.9rem] leading-relaxed text-muted">
                   {s.description}
                 </p>
                 <span className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-all group-hover:gap-3">

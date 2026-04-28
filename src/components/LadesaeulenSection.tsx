@@ -833,7 +833,7 @@ function LSKontaktFormular() {
               <div className="mb-8 flex items-start gap-3">
                 <input type="checkbox" id="datenschutz" className="mt-1 h-5 w-5 shrink-0 rounded border-[#e2e8f0] accent-[#2b6cb0]" />
                 <label htmlFor="datenschutz" className="text-[0.85rem] leading-[1.6] text-[#5b6b78]">
-                  Ich habe die <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-[#2b6cb0] underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span className="text-red-500">*</span>
+                  Ich habe die <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-[#2b6cb0] underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span className="text-red-500">*</span>
                 </label>
               </div>
 

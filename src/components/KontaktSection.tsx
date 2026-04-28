@@ -18,7 +18,8 @@ const CSS = `
   }
   #alab-contact a{ color: var(--ac-accent); }
   #alab-contact a:hover{ color: var(--ac-accent-deep); }
-  .ac-wrap{ max-width:1100px; margin:0 auto; padding:28px 16px 80px; }
+  .ac-wrap{ max-width:1100px; margin:0 auto; padding:140px 16px 80px; }
+  @media (max-width: 768px){ .ac-wrap{ padding-top:120px; } }
   .ac-hero{ display:grid; gap:14px; margin:12px 0 28px; }
   .ac-eyebrow{ letter-spacing:.15em; text-transform:uppercase; font-weight:700; font-size:.75rem; color:var(--ac-accent); }
   .ac-title{ font-size:clamp(1.6rem, 2.5vw + 1rem, 2.4rem); line-height:1.2; font-weight:800; color:var(--ac-ink); }
@@ -213,7 +214,7 @@ const HTML = `
               <input type="checkbox" id="consent" name="consent" required>
               <label for="consent">
                 Ich willige ein, dass ALAB Energiesysteme meine Daten zur Bearbeitung meiner Anfrage verarbeitet.
-                Hinweise in der <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
+                Hinweise in der <a href="/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
               </label>
               <div class="ac-error">Bitte willigen Sie die Datenschutzerklärung ein.</div>
             </div>

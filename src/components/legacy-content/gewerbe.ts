@@ -243,7 +243,7 @@
             <div class="form-group checkbox-group">
               <label class="checkbox-label">
                 <input type="checkbox" id="privacy" name="privacy" required>
-                <span>Ich akzeptiere die <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener noreferrer">DatenschutzerklÃ¤rung</a>
+                <span>Ich akzeptiere die <a href="/datenschutz" target="_blank" rel="noopener noreferrer">DatenschutzerklÃ¤rung</a>
                   und stimme der Verarbeitung meiner Daten zu.*</span>
               </label>
             </div>
@@ -736,7 +736,7 @@
                         <div class="checkbox-group">
                             <input type="checkbox" id="privacyWhy" name="privacy" required>
                             <label for="privacy">
-                                Ich habe die <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank">DatenschutzerklÃ¤rung</a> 
+                                Ich habe die <a href="/datenschutz" target="_blank">DatenschutzerklÃ¤rung</a> 
                                 gelesen und bin mit der Verarbeitung meiner Angaben zur Kontaktaufnahme einverstanden. <span class="required">*</span>
                             </label>
                         </div>
@@ -1109,7 +1109,7 @@
                         <div class="checkbox-group">
                             <label class="checkbox-label">
                                 <input type="checkbox" id="privacy" name="privacy" required>
-                                <span>Ich akzeptiere die <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener">DatenschutzerklÃ¤rung</a>
+                                <span>Ich akzeptiere die <a href="/datenschutz" target="_blank" rel="noopener">DatenschutzerklÃ¤rung</a>
 und stimme der Kontaktaufnahme zu.*</span>
                             </label>
                         </div>
@@ -1404,7 +1404,7 @@ und stimme der Kontaktaufnahme zu.*</span>
                     </div>
                     <label class="checkbox-label">
                         <input type="checkbox" id="compactPrivacy" required>
-                        <span>Ich akzeptiere die <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank">DatenschutzerklÃ¤rung</a> *</span>
+                        <span>Ich akzeptiere die <a href="/datenschutz" target="_blank">DatenschutzerklÃ¤rung</a> *</span>
                     </label>
                 </form>
                 <div class="success-message" id="successMessage">

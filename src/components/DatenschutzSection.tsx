@@ -13,15 +13,24 @@ export default function DatenschutzSection() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `
-  /* schlanke, lokale Styles für die Rechtstexte */
-  .legal-wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
-  .legal h1{font-size:clamp(1.6rem,2.2vw + 1rem,2.2rem);margin:0 0 10px;font-weight:800}
-  .legal h2{font-size:1.25rem;margin:26px 0 10px;font-weight:800}
-  .legal h3{font-size:1.05rem;margin:20px 0 8px;font-weight:700}
-  .legal p,.legal li{line-height:1.6}
+  /* ALAB-Markenfarben für Rechtstexte */
+  .legal-wrap{max-width:1100px;margin:0 auto;padding:140px 16px 80px;color:var(--color-ink,#0f2533)}
+  @media (max-width: 768px){ .legal-wrap{ padding-top:120px } }
+  .legal h1{font-size:clamp(1.6rem,2.2vw + 1rem,2.4rem);margin:0 0 16px;font-weight:800;color:var(--color-ink,#0f2533);letter-spacing:-0.01em}
+  .legal h1::after{content:"";display:block;width:64px;height:3px;border-radius:2px;margin-top:14px;background:var(--color-accent,#2b6cb0)}
+  .legal h2{font-size:1.35rem;margin:36px 0 12px;font-weight:800;color:var(--color-ink,#0f2533)}
+  .legal h3{font-size:1.05rem;margin:22px 0 8px;font-weight:700;color:var(--color-ink-light,#1a3a4f)}
+  .legal p,.legal li{line-height:1.7;color:var(--color-ink,#0f2533)}
+  .legal a{color:var(--color-accent,#2b6cb0);text-decoration:underline;text-underline-offset:3px;transition:color .15s ease}
+  .legal a:hover{color:var(--color-accent-deep,#1e4f8b)}
   .legal ul{padding-left:1.2rem}
-  .legal .toc{background:#f7f9fb;border:1px solid #e7ebf0;border-radius:12px;padding:14px;margin:16px 0}
-  .legal .muted{color:#616771}
+  .legal ul li{margin-bottom:6px}
+  .legal .toc{background:linear-gradient(135deg,#f8fafb 0%,#eef4fc 100%);border:1px solid var(--color-line,#e6edf5);border-radius:var(--radius-card,18px);padding:20px 22px;margin:20px 0 28px;box-shadow:0 4px 14px rgba(15,37,51,.05)}
+  .legal .toc strong{display:block;color:var(--color-ink,#0f2533);font-size:1rem;margin-bottom:10px}
+  .legal .toc ul{margin:0;padding-left:1.1rem}
+  .legal .toc li{padding:3px 0}
+  .legal .muted{color:var(--color-muted,#5b6b78)}
+  .legal strong{color:var(--color-ink,#0f2533)}
       `}} />
 
       <section className="legal legal-wrap" aria-labelledby="ds-title">

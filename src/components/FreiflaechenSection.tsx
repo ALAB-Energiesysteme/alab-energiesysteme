@@ -1733,7 +1733,7 @@ export default function FreiflaechenSection() {
                 />
                 <label htmlFor="ff-consent">
                   Ich stimme der Kontaktaufnahme zur Angebotserstellung zu und habe die{" "}
-                  <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener noreferrer">
+                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer">
                     Datenschutzerkl&auml;rung
                   </a>{" "}
                   gelesen.<span className="asterisk">*</span>

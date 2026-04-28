@@ -582,7 +582,7 @@
   <input type="checkbox" id="ff-consent" required>
   <label for="ff-consent">
     Ich stimme der Kontaktaufnahme zur Angebotserstellung zu und habe die
-    <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>
+    <a href="/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>
     gelesen.<span class="asterisk">*</span>
   </label>
 </div>

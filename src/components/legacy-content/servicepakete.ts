@@ -401,7 +401,7 @@
                 <input id="accept" type="checkbox">
                 <span>
                   Ich stimme der Kontaktaufnahme zur Angebotserstellung zu und habe die
-                  <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a> gelesen.*
+                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a> gelesen.*
                 </span>
               </label>
             </div>

@@ -26,7 +26,7 @@ const GESCHAEFTSKUNDEN = [
 const INFO_RECHT = [
   { label: "Kontakt", href: "/kontakt" },
   { label: "Impressum", href: "/impressum" },
-  { label: "Datenschutz", href: "https://www.alabenergiesysteme.de/datenschutz/" },
+  { label: "Datenschutz", href: "/datenschutz" },
 ];
 
 const MAKE_URL =
@@ -235,7 +235,7 @@ export default function Footer() {
                 <span className="text-[11px] leading-tight text-muted">
                   Ich akzeptiere die{" "}
                   <a
-                    href="https://www.alabenergiesysteme.de/datenschutz/"
+                    href="/datenschutz"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-accent underline"

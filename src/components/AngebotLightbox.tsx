@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from "react";
  */
 
 const MAKE_URL = "https://hook.eu2.make.com/yloo9gmjoxtsua7r2g5z6af9lqs0ei3y";
-const PRIVACY_URL = "https://www.alabenergiesysteme.de/datenschutz/";
+const PRIVACY_URL = "/datenschutz";
 const QUEUE_KEY = "alabLeadQueueGlobal";
 
 export default function AngebotLightbox() {

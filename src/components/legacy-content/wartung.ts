@@ -604,7 +604,7 @@
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="privacy" name="privacy" required>
                             <label for="privacy">
-                                Ich stimme der <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener noreferrer">DatenschutzerklÃ¤rung</a> zu.*
+                                Ich stimme der <a href="/datenschutz" target="_blank" rel="noopener noreferrer">DatenschutzerklÃ¤rung</a> zu.*
                             </label>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">

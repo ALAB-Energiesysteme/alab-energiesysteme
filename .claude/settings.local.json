@@ -13,7 +13,10 @@
       "Bash(xargs ls *)",
       "Bash(gh auth *)",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); gh --version)",
-      "PowerShell(gh auth status)"
+      "PowerShell(gh auth status)",
+      "PowerShell(git log --oneline -1; Write-Output \"---\"; git status --short | Measure-Object | ForEach-Object { Write-Output \"Pending changes: $\\($_.Count\\)\" })",
+      "PowerShell($vercelPath = \\(Get-ChildItem \"C:\\\\Users\\\\arben\\\\AppData\\\\Roaming\\\\npm\\\\vercel.cmd\",\"C:\\\\Program Files\\\\nodejs\\\\vercel.cmd\",\"$env:APPDATA\\\\npm\\\\vercel.cmd\" -ErrorAction SilentlyContinue | Select-Object -First 1\\).FullName; Write-Output \"Vercel-CLI: $vercelPath\"; if \\($vercelPath\\) { & $vercelPath --version })",
+      "PowerShell($dest = \"C:\\\\Users\\\\arben\\\\OneDrive\\\\Desktop\\\\Webseite neu 10.03.2026\\\\public\\\\favicons\"; Test-Path $dest; \\(Get-ChildItem $dest -ErrorAction SilentlyContinue | Format-Table -AutoSize | Out-String\\).Trim\\(\\))"
     ]
   }
 }

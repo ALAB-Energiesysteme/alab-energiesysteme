@@ -70,9 +70,10 @@ const TESTIMONIALS = [
     name: "Zehra",
   },
   {
+    title: "Kompetente Beratung und saubere Umsetzung",
     quote:
-      "Ich bin rundum zufrieden mit der Montage und Inbetriebnahme meiner PV-Anlage. Alles lief reibungslos, das Team war freundlich, professionell und zuverlässig. Die Anlage läuft einwandfrei – genau so stellt man sich das vor. Klare Empfehlung!",
-    name: "Arlind Hoti",
+      "Da wir uns mit dem Thema Photovoltaik anfangs kaum auskannten, war uns eine ehrliche Beratung besonders wichtig. Herr Bungu hat uns die Technik verständlich erklärt und uns schnell das Gefühl gegeben, bei einem seriösen Partner zu sein. Uns war eine langlebige Lösung von einem Betrieb aus der Region wichtig.\n\nDer Zeitplan wurde verlässlich eingehalten und die Männer haben vor Ort sehr sauber gearbeitet. Auch um die Formalitäten und Anmeldungen hat sich die Firma gekümmert. Positiv hervorzuheben ist auch der Abschluss: Wir haben eine komplette Anlagendokumentation inklusive Stringplan, Bildern der Anlage und Datenblätter der Komponenten erhalten.\n\nTechnisch läuft unser 10,8 kWp System mit dem 14 kWh Speicher einwandfrei. Das Zusammenspiel der Trina Module mit den Huawei-Komponenten klappt perfekt, und über die App hat man alles gut im Blick. Wer Wert auf Qualität legt, ist bei ALAB Energiesysteme gut aufgehoben.",
+    name: "MB",
   },
   {
     quote:
@@ -255,37 +256,51 @@ function PKTestimonials() {
           <div className="mx-auto mt-4 h-[3px] w-14 rounded-full bg-accent" />
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
-            <div
-              key={t.name}
-              className="relative rounded-[var(--radius-card)] border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
-            >
-              {/* Quote mark */}
-              <span className="absolute -top-2 left-6 text-5xl font-bold leading-none text-accent/40">
-                &ldquo;
-              </span>
+        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-3">
+          {TESTIMONIALS.map((t) => {
+            const paragraphs = t.quote.split("\n\n");
+            return (
+              <div
+                key={t.name}
+                className="relative rounded-[var(--radius-card)] border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
+              >
+                {/* Quote mark */}
+                <span className="absolute -top-2 left-6 text-5xl font-bold leading-none text-accent/40">
+                  &ldquo;
+                </span>
 
-              {/* Stars */}
-              <div className="mb-5 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-4 w-4 fill-accent text-accent"
-                    strokeWidth={0}
-                  />
-                ))}
+                {/* Stars */}
+                <div className="mb-5 flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-accent text-accent"
+                      strokeWidth={0}
+                    />
+                  ))}
+                </div>
+
+                {"title" in t && t.title && (
+                  <h3 className="mb-3 text-[1.05rem] font-bold leading-snug text-white">
+                    {t.title}
+                  </h3>
+                )}
+
+                <div className="mb-6 space-y-3 text-[0.95rem] italic leading-relaxed text-white/80">
+                  {paragraphs.map((p, idx) => (
+                    <p key={idx}>
+                      {idx === 0 ? <>&bdquo;{p}</> : p}
+                      {idx === paragraphs.length - 1 ? <>&ldquo;</> : null}
+                    </p>
+                  ))}
+                </div>
+
+                <div>
+                  <p className="text-sm font-bold text-white">{t.name}</p>
+                </div>
               </div>
-
-              <p className="mb-6 text-[0.95rem] italic leading-relaxed text-white/80">
-                &bdquo;{t.quote}&ldquo;
-              </p>
-
-              <div>
-                <p className="text-sm font-bold text-white">{t.name}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
