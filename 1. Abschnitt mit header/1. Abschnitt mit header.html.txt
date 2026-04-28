@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ALAB Energiesysteme – Energie im Fokus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #0f2533;
+      --ink-light: #1a3a4f;
+      --muted: #5b6b78;
+      --line: #e6edf5;
+      --gold: #d4af37;
+      --gold2: #b8860b;
+      --accent: #2b6cb0;
+      --accent-deep: #1e4f8b;
+      --accent-glow: rgba(43, 108, 176, 0.35);
+      --surface: #ffffff;
+      --surface-warm: #f8fafb;
+      --text-primary: #0f2533;
+      --text-secondary: #5b6b78;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 4px 20px rgba(15, 37, 51, 0.06);
+      --shadow-mega: 0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(15, 37, 51, 0.04);
+      --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--surface);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ========== HEADER ========== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 4000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-container a {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      max-width: 150px;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo-container a:hover img {
+      opacity: 0.8;
+    }
+
+    /* ========== HAUPTNAVIGATION ========== */
+    .main-navigation ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .main-navigation > ul > li > a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      padding: 8px 16px;
+      position: relative;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      transition:
+        color 0.35s var(--transition-smooth),
+        background-color 0.35s var(--transition-smooth);
+    }
+
+    .main-navigation > ul > li > a:hover {
+      color: var(--accent);
+    }
+
+    .main-navigation > ul > li.mega-active > a {
+      color: var(--accent);
+    }
+
+    .main-navigation > ul > li > a::after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      transform: translateX(-50%);
+      transition: width 0.4s var(--transition-smooth);
+    }
+
+    .main-navigation > ul > li > a:hover::after,
+    .main-navigation > ul > li.mega-active > a::after {
+      width: calc(100% - 28px);
+    }
+
+    /* ========== CTA-BUTTON ========== */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-actions .cta-header {
+      background: var(--accent);
+      color: #fff;
+      padding: 11px 26px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      transition:
+        transform 0.4s var(--transition-smooth),
+        box-shadow 0.4s var(--transition-smooth),
+        background-color 0.4s ease;
+      box-shadow: 0 2px 12px var(--accent-glow);
+    }
+
+    .header-actions .cta-header:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 8px 24px var(--accent-glow),
+        0 0 40px rgba(43, 108, 176, 0.18);
+      background: var(--accent-deep);
+    }
+
+    /* ========== MEGA-MENÜ ========== */
+    .has-megamenu {
+      position: relative;
+    }
+
+    .mega-menu {
+      display: flex;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-mega);
+      padding: 12px;
+      width: max-content;
+      border: 1px solid var(--line);
+      gap: 6px;
+      z-index: 4500;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.45s var(--transition-smooth),
+        transform 0.45s var(--transition-smooth),
+        visibility 0s 0.45s;
+    }
+
+    .has-megamenu.mega-active .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+      transition:
+        opacity 0.45s var(--transition-smooth),
+        transform 0.45s var(--transition-smooth),
+        visibility 0s 0s;
+    }
+
+    .mega-menu::before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+      height: 18px;
+    }
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      text-align: center;
+      width: 210px;
+      transition:
+        background-color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s var(--transition-smooth);
+    }
+
+    .menu-item:hover {
+      background: var(--surface-warm);
+      box-shadow: 0 4px 16px rgba(15, 37, 51, 0.07);
+      transform: translateY(-2px);
+    }
+
+    .menu-item-img-wrap {
+      width: 100%;
+      height: 110px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(15, 37, 51, 0.08);
+    }
+
+    .menu-item-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--transition-smooth);
+    }
+
+    .menu-item:hover .menu-item-img-wrap img {
+      transform: scale(1.1);
+    }
+
+    .menu-item strong {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+      line-height: 1.3;
+      letter-spacing: 0.01em;
+      transition: color 0.3s ease;
+    }
+
+    .menu-item:hover strong {
+      color: var(--accent);
+    }
+
+    .menu-item p {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* ========== HAMBURGER BUTTON ========== */
+    .hamburger-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 6000;
+      position: relative;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      transition: background-color 0.3s ease;
+    }
+
+    .hamburger-btn:hover {
+      background: var(--surface-warm);
+    }
+
+    .hamburger-btn .bar {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      position: absolute;
+      left: 10px;
+      transition:
+        transform 0.4s var(--transition-smooth),
+        opacity 0.3s ease,
+        width 0.3s var(--transition-smooth);
+    }
+
+    .hamburger-btn .bar:nth-child(1) { top: 13px; }
+    .hamburger-btn .bar:nth-child(2) { top: 21px; width: 18px; }
+    .hamburger-btn .bar:nth-child(3) { top: 29px; }
+
+    .hamburger-btn.is-active .bar:nth-child(1) { transform: rotate(45deg); top: 21px; }
+    .hamburger-btn.is-active .bar:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger-btn.is-active .bar:nth-child(3) { transform: rotate(-45deg); top: 21px; }
+
+    /* ========== HERO SECTION WITH SLIDESHOW ========== */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      min-height: 550px;
+      margin-top: 0;
+      overflow: hidden;
+    }
+
+    .hero-slideshow {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 37, 51, 0.3) 0%,
+        rgba(15, 37, 51, 0.5) 50%,
+        rgba(15, 37, 51, 0.7) 100%
+      );
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 28px 60px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin: 0;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 20px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* Slideshow Navigation Dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+    }
+
+    .hero-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero-dot.active,
+    .hero-dot:hover {
+      background: #fff;
+      transform: scale(1.2);
+    }
+
+    /* ========== SERVICE CARDS SECTION ========== */
+    .services-section {
+      position: relative;
+      z-index: 10;
+      margin-top: -120px;
+      padding: 0 28px 80px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(15, 37, 51, 0.12);
+      transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(15, 37, 51, 0.18);
+    }
+
+    .service-card-image {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .service-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--transition-smooth);
+    }
+
+    .service-card:hover .service-card-image img {
+      transform: scale(1.08);
+    }
+
+    .service-card-content {
+      padding: 28px;
+    }
+
+    .service-card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 8px 0;
+    }
+
+    .service-card-subtitle {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .service-card-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .service-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .service-card-cta:hover {
+      background: var(--accent-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+    }
+
+    .service-card-cta svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card-cta:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ========== MOBILE OFF-CANVAS OVERLAY ========== */
+    .mobile-overlay {
+      display: none;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1100px) {
+      .main-navigation > ul { gap: 2px; }
+      .main-navigation > ul > li > a { font-size: 14px; padding: 8px 12px; }
+      .header-actions .cta-header { padding: 10px 18px; font-size: 13px; }
+    }
+
+    @media (max-width: 1000px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        gap: 24px;
+      }
+
+      .services-section {
+        margin-top: -80px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .main-navigation,
+      .header-actions .cta-header {
+        display: none;
+      }
+
+      .hamburger-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-section {
+        height: 60vh;
+        min-height: 450px;
+      }
+
+      /* ========== OFF-CANVAS MENÜ ========== */
+      .mobile-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 5000;
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      .mobile-overlay.is-open {
+        pointer-events: auto;
+        visibility: visible;
+      }
+
+      .mobile-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 37, 51, 0.4);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        opacity: 0;
+        transition: opacity 0.4s var(--transition-smooth);
+      }
+
+      .mobile-overlay.is-open .mobile-backdrop {
+        opacity: 1;
+      }
+
+      .mobile-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: min(380px, 88vw);
+        height: 100%;
+        background: var(--surface);
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+        transform: translateX(100%);
+        transition: transform 0.5s var(--transition-smooth);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .mobile-overlay.is-open .mobile-panel {
+        transform: translateX(0);
+      }
+
+      .mobile-panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--line);
+        flex-shrink: 0;
+      }
+
+      .mobile-panel-header img {
+        max-width: 120px;
+        display: block;
+      }
+
+      .mobile-close-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+        color: var(--ink);
+      }
+
+      .mobile-close-btn:hover {
+        background: var(--surface-warm);
+      }
+
+      .mobile-close-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .mobile-nav {
+        padding: 12px 0;
+        flex: 1;
+      }
+
+      .mobile-nav-item {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mobile-nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        text-decoration: none;
+        color: var(--ink);
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease;
+      }
+
+      .mobile-nav-link:hover,
+      .mobile-nav-link:focus {
+        background: var(--surface-warm);
+        color: var(--accent);
+      }
+
+      .mobile-accordion-trigger {
+        cursor: pointer;
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        color: var(--ink);
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease;
+      }
+
+      .mobile-accordion-trigger:hover,
+      .mobile-accordion-trigger:focus {
+        background: var(--surface-warm);
+        color: var(--accent);
+        outline: none;
+      }
+
+      .mobile-accordion-trigger .acc-chevron {
+        width: 10px;
+        height: 10px;
+        border-right: 2.5px solid currentColor;
+        border-bottom: 2.5px solid currentColor;
+        transform: rotate(45deg);
+        transition: transform 0.35s var(--transition-smooth);
+        flex-shrink: 0;
+      }
+
+      .mobile-accordion-trigger[aria-expanded="true"] .acc-chevron {
+        transform: rotate(-135deg);
+      }
+
+      .mobile-accordion-trigger[aria-expanded="true"] {
+        color: var(--accent);
+        background: var(--surface-warm);
+      }
+
+      .mobile-accordion-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.45s var(--transition-smooth);
+        background: var(--surface-warm);
+      }
+
+      .mobile-accordion-panel.is-expanded {
+        max-height: 600px;
+      }
+
+      .mobile-sub-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 24px 12px 32px;
+        text-decoration: none;
+        color: var(--ink);
+        transition:
+          background-color 0.25s ease,
+          padding-left 0.3s var(--transition-smooth);
+      }
+
+      .mobile-sub-item:hover {
+        background: rgba(43, 108, 176, 0.06);
+        padding-left: 38px;
+      }
+
+      .mobile-sub-img {
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+        object-fit: cover;
+        flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(15, 37, 51, 0.08);
+      }
+
+      .mobile-sub-text strong {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--ink);
+        display: block;
+        line-height: 1.3;
+      }
+
+      .mobile-sub-text span {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.4;
+        display: block;
+        margin-top: 2px;
+      }
+
+      .mobile-cta-wrap {
+        padding: 20px 24px;
+        border-top: 1px solid var(--line);
+        flex-shrink: 0;
+      }
+
+      .mobile-cta {
+        display: block;
+        text-align: center;
+        background: var(--accent);
+        color: #fff;
+        padding: 14px 24px;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        box-shadow: 0 4px 16px var(--accent-glow);
+        transition:
+          background-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .mobile-cta:hover {
+        background: var(--accent-deep);
+        box-shadow: 0 6px 24px var(--accent-glow);
+      }
+
+      .mobile-overlay.is-open .mobile-nav-item {
+        animation: slideInRight 0.4s var(--transition-smooth) both;
+      }
+      .mobile-overlay.is-open .mobile-nav-item:nth-child(1) { animation-delay: 0.05s; }
+      .mobile-overlay.is-open .mobile-nav-item:nth-child(2) { animation-delay: 0.1s; }
+      .mobile-overlay.is-open .mobile-nav-item:nth-child(3) { animation-delay: 0.15s; }
+      .mobile-overlay.is-open .mobile-nav-item:nth-child(4) { animation-delay: 0.2s; }
+      .mobile-overlay.is-open .mobile-nav-item:nth-child(5) { animation-delay: 0.25s; }
+      .mobile-overlay.is-open .mobile-nav-item:nth-child(6) { animation-delay: 0.3s; }
+
+      @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to   { opacity: 1; transform: translateX(0); }
+      }
+
+      .mobile-overlay.is-open .mobile-cta-wrap {
+        animation: slideInRight 0.4s var(--transition-smooth) 0.35s both;
+      }
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="logo-container">
+        <a id="logoHome" href="https://www.alabenergiesysteme.de/" target="_blank" rel="noopener">
+          <img src="https://static.wixstatic.com/media/cac2b9_62e2dd76694e43c3810467fa4e633c6c~mv2.png" alt="ALAB Energiesysteme Logo">
+        </a>
+      </div>
+
+      <nav class="main-navigation" aria-label="Hauptnavigation">
+        <ul>
+          <!-- 1. Gebäudeinstallation (Mega-Menü) -->
+          <li class="has-megamenu" data-mega="gebaeude">
+            <a href="#" aria-expanded="false">Gebäudeinstallation</a>
+            <div class="mega-menu" role="menu">
+              <a href="#" class="menu-item" role="menuitem">
+                <div class="menu-item-img-wrap">
+                  <img src="https://static.wixstatic.com/media/cac2b9_493bb2e306024e85848ba5ab5a484e4a~mv2.jpeg" alt="Energieversorgung & Verteilung" />
+                </div>
+                <strong>Energieversorgung &amp; Verteilung</strong>
+                <p>Zuverlässige Energielösungen für Ihr Gebäude.</p>
+              </a>
+              <a href="#" class="menu-item" role="menuitem">
+                <div class="menu-item-img-wrap">
+                  <img src="https://static.wixstatic.com/media/cac2b9_f3dd33c675904fe68c45c728fa9df2dc~mv2.jpeg" alt="Beleuchtungstechnik" />
+                </div>
+                <strong>Beleuchtungstechnik</strong>
+                <p>Moderne Beleuchtung für jeden Einsatzbereich.</p>
+              </a>
+              <a href="#" class="menu-item" role="menuitem">
+                <div class="menu-item-img-wrap">
+                  <img src="https://static.wixstatic.com/media/cac2b9_e895fac57c534346aa59c9bffb9f0513~mv2.jpeg" alt="Kommunikations- & Datentechnik" />
+                </div>
+                <strong>Kommunikations- &amp; Datentechnik</strong>
+                <p>Vernetzte Infrastruktur für Ihr Unternehmen.</p>
+              </a>
+            </div>
+          </li>
+
+          <!-- 2. PV-Anlagen (Mega-Menü) -->
+          <li class="has-megamenu" data-mega="pv">
+            <a href="#" aria-expanded="false">PV-Anlagen</a>
+            <div class="mega-menu" role="menu">
+              <a href="https://www.alabenergiesysteme.de/gewerbliche-l%C3%B6sungen" class="menu-item" role="menuitem">
+                <div class="menu-item-img-wrap">
+                  <img src="https://static.wixstatic.com/media/cac2b9_493bb2e306024e85848ba5ab5a484e4a~mv2.jpeg" alt="Photovoltaik für Gewerbe" />
+                </div>
+                <strong>Photovoltaik für Gewerbe</strong>
+                <p>Effiziente Solaranlagen für Ihr Unternehmen.</p>
+              </a>
+              <a href="https://www.alabenergiesysteme.de/privatehaushalte" class="menu-item" role="menuitem">
+                <div class="menu-item-img-wrap">
+                  <img src="https://static.wixstatic.com/media/cac2b9_f3dd33c675904fe68c45c728fa9df2dc~mv2.jpeg" alt="Photovoltaik für zuhause" />
+                </div>
+                <strong>Photovoltaik für zuhause</strong>
+                <p>Ihr Weg zur Energie-Unabhängigkeit.</p>
+              </a>
+              <a href="https://www.alabenergiesysteme.de/services" class="menu-item" role="menuitem">
+                <div class="menu-item-img-wrap">
+                  <img src="https://static.wixstatic.com/media/cac2b9_abf62d84161a461b9f4ad63dda96fe79~mv2.jpeg" alt="Servicepakete" />
+                </div>
+                <strong>Servicepakete</strong>
+                <p>Rundum-Sorglos-Pakete für jede Anlage.</p>
+              </a>
+            </div>
+          </li>
+
+          <!-- 3–6 Einfache Links -->
+          <li><a href="#">Dachverpachtung</a></li>
+          <li><a href="#">Über uns</a></li>
+          <li><a href="#">Partner werden</a></li>
+          <li><a href="https://www.alabenergiesysteme.de/kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://www.alabenergiesysteme.de/angeboteinholen" class="cta-header" target="_blank" rel="noopener">Angebot einholen</a>
+        <button class="hamburger-btn" aria-label="Menü öffnen" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO SECTION WITH SLIDESHOW ========== -->
+  <section class="hero-section">
+    <div class="hero-slideshow">
+      <div class="hero-slide active">
+        <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=1920&q=80" alt="Industrieanlage">
+      </div>
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=80" alt="Solaranlage">
+      </div>
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80" alt="Energie Technologie">
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Energie im Fokus</h1>
+      <p class="hero-subtitle">Ihr Partner für innovative Energielösungen – von der Gebäudeinstallation bis zur nachhaltigen Solarenergie.</p>
+    </div>
+    <div class="hero-dots">
+      <span class="hero-dot active" data-slide="0"></span>
+      <span class="hero-dot" data-slide="1"></span>
+      <span class="hero-dot" data-slide="2"></span>
+    </div>
+  </section>
+
+  <!-- ========== SERVICE CARDS SECTION ========== -->
+  <section class="services-section">
+    <div class="services-grid">
+      <!-- Card 1: Gebäudeenergie -->
+      <article class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Gebäudeenergie">
+        </div>
+        <div class="service-card-content">
+          <h3 class="service-card-title">Gebäudeenergie</h3>
+          <p class="service-card-subtitle">Effiziente Energieversorgung</p>
+          <p class="service-card-text">Wir planen und realisieren moderne Energiesysteme für Ihr Gebäude. Von der Stromverteilung bis zur intelligenten Gebäudetechnik – alles aus einer Hand.</p>
+          <a href="#gebaeudeenergie" class="service-card-cta">
+            Mehr erfahren
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2: PV-Anlagen -->
+      <article class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80" alt="PV-Anlagen">
+        </div>
+        <div class="service-card-content">
+          <h3 class="service-card-title">PV-Anlagen</h3>
+          <p class="service-card-subtitle">Solarenergie für Gewerbe & Privat</p>
+          <p class="service-card-text">Nutzen Sie die Kraft der Sonne! Wir projektieren maßgeschneiderte Photovoltaik-Anlagen für Unternehmen und Privathaushalte mit höchster Effizienz.</p>
+          <a href="#pv-anlagen" class="service-card-cta">
+            Mehr erfahren
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3: Dachverpachtung -->
+      <article class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&q=80" alt="Dachverpachtung">
+        </div>
+        <div class="service-card-content">
+          <h3 class="service-card-title">Dachverpachtung</h3>
+          <p class="service-card-subtitle">Passives Einkommen generieren</p>
+          <p class="service-card-text">Verpachten Sie Ihr Dach und profitieren Sie von regelmäßigen Einnahmen – ohne eigene Investition. Wir übernehmen Planung, Installation und Wartung.</p>
+          <a href="#dachverpachtung" class="service-card-cta">
+            Mehr erfahren
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== MOBILE OFF-CANVAS ========== -->
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true">
+    <div class="mobile-backdrop" id="mobileBackdrop"></div>
+    <aside class="mobile-panel" role="dialog" aria-label="Hauptmenü">
+      <div class="mobile-panel-header">
+        <a href="https://www.alabenergiesysteme.de/" target="_blank" rel="noopener">
+          <img src="https://static.wixstatic.com/media/cac2b9_62e2dd76694e43c3810467fa4e633c6c~mv2.png" alt="ALAB Logo">
+        </a>
+        <button class="mobile-close-btn" aria-label="Menü schließen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav" aria-label="Mobile Navigation">
+        <div class="mobile-nav-item">
+          <button class="mobile-accordion-trigger" aria-expanded="false" aria-controls="acc-gebaeude">
+            Gebäudeinstallation
+            <span class="acc-chevron"></span>
+          </button>
+          <div class="mobile-accordion-panel" id="acc-gebaeude" role="region">
+            <a href="#" class="mobile-sub-item">
+              <img class="mobile-sub-img" src="https://static.wixstatic.com/media/cac2b9_493bb2e306024e85848ba5ab5a484e4a~mv2.jpeg" alt="" />
+              <div class="mobile-sub-text">
+                <strong>Energieversorgung &amp; Verteilung</strong>
+                <span>Zuverlässige Energielösungen für Ihr Gebäude.</span>
+              </div>
+            </a>
+            <a href="#" class="mobile-sub-item">
+              <img class="mobile-sub-img" src="https://static.wixstatic.com/media/cac2b9_f3dd33c675904fe68c45c728fa9df2dc~mv2.jpeg" alt="" />
+              <div class="mobile-sub-text">
+                <strong>Beleuchtungstechnik</strong>
+                <span>Moderne Beleuchtung für jeden Einsatzbereich.</span>
+              </div>
+            </a>
+            <a href="#" class="mobile-sub-item">
+              <img class="mobile-sub-img" src="https://static.wixstatic.com/media/cac2b9_e895fac57c534346aa59c9bffb9f0513~mv2.jpeg" alt="" />
+              <div class="mobile-sub-text">
+                <strong>Kommunikations- &amp; Datentechnik</strong>
+                <span>Vernetzte Infrastruktur für Ihr Unternehmen.</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile-nav-item">
+          <button class="mobile-accordion-trigger" aria-expanded="false" aria-controls="acc-pv">
+            PV-Anlagen
+            <span class="acc-chevron"></span>
+          </button>
+          <div class="mobile-accordion-panel" id="acc-pv" role="region">
+            <a href="https://www.alabenergiesysteme.de/gewerbliche-l%C3%B6sungen" class="mobile-sub-item">
+              <img class="mobile-sub-img" src="https://static.wixstatic.com/media/cac2b9_493bb2e306024e85848ba5ab5a484e4a~mv2.jpeg" alt="" />
+              <div class="mobile-sub-text">
+                <strong>Photovoltaik für Gewerbe</strong>
+                <span>Effiziente Solaranlagen für Ihr Unternehmen.</span>
+              </div>
+            </a>
+            <a href="https://www.alabenergiesysteme.de/privatehaushalte" class="mobile-sub-item">
+              <img class="mobile-sub-img" src="https://static.wixstatic.com/media/cac2b9_f3dd33c675904fe68c45c728fa9df2dc~mv2.jpeg" alt="" />
+              <div class="mobile-sub-text">
+                <strong>Photovoltaik für zuhause</strong>
+                <span>Ihr Weg zur Energie-Unabhängigkeit.</span>
+              </div>
+            </a>
+            <a href="https://www.alabenergiesysteme.de/services" class="mobile-sub-item">
+              <img class="mobile-sub-img" src="https://static.wixstatic.com/media/cac2b9_abf62d84161a461b9f4ad63dda96fe79~mv2.jpeg" alt="" />
+              <div class="mobile-sub-text">
+                <strong>Servicepakete</strong>
+                <span>Rundum-Sorglos-Pakete für jede Anlage.</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile-nav-item"><a href="#dachverpachtung" class="mobile-nav-link">Dachverpachtung</a></div>
+        <div class="mobile-nav-item"><a href="#" class="mobile-nav-link">Über uns</a></div>
+        <div class="mobile-nav-item"><a href="#" class="mobile-nav-link">Partner werden</a></div>
+        <div class="mobile-nav-item"><a href="https://www.alabenergiesysteme.de/kontakt" class="mobile-nav-link">Kontakt</a></div>
+      </nav>
+
+      <div class="mobile-cta-wrap">
+        <a href="https://www.alabenergiesysteme.de/angeboteinholen" class="mobile-cta" target="_blank" rel="noopener">Angebot einholen</a>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    (function () {
+      /* ===== HERO SLIDESHOW ===== */
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.hero-dot');
+      let currentSlide = 0;
+      let slideInterval;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % slides.length);
+      }
+
+      function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          clearInterval(slideInterval);
+          showSlide(parseInt(dot.dataset.slide));
+          startSlideshow();
+        });
+      });
+
+      startSlideshow();
+
+      /* ===== DESKTOP: Exklusives Mega-Menü ===== */
+      const megaItems = document.querySelectorAll('.has-megamenu');
+
+      function openMega(li) {
+        megaItems.forEach(other => { if (other !== li) closeMega(other); });
+        li.classList.add('mega-active');
+        const trigger = li.querySelector(':scope > a');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeMega(li) {
+        li.classList.remove('mega-active');
+        const trigger = li.querySelector(':scope > a');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      function closeAll() { megaItems.forEach(li => closeMega(li)); }
+
+      megaItems.forEach(li => {
+        let timer = null;
+        li.addEventListener('mouseenter', () => { clearTimeout(timer); openMega(li); });
+        li.addEventListener('mouseleave', () => { timer = setTimeout(() => closeMega(li), 120); });
+        li.addEventListener('focusin', () => { clearTimeout(timer); openMega(li); });
+        li.addEventListener('focusout', () => {
+          requestAnimationFrame(() => { if (!li.contains(document.activeElement)) closeMega(li); });
+        });
+      });
+
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+      document.addEventListener('click', e => { if (!e.target.closest('.has-megamenu')) closeAll(); });
+
+      /* ===== MOBILE: Off-Canvas & Akkordeon ===== */
+      const overlay = document.getElementById('mobileOverlay');
+      const backdrop = document.getElementById('mobileBackdrop');
+      const hamburger = document.querySelector('.hamburger-btn');
+      const closeBtn = document.querySelector('.mobile-close-btn');
+      const accTriggers = document.querySelectorAll('.mobile-accordion-trigger');
+
+      function openMobile() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        hamburger.classList.add('is-active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Menü schließen');
+        document.body.classList.add('menu-open');
+      }
+
+      function closeMobile() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        hamburger.classList.remove('is-active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Menü öffnen');
+        document.body.classList.remove('menu-open');
+        accTriggers.forEach(btn => {
+          btn.setAttribute('aria-expanded', 'false');
+          const p = document.getElementById(btn.getAttribute('aria-controls'));
+          if (p) p.classList.remove('is-expanded');
+        });
+      }
+
+      hamburger.addEventListener('click', () => {
+        overlay.classList.contains('is-open') ? closeMobile() : openMobile();
+      });
+      closeBtn.addEventListener('click', closeMobile);
+      backdrop.addEventListener('click', closeMobile);
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMobile();
+      });
+
+      accTriggers.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const open = btn.getAttribute('aria-expanded') === 'true';
+          const panel = document.getElementById(btn.getAttribute('aria-controls'));
+          accTriggers.forEach(o => {
+            if (o !== btn) {
+              o.setAttribute('aria-expanded', 'false');
+              const op = document.getElementById(o.getAttribute('aria-controls'));
+              if (op) op.classList.remove('is-expanded');
+            }
+          });
+          btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+          panel.classList.toggle('is-expanded', !open);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

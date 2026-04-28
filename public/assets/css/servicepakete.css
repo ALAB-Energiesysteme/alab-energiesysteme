@@ -1,0 +1,946 @@
+﻿#alab-services{
+  --alab-bg:#f3f4f3;
+  --alab-bg-soft:#f5f5f2;
+  --alab-surface:#ffffff;
+  --alab-ink:#112b3c;
+  --alab-copy:#6b7a88;
+  --alab-navy:#12324a;
+  --alab-navy-soft:#15364f;
+  --alab-navy-deep:#0e2637;
+  --alab-blue:#2f6fb7;
+  --alab-gold:#e7be22;
+  --alab-gold-soft:#f1d469;
+  --alab-line:rgba(17,43,60,.08);
+  --alab-shadow-sm:0 16px 36px rgba(14,38,55,.08);
+  --alab-shadow-md:0 22px 58px rgba(14,38,55,.12);
+  --alab-shadow-lg:0 34px 82px rgba(14,38,55,.16);
+  --alab-radius-xl:32px;
+  --alab-radius-lg:28px;
+  --alab-radius-md:24px;
+  --alab-radius-sm:20px;
+  color:var(--alab-ink);
+  background:linear-gradient(180deg,var(--alab-bg) 0%,var(--alab-bg-soft) 100%);
+  font-family:'Montserrat',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  overflow-x:clip;
+}
+
+@supports not (overflow:clip){
+  #alab-services{overflow-x:hidden}
+}
+
+#alab-services,
+#alab-services *{box-sizing:border-box}
+
+#alab-services a{text-decoration:none}
+#alab-services img{display:block;max-width:100%}
+#alab-services button,
+#alab-services input,
+#alab-services textarea{font:inherit}
+
+#alab-services .container{
+  width:min(1280px,calc(100% - 96px));
+  margin:0 auto;
+}
+
+#alab-services .skip-link{
+  position:absolute;
+  left:18px;
+  top:-52px;
+  z-index:50;
+  padding:10px 16px;
+  border-radius:999px;
+  background:var(--alab-navy-deep);
+  color:#ffffff;
+  transition:top .2s ease;
+}
+
+#alab-services .skip-link:focus{top:18px}
+
+#alab-services .services-main{position:relative;z-index:1}
+#alab-services .section{padding:110px 0}
+
+#alab-services .section-header{
+  max-width:760px;
+  margin:0 auto 48px;
+  text-align:center;
+}
+
+#alab-services .section-header--narrow{max-width:700px}
+
+#alab-services .section-kicker,
+#alab-services .hero-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+#alab-services .section-kicker{
+  margin-bottom:18px;
+  background:rgba(47,111,183,.08);
+  color:var(--alab-blue);
+}
+
+#alab-services .section-kicker--light{
+  background:rgba(255,255,255,.12);
+  color:#ffffff;
+}
+
+#alab-services .section-title{
+  margin:0 0 18px;
+  font-size:clamp(2.2rem,3.2vw,3.6rem);
+  line-height:1.1;
+  font-weight:800;
+  text-wrap:balance;
+}
+
+#alab-services .section-intro{
+  margin:0;
+  color:var(--alab-copy);
+  font-size:1.08rem;
+  line-height:1.75;
+}
+
+#alab-services .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  min-height:56px;
+  padding:14px 26px;
+  border:1px solid transparent;
+  border-radius:999px;
+  font-size:.98rem;
+  font-weight:700;
+  line-height:1.2;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease, color .22s ease;
+}
+
+#alab-services .btn:hover{transform:translateY(-2px)}
+#alab-services .btn:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 4px rgba(47,111,183,.14),0 0 0 8px rgba(231,190,34,.16);
+}
+
+#alab-services .btn--primary{
+  background:linear-gradient(135deg,var(--alab-gold) 0%,var(--alab-gold-soft) 100%);
+  color:var(--alab-ink);
+  box-shadow:0 18px 42px rgba(231,190,34,.28);
+}
+
+#alab-services .btn--primary:hover{box-shadow:0 22px 48px rgba(231,190,34,.34)}
+
+#alab-services .btn--outline-light{
+  color:#ffffff;
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.22);
+  backdrop-filter:blur(12px);
+}
+
+#alab-services .btn--outline-light:hover{background:rgba(255,255,255,.14)}
+
+#alab-services .btn--outline-dark,
+#alab-services .btn--ghost{
+  color:var(--alab-ink);
+  background:rgba(17,43,60,.02);
+  border-color:rgba(17,43,60,.12);
+}
+
+#alab-services .btn--outline-dark:hover,
+#alab-services .btn--ghost:hover{
+  background:#ffffff;
+  border-color:rgba(17,43,60,.22);
+}
+
+#alab-services .hero-premium{
+  position:relative;
+  padding:120px 0 104px;
+  background:linear-gradient(140deg,var(--alab-navy) 0%,var(--alab-navy-soft) 48%,var(--alab-navy-deep) 100%);
+  color:#ffffff;
+  overflow:hidden;
+}
+
+#alab-services .hero-background{position:absolute;inset:0;pointer-events:none}
+
+#alab-services .hero-orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(18px);
+}
+
+#alab-services .hero-orb--gold{
+  width:360px;
+  height:360px;
+  top:-90px;
+  left:-90px;
+  background:radial-gradient(circle,rgba(241,212,105,.3) 0%,rgba(241,212,105,0) 72%);
+}
+
+#alab-services .hero-orb--blue{
+  width:420px;
+  height:420px;
+  right:-140px;
+  bottom:-140px;
+  background:radial-gradient(circle,rgba(47,111,183,.24) 0%,rgba(47,111,183,0) 75%);
+}
+
+#alab-services .hero-grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.25));
+}
+
+#alab-services .hero-layout{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  gap:52px;
+  align-items:center;
+}
+
+#alab-services .hero-kicker{
+  margin-bottom:22px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.14);
+  color:#dbe7f0;
+}
+
+#alab-services .hero-title{
+  margin:0 0 20px;
+  font-size:clamp(2.8rem,5.5vw,5.2rem);
+  line-height:1.01;
+  font-weight:800;
+  text-wrap:balance;
+}
+
+#alab-services .hero-subtitle{
+  max-width:720px;
+  margin:0 0 30px;
+  color:rgba(231,238,244,.82);
+  font-size:1.1rem;
+  line-height:1.82;
+}
+
+#alab-services .hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-bottom:34px;
+}
+
+#alab-services .hero-pillar-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+
+#alab-services .hero-pillar{
+  min-height:100%;
+  padding:20px;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  backdrop-filter:blur(12px);
+}
+
+#alab-services .hero-pillar__label{
+  display:block;
+  margin-bottom:10px;
+  color:#c8d6e3;
+  font-size:.74rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+#alab-services .hero-pillar strong{
+  display:block;
+  margin-bottom:10px;
+  font-size:1.02rem;
+  line-height:1.4;
+}
+
+#alab-services .hero-pillar p{
+  margin:0;
+  color:rgba(231,238,244,.78);
+  font-size:.94rem;
+  line-height:1.65;
+}
+
+#alab-services .hero-visual-shell{
+  position:relative;
+  min-height:640px;
+  padding:28px 28px 140px;
+  border-radius:var(--alab-radius-xl);
+  background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:var(--alab-shadow-lg);
+  backdrop-filter:blur(16px);
+}
+
+#alab-services .hero-visual-image{
+  min-height:520px;
+  height:100%;
+  overflow:hidden;
+  border-radius:var(--alab-radius-lg);
+  box-shadow:0 28px 64px rgba(0,0,0,.24);
+}
+
+#alab-services .hero-visual-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+#alab-services .hero-visual-panel{
+  position:absolute;
+  left:40px;
+  right:40px;
+  bottom:34px;
+  padding:28px;
+  border-radius:26px;
+  background:rgba(255,255,255,.96);
+  color:var(--alab-ink);
+  box-shadow:var(--alab-shadow-md);
+}
+
+#alab-services .hero-visual-panel__kicker{
+  display:inline-block;
+  margin-bottom:12px;
+  color:var(--alab-gold);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+#alab-services .hero-visual-panel h2{
+  margin:0 0 14px;
+  font-size:1.45rem;
+  line-height:1.25;
+}
+
+#alab-services .hero-visual-panel ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:10px;
+}
+
+#alab-services .hero-visual-panel li{
+  position:relative;
+  padding-left:24px;
+  color:var(--alab-copy);
+  line-height:1.6;
+}
+
+#alab-services .hero-visual-panel li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:10px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--alab-gold),var(--alab-gold-soft));
+}
+
+#alab-services .section-surface{
+  background:linear-gradient(180deg,var(--alab-bg-soft) 0%,#ffffff 100%);
+}
+
+#alab-services .service-grid,
+#alab-services .rhythm-grid,
+#alab-services .diagnostic-grid{
+  display:grid;
+  gap:24px;
+}
+
+#alab-services .service-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+#alab-services .rhythm-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+#alab-services .diagnostic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+#alab-services .service-card,
+#alab-services .extension-card,
+#alab-services .rhythm-card,
+#alab-services .diagnostic-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:var(--alab-radius-lg);
+  border:1px solid var(--alab-line);
+  background:var(--alab-surface);
+  box-shadow:var(--alab-shadow-sm);
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+
+#alab-services .service-card:hover,
+#alab-services .extension-card:hover,
+#alab-services .rhythm-card:hover,
+#alab-services .diagnostic-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--alab-shadow-md);
+  border-color:rgba(17,43,60,.12);
+}
+
+#alab-services .service-card{
+  display:flex;
+  flex-direction:column;
+  padding:34px;
+}
+
+#alab-services .service-card__accent,
+#alab-services .diagnostic-card__accent{
+  position:absolute;
+  inset:0 0 auto 0;
+  height:4px;
+  background:linear-gradient(90deg,var(--alab-blue) 0%,rgba(47,111,183,.22) 100%);
+}
+
+#alab-services .service-card__icon,
+#alab-services .extension-card__icon,
+#alab-services .rhythm-card__icon,
+#alab-services .diagnostic-card__icon{
+  width:64px;
+  height:64px;
+  border-radius:20px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--alab-gold) 0%,var(--alab-gold-soft) 100%);
+  color:var(--alab-ink);
+  box-shadow:0 18px 34px rgba(231,190,34,.22);
+}
+
+#alab-services .service-card__icon,
+#alab-services .diagnostic-card__icon{margin-bottom:22px}
+
+#alab-services .service-card__icon i,
+#alab-services .extension-card__icon i,
+#alab-services .rhythm-card__icon i,
+#alab-services .diagnostic-card__icon i{font-size:1.35rem}
+
+#alab-services .service-card__eyebrow,
+#alab-services .extension-card__eyebrow,
+#alab-services .diagnostic-card__eyebrow,
+#alab-services .rhythm-card__eyebrow{
+  margin:0;
+  color:var(--alab-blue);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+#alab-services .service-card h3,
+#alab-services .extension-card h3,
+#alab-services .diagnostic-card h3{
+  margin:12px 0 14px;
+  font-size:1.4rem;
+  line-height:1.28;
+}
+
+#alab-services .service-card__copy,
+#alab-services .extension-card p,
+#alab-services .diagnostic-card p{
+  margin:0;
+  color:var(--alab-copy);
+  line-height:1.72;
+}
+
+#alab-services .service-card__list,
+#alab-services .extension-card__list,
+#alab-services .rhythm-card__list,
+#alab-services .diagnostic-card__list{
+  margin:20px 0 0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:12px;
+}
+
+#alab-services .service-card__list li,
+#alab-services .extension-card__list li,
+#alab-services .rhythm-card__list li,
+#alab-services .diagnostic-card__list li{
+  position:relative;
+  padding-left:26px;
+  color:var(--alab-copy);
+  line-height:1.64;
+}
+
+#alab-services .service-card__list li::before,
+#alab-services .extension-card__list li::before,
+#alab-services .rhythm-card__list li::before,
+#alab-services .diagnostic-card__list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:10px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--alab-gold) 0%,var(--alab-gold-soft) 100%);
+  box-shadow:0 0 0 6px rgba(231,190,34,.12);
+}
+
+#alab-services .service-card__footer,
+#alab-services .extension-card__footer,
+#alab-services .diagnostic-card__footer{
+  margin-top:auto;
+  padding-top:28px;
+}
+
+#alab-services .section-extensions{
+  background:linear-gradient(180deg,#ffffff 0%,var(--alab-bg) 100%);
+}
+
+#alab-services .extension-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+  align-items:start;
+}
+
+#alab-services .extension-card{
+  display:grid;
+  grid-template-columns:84px minmax(0,1fr);
+  gap:24px;
+  padding:32px;
+}
+
+#alab-services .extension-card--offset{transform:translateY(20px)}
+#alab-services .extension-card--offset:hover{transform:translateY(14px)}
+
+#alab-services .extension-card__meta,
+#alab-services .diagnostic-card__meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  margin-bottom:10px;
+}
+
+#alab-services .micro-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:32px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:rgba(47,111,183,.08);
+  color:var(--alab-blue);
+  border:1px solid rgba(47,111,183,.1);
+  font-size:.76rem;
+  font-weight:700;
+}
+
+#alab-services .section-rhythm{
+  background:linear-gradient(180deg,var(--alab-bg) 0%,var(--alab-bg-soft) 100%);
+}
+
+#alab-services .rhythm-shell{
+  padding:54px;
+  border-radius:var(--alab-radius-xl);
+  background:linear-gradient(180deg,#ffffff 0%,#f6f7f5 100%);
+  border:1px solid var(--alab-line);
+  box-shadow:var(--alab-shadow-md);
+}
+
+#alab-services .rhythm-card{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+  padding:30px;
+  background:linear-gradient(180deg,#ffffff 0%,#f9faf8 100%);
+}
+
+#alab-services .rhythm-card__icon{margin-bottom:22px}
+
+#alab-services .rhythm-card__headline{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:4px;
+}
+
+#alab-services .rhythm-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:7px 14px;
+  border-radius:999px;
+  background:rgba(17,43,60,.05);
+  color:var(--alab-ink);
+  font-size:.78rem;
+  font-weight:700;
+}
+
+#alab-services .section-advisory-cta{
+  padding-top:16px;
+  padding-bottom:28px;
+  background:linear-gradient(180deg,var(--alab-bg-soft) 0%,#ffffff 100%);
+}
+
+#alab-services .advisory-panel,
+#alab-services .final-cta-panel{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) auto;
+  gap:28px;
+  align-items:center;
+  padding:42px;
+  border-radius:var(--alab-radius-xl);
+  background:linear-gradient(140deg,var(--alab-navy) 0%,var(--alab-navy-soft) 55%,var(--alab-navy-deep) 100%);
+  color:#ffffff;
+  box-shadow:var(--alab-shadow-lg);
+}
+
+#alab-services .advisory-panel::after,
+#alab-services .final-cta-panel::after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:-80px;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(241,212,105,.24) 0%,rgba(241,212,105,0) 72%);
+}
+
+#alab-services .advisory-title,
+#alab-services .final-cta-title{
+  margin:0 0 14px;
+  font-size:clamp(1.9rem,2.8vw,3rem);
+  line-height:1.15;
+  font-weight:800;
+  text-wrap:balance;
+}
+
+#alab-services .advisory-text,
+#alab-services .final-cta-text{
+  margin:0;
+  max-width:720px;
+  color:rgba(231,238,244,.8);
+  line-height:1.75;
+}
+
+#alab-services .advisory-actions,
+#alab-services .final-cta-actions{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+#alab-services .section-diagnostics{
+  background:linear-gradient(180deg,#ffffff 0%,var(--alab-bg-soft) 100%);
+}
+
+#alab-services .diagnostic-card{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+  padding:34px;
+}
+
+#alab-services .section-final-cta{
+  padding-top:28px;
+  padding-bottom:110px;
+  background:linear-gradient(180deg,var(--alab-bg-soft) 0%,var(--alab-bg) 100%);
+}
+
+@keyframes alabServicesFadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+#alab-services .reveal{
+  opacity:0;
+  transform:translateY(24px);
+}
+
+#alab-services .reveal.show{animation:alabServicesFadeUp .7s ease forwards}
+
+#alab-services .modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(14,38,55,.5);
+  backdrop-filter:blur(6px);
+}
+
+#alab-services .modal--open{display:flex}
+
+#alab-services .modal__dialog{
+  width:min(680px,100%);
+  overflow:hidden;
+  border-radius:30px;
+  background:#ffffff;
+  border:1px solid rgba(17,43,60,.08);
+  box-shadow:var(--alab-shadow-lg);
+}
+
+#alab-services .modal__header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:24px 28px;
+  background:linear-gradient(90deg,rgba(231,190,34,.12) 0%,rgba(47,111,183,.06) 100%);
+  border-bottom:1px solid var(--alab-line);
+}
+
+#alab-services .modal__title{
+  font-size:1.2rem;
+  font-weight:800;
+  color:var(--alab-ink);
+}
+
+#alab-services .modal__close{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(17,43,60,.06);
+  color:var(--alab-ink);
+  cursor:pointer;
+  font-size:1.35rem;
+}
+
+#alab-services .modal__body{padding:28px}
+
+#alab-services .form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+
+#alab-services .input-field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+#alab-services .input-field--full{grid-column:1 / -1}
+
+#alab-services .input-field label{
+  color:var(--alab-ink);
+  font-size:.92rem;
+  font-weight:600;
+}
+
+#alab-services .input-field input,
+#alab-services .input-field textarea{
+  width:100%;
+  padding:14px 16px;
+  border-radius:18px;
+  border:1px solid rgba(17,43,60,.12);
+  background:#ffffff;
+  color:var(--alab-ink);
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+
+#alab-services .input-field input:focus,
+#alab-services .input-field textarea:focus{
+  outline:none;
+  border-color:rgba(47,111,183,.34);
+  box-shadow:0 0 0 4px rgba(47,111,183,.08);
+}
+
+#alab-services .input-field textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+#alab-services .input-field--consent{
+  margin-top:4px;
+  padding:16px 18px;
+  border-radius:20px;
+  background:rgba(17,43,60,.03);
+  border:1px solid rgba(17,43,60,.06);
+}
+
+#alab-services .checkbox-inline{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  cursor:pointer;
+}
+
+#alab-services .checkbox-inline input{
+  width:18px;
+  height:18px;
+  margin-top:3px;
+}
+
+#alab-services .checkbox-inline span{
+  color:var(--alab-copy);
+  line-height:1.6;
+}
+
+#alab-services .checkbox-inline a{
+  color:var(--alab-blue);
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+#alab-services .modal__footer{
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+  margin-top:24px;
+}
+
+#alab-services .form-success{
+  display:none;
+  text-align:center;
+  padding:26px 24px 10px;
+  border-radius:26px;
+  background:linear-gradient(135deg,rgba(47,111,183,.08) 0%,rgba(231,190,34,.12) 100%);
+  border:1px solid rgba(231,190,34,.32);
+}
+
+#alab-services .form-success.show{display:block}
+
+#alab-services .success-icon{
+  width:76px;
+  height:76px;
+  margin:0 auto 12px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--alab-gold) 0%,var(--alab-gold-soft) 100%);
+  color:var(--alab-ink);
+  box-shadow:0 18px 38px rgba(231,190,34,.24);
+  font-size:1.4rem;
+}
+
+#alab-services .form-success h3{
+  margin:.2rem 0 .45rem;
+  color:var(--alab-ink);
+  font-size:1.35rem;
+}
+
+#alab-services .form-success p{
+  margin:0;
+  color:var(--alab-copy);
+}
+
+#alab-services .form-success__actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+#alab-services .form-parts--hidden{display:none !important}
+#alab-services #formSuccess{display:none}
+
+@media (max-width:1200px){
+  #alab-services .container{width:min(100%,calc(100% - 64px))}
+  #alab-services .hero-layout{grid-template-columns:1fr;gap:36px}
+  #alab-services .hero-pillar-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #alab-services .hero-visual-shell{min-height:auto}
+  #alab-services .hero-visual-image{min-height:440px}
+  #alab-services .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #alab-services .rhythm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (max-width:1024px){
+  #alab-services .section{padding:86px 0}
+  #alab-services .extension-grid,
+  #alab-services .diagnostic-grid,
+  #alab-services .advisory-panel,
+  #alab-services .final-cta-panel{grid-template-columns:1fr}
+  #alab-services .extension-card--offset{transform:none}
+  #alab-services .extension-card--offset:hover{transform:translateY(-6px)}
+  #alab-services .advisory-actions,
+  #alab-services .final-cta-actions{flex-direction:row;flex-wrap:wrap}
+}
+
+@media (max-width:768px){
+  #alab-services .container{width:min(100%,calc(100% - 28px))}
+  #alab-services .section{padding:72px 0}
+  #alab-services .hero-premium{padding:92px 0 72px}
+  #alab-services .hero-title{font-size:clamp(2.2rem,9vw,3.4rem)}
+  #alab-services .hero-subtitle,
+  #alab-services .section-intro{font-size:1rem}
+  #alab-services .hero-actions{flex-direction:column;align-items:stretch}
+  #alab-services .btn{width:100%}
+  #alab-services .hero-pillar-grid,
+  #alab-services .service-grid,
+  #alab-services .rhythm-grid,
+  #alab-services .diagnostic-grid{grid-template-columns:1fr}
+  #alab-services .hero-visual-shell{padding:18px}
+  #alab-services .hero-visual-image{min-height:320px}
+  #alab-services .hero-visual-panel{
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    margin-top:18px;
+    padding:22px;
+  }
+  #alab-services .service-card,
+  #alab-services .diagnostic-card,
+  #alab-services .rhythm-card{padding:26px}
+  #alab-services .extension-card{grid-template-columns:1fr;padding:26px}
+  #alab-services .rhythm-shell,
+  #alab-services .advisory-panel,
+  #alab-services .final-cta-panel{padding:30px 24px}
+  #alab-services .advisory-actions,
+  #alab-services .final-cta-actions{flex-direction:column}
+  #alab-services .form-grid{grid-template-columns:1fr}
+  #alab-services .modal__body{padding:22px}
+  #alab-services .modal__header{padding:20px 22px}
+  #alab-services .modal__footer{flex-direction:column}
+}
+
+@media (max-width:560px){
+  #alab-services .section{padding:62px 0}
+  #alab-services .hero-premium{padding:82px 0 62px}
+  #alab-services .hero-kicker,
+  #alab-services .section-kicker{font-size:.72rem;padding:9px 14px}
+  #alab-services .section-title,
+  #alab-services .advisory-title,
+  #alab-services .final-cta-title{font-size:clamp(1.8rem,8vw,2.5rem)}
+  #alab-services .service-card,
+  #alab-services .extension-card,
+  #alab-services .rhythm-card,
+  #alab-services .diagnostic-card{border-radius:24px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  #alab-services .btn,
+  #alab-services .service-card,
+  #alab-services .extension-card,
+  #alab-services .rhythm-card,
+  #alab-services .diagnostic-card,
+  #alab-services .reveal,
+  #alab-services .reveal.show{
+    transition:none !important;
+    animation:none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    .partner-section {
+      font-family: 'Montserrat', sans-serif;
+      background: #ffffff;
+      padding: 80px 20px;
+    }
+
+    .partner-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .partner-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .partner-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin-bottom: 12px;
+    }
+
+    .partner-subtitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #d4a03c;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .marquee {
+      overflow: hidden;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    .marquee::before,
+    .marquee::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .marquee::before {
+      left: 0;
+      background: linear-gradient(to right, #ffffff, transparent);
+    }
+
+    .marquee::after {
+      right: 0;
+      background: linear-gradient(to left, #ffffff, transparent);
+    }
+
+    .track {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      width: max-content;
+      animation: scroll 45s linear infinite;
+      list-style: none;
+    }
+
+    @keyframes scroll {
+      to { transform: translateX(-50%); }
+    }
+
+    .track li {
+      flex-shrink: 0;
+    }
+
+    .track img {
+      height: 90px;
+      width: auto;
+      opacity: 0.8;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .track img:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<section class="partner-section">
+  <div class="partner-container">
+    <div class="partner-header">
+      <h2 class="partner-title">Unsere Partner</h2>
+      <p class="partner-subtitle">Zusammenarbeit auf Augenhöhe</p>
+    </div>
+
+    <div class="marquee">
+      <ul class="track">
+        <li><img src="https://static.wixstatic.com/media/cac2b9_cf45e9ab667543469c80b6ac4202e990~mv2.png" alt="ALAB"></li>
+        <li><img src="https://static.wixstatic.com/media/cac2b9_30a0f5509bd94f38baebd03f74921168~mv2.png" alt="Partner 1"></li>
+        <li><img src="https://static.wixstatic.com/media/cac2b9_67051ace07f749c6a537597702eac410~mv2.png" alt="Partner 2"></li>
+        <li><img src="https://static.wixstatic.com/media/cac2b9_452225df27ce4180bb4ccb0aeddc097e~mv2.png" alt="Partner 3"></li>
+        <li><img src="https://static.wixstatic.com/media/cac2b9_44893d70e92d43e5ae9c43fb9327dadc~mv2.png" alt="Partner 4"></li>
+        <li><img src="https://static.wixstatic.com/media/cac2b9_32aeac9dd267408e9d25aeb2416fd957~mv2.png" alt="Partner 5"></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.querySelector('.track');
+  const items = Array.from(track.children);
+  items.forEach(item => track.appendChild(item.cloneNode(true)));
+</script>
+
+</body>
+</html>

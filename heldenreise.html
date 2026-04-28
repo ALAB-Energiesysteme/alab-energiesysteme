@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die Heldenreise – Joseph Campbell</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #0d0d1a;
+    color: #f0e6cc;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* ── SLIDE CONTAINER ── */
+  .flipchart {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 64px;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity .45s ease, transform .45s ease;
+    pointer-events: none;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .slide.exit {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  /* ── BACKGROUNDS ── */
+  .bg-hero    { background: radial-gradient(ellipse at 30% 40%, #1a0a2e 0%, #0d0d1a 70%); }
+  .bg-phases  { background: radial-gradient(ellipse at 70% 30%, #0a1a2e 0%, #0d0d1a 70%); }
+  .bg-call    { background: radial-gradient(ellipse at 20% 60%, #1a1a0a 0%, #0d0d1a 70%); }
+  .bg-ordeal  { background: radial-gradient(ellipse at 80% 70%, #1a0a0a 0%, #0d0d1a 70%); }
+  .bg-return  { background: radial-gradient(ellipse at 50% 20%, #0a1a10 0%, #0d0d1a 70%); }
+  .bg-why     { background: radial-gradient(ellipse at 40% 50%, #150a1a 0%, #0d0d1a 70%); }
+  .bg-examples{ background: radial-gradient(ellipse at 60% 40%, #0a150a 0%, #0d0d1a 70%); }
+  .bg-key     { background: radial-gradient(ellipse at 30% 70%, #1a0f00 0%, #0d0d1a 70%); }
+  .bg-circle  { background: radial-gradient(ellipse at 50% 50%, #0a0a1a 0%, #0d0d1a 80%); }
+
+  /* ── TYPOGRAPHY ── */
+  .slide-label {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c9a227;
+    margin-bottom: 12px;
+    opacity: .8;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+    color: #f0e6cc;
+    text-shadow: 0 2px 30px rgba(201,162,39,.4);
+  }
+
+  h1 span { color: #c9a227; }
+
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 600;
+    text-align: center;
+    color: #f0e6cc;
+    margin-bottom: 8px;
+  }
+
+  h2 span { color: #c9a227; }
+
+  .subtitle {
+    font-size: clamp(.9rem, 1.5vw, 1.15rem);
+    text-align: center;
+    color: #a89070;
+    margin-top: 10px;
+    font-style: italic;
+    max-width: 680px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c9a227, transparent);
+    margin: 20px auto;
+  }
+
+  /* ── CARDS / GRIDS ── */
+  .card-grid {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 24px;
+  }
+
+  .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(201,162,39,.2);
+    border-radius: 12px;
+    padding: 20px 22px;
+    text-align: center;
+    transition: border-color .3s;
+  }
+
+  .card:hover { border-color: rgba(201,162,39,.55); }
+
+  .card .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .card h3 {
+    font-size: .95rem;
+    letter-spacing: 1px;
+    color: #c9a227;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .card p {
+    font-size: .82rem;
+    color: #a89070;
+    line-height: 1.55;
+  }
+
+  /* ── PHASE TIMELINE ── */
+  .phase-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 740px;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .phase-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    background: rgba(255,255,255,.03);
+    border-left: 3px solid #c9a227;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 20px;
+  }
+
+  .phase-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #c9a227;
+    min-width: 32px;
+    line-height: 1;
+  }
+
+  .phase-content h3 {
+    font-size: 1rem;
+    color: #f0e6cc;
+    margin-bottom: 3px;
+  }
+
+  .phase-content p {
+    font-size: .8rem;
+    color: #a89070;
+    line-height: 1.5;
+  }
+
+  /* ── CIRCLE DIAGRAM ── */
+  .circle-wrap {
+    position: relative;
+    width: min(440px, 70vmin);
+    height: min(440px, 70vmin);
+    margin: 10px auto 0;
+  }
+
+  .circle-wrap svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* ── QUOTE BOX ── */
+  .quote-box {
+    max-width: 700px;
+    text-align: center;
+    padding: 32px 40px;
+    border-top: 2px solid rgba(201,162,39,.35);
+    border-bottom: 2px solid rgba(201,162,39,.35);
+    margin: 24px auto 0;
+  }
+
+  .quote-box blockquote {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-style: italic;
+    color: #f0e6cc;
+    line-height: 1.7;
+  }
+
+  .quote-box cite {
+    display: block;
+    margin-top: 14px;
+    font-size: .85rem;
+    color: #c9a227;
+    letter-spacing: 2px;
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+  /* ── EXAMPLE PILLS ── */
+  .pill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 860px;
+    margin-top: 28px;
+  }
+
+  .pill {
+    background: rgba(201,162,39,.1);
+    border: 1px solid rgba(201,162,39,.3);
+    border-radius: 999px;
+    padding: 8px 22px;
+    font-size: .88rem;
+    color: #f0e6cc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pill .pill-icon { font-size: 1.1rem; }
+
+  /* ── KEY TAKEAWAY ── */
+  .takeaway-box {
+    background: linear-gradient(135deg, rgba(201,162,39,.12), rgba(201,162,39,.04));
+    border: 1px solid rgba(201,162,39,.35);
+    border-radius: 16px;
+    padding: 32px 44px;
+    max-width: 800px;
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  .takeaway-box p {
+    font-size: clamp(.95rem, 1.6vw, 1.25rem);
+    line-height: 1.8;
+    color: #e0d4b8;
+  }
+
+  .takeaway-box strong { color: #c9a227; }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(13,13,26,.85);
+    border: 1px solid rgba(201,162,39,.25);
+    border-radius: 999px;
+    padding: 10px 24px;
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: #c9a227;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: background .2s;
+    line-height: 1;
+  }
+
+  .nav-btn:hover { background: rgba(201,162,39,.15); }
+  .nav-btn:disabled { opacity: .25; cursor: default; }
+
+  .slide-counter {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: .85rem;
+    letter-spacing: 2px;
+    color: #a89070;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .dot-nav {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(201,162,39,.3);
+    cursor: pointer;
+    transition: background .25s, transform .25s;
+  }
+
+  .dot.active { background: #c9a227; transform: scale(1.4); }
+
+  /* ── KEYBOARD HINT ── */
+  .key-hint {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: .72rem;
+    letter-spacing: 1.5px;
+    color: rgba(168,144,112,.45);
+    text-transform: uppercase;
+  }
+
+  /* ── SLIDE NUMBER badge ── */
+  .slide-badge {
+    position: absolute;
+    top: 22px;
+    left: 36px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: .7rem;
+    letter-spacing: 3px;
+    color: rgba(201,162,39,.35);
+    text-transform: uppercase;
+  }
+
+  /* ── WIDE LAYOUT for circle slide ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    width: 100%;
+    max-width: 1000px;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .two-col .text-col { padding: 0 10px; }
+  .two-col .text-col h3 { color: #c9a227; font-size: 1rem; margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
+  .two-col .text-col p  { color: #a89070; font-size: .85rem; line-height: 1.65; }
+
+  /* responsive tweaks */
+  @media (max-width: 700px) {
+    .card-grid.cols-3 { grid-template-columns: 1fr; }
+    .card-grid.cols-2 { grid-template-columns: 1fr; }
+    .two-col          { grid-template-columns: 1fr; }
+    .slide { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 1 – TITLE
+═══════════════════════════════════════════ -->
+<div class="flipchart" id="flipchart">
+
+<div class="slide bg-hero active" id="s0">
+  <div class="slide-badge">Heldenreise · Flipchart</div>
+  <div class="slide-label">Joseph Campbell · 1949</div>
+  <h1>Die <span>Heldenreise</span></h1>
+  <div class="divider"></div>
+  <p class="subtitle">Das universelle Muster hinter den größten Geschichten der Menschheit – von Mythen bis zu Blockbuster-Filmen.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 2 – WAS IST DIE HELDENREISE?
+═══════════════════════════════════════════ -->
+<div class="slide bg-why" id="s1">
+  <div class="slide-badge">Grundlagen</div>
+  <div class="slide-label">Das Konzept</div>
+  <h2>Was ist die <span>Heldenreise?</span></h2>
+  <div class="divider"></div>
+
+  <div class="quote-box">
+    <blockquote>„Der Held verlässt seine gewohnte Welt, besteht Prüfungen, erlangt Erkenntnis – und kehrt verwandelt zurück."</blockquote>
+    <cite>Joseph Campbell – Der Heros in tausend Gestalten</cite>
+  </div>
+
+  <div class="card-grid cols-3" style="margin-top:28px; max-width:820px;">
+    <div class="card">
+      <span class="icon">📚</span>
+      <h3>Ursprung</h3>
+      <p>Basiert auf Campbells Analyse von Mythen, Märchen und Religionen aus aller Welt.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🔁</span>
+      <h3>Universell</h3>
+      <p>Das Muster taucht in nahezu jeder Kultur unabhängig voneinander auf.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🧠</span>
+      <h3>Tiefenpsychologie</h3>
+      <p>Verbunden mit Jungs Archetypenlehre – spricht unser kollektives Unbewusstes an.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 3 – DIE 3 PHASEN
+═══════════════════════════════════════════ -->
+<div class="slide bg-phases" id="s2">
+  <div class="slide-badge">Struktur</div>
+  <div class="slide-label">Die drei Phasen</div>
+  <h2>Drei <span>Kernphasen</span></h2>
+  <div class="divider"></div>
+
+  <div class="card-grid cols-3" style="max-width:880px; margin-top:16px;">
+    <div class="card" style="border-color:rgba(100,160,255,.35);">
+      <span class="icon">🏡</span>
+      <h3 style="color:#6aa0ff;">① Aufbruch</h3>
+      <p>Der Held lebt in seiner gewohnten Welt. Ein Ruf zwingt ihn, aufzubrechen und die Schwelle zu überschreiten.</p>
+    </div>
+    <div class="card" style="border-color:rgba(255,100,100,.35);">
+      <span class="icon">⚔️</span>
+      <h3 style="color:#ff6464;">② Initiation</h3>
+      <p>Die Welt der Prüfungen. Kämpfe, Verbündete, tiefste Krisen – und schließlich die entscheidende Bewährung.</p>
+    </div>
+    <div class="card" style="border-color:rgba(100,200,100,.35);">
+      <span class="icon">🌅</span>
+      <h3 style="color:#64c864;">③ Rückkehr</h3>
+      <p>Verwandelt kehrt der Held heim und bringt das erlangte Wissen oder den Schatz in seine Gemeinschaft zurück.</p>
+    </div>
+  </div>
+
+  <p class="subtitle" style="margin-top:24px;">Alle drei Phasen bilden einen Kreislauf – der nächste Ruf wartet bereits.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 4 – KREISDIAGRAMM
+═══════════════════════════════════════════ -->
+<div class="slide bg-circle" id="s3">
+  <div class="slide-badge">Visualisierung</div>
+  <div class="slide-label">Das vollständige Muster</div>
+  <h2>Der <span>Kreislauf</span> der Reise</h2>
+  <div class="divider" style="margin:10px auto 0;"></div>
+
+  <div class="circle-wrap">
+    <svg viewBox="-10 -10 220 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- outer ring -->
+      <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(201,162,39,.15)" stroke-width="1.5"/>
+      <!-- inner ring -->
+      <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(201,162,39,.08)" stroke-width="1"/>
+      <!-- center -->
+      <circle cx="100" cy="100" r="28" fill="rgba(201,162,39,.08)" stroke="rgba(201,162,39,.25)" stroke-width="1"/>
+      <text x="100" y="96" text-anchor="middle" fill="#c9a227" font-size="7" font-family="Georgia">HELDEN-</text>
+      <text x="100" y="106" text-anchor="middle" fill="#c9a227" font-size="7" font-family="Georgia">REISE</text>
+
+      <!-- Arrow circle -->
+      <defs>
+        <marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L6,3 z" fill="rgba(201,162,39,.5)"/>
+        </marker>
+      </defs>
+      <circle cx="100" cy="100" r="77" fill="none"
+              stroke="rgba(201,162,39,.3)" stroke-width="1.2" stroke-dasharray="4 3"
+              marker-end="url(#arrow)"/>
+
+      <!-- Stage labels (12 stages, clock positions) -->
+      <!-- 1. Gewöhnliche Welt – top -->
+      <g transform="rotate(0,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(100,160,255,.18)" stroke="rgba(100,160,255,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#6aa0ff" font-size="5.5" font-family="Arial">1</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Gew. Welt</text>
+      </g>
+      <!-- 2. Ruf – 1 o'clock -->
+      <g transform="rotate(30,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(100,160,255,.18)" stroke="rgba(100,160,255,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#6aa0ff" font-size="5.5" font-family="Arial">2</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Ruf</text>
+      </g>
+      <!-- 3. Weigerung – 2 o'clock -->
+      <g transform="rotate(60,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(100,160,255,.18)" stroke="rgba(100,160,255,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#6aa0ff" font-size="5.5" font-family="Arial">3</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Weigerung</text>
+      </g>
+      <!-- 4. Mentor – 3 o'clock -->
+      <g transform="rotate(90,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(100,160,255,.18)" stroke="rgba(100,160,255,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#6aa0ff" font-size="5.5" font-family="Arial">4</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Mentor</text>
+      </g>
+      <!-- 5. Schwelle – 4 o'clock -->
+      <g transform="rotate(120,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(255,100,100,.18)" stroke="rgba(255,100,100,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#ff8080" font-size="5.5" font-family="Arial">5</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Schwelle</text>
+      </g>
+      <!-- 6. Prüfungen – 5 o'clock -->
+      <g transform="rotate(150,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(255,100,100,.18)" stroke="rgba(255,100,100,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#ff8080" font-size="5.5" font-family="Arial">6</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Prüfungen</text>
+      </g>
+      <!-- 7. Höhle – 6 o'clock -->
+      <g transform="rotate(180,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(255,100,100,.18)" stroke="rgba(255,100,100,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#ff8080" font-size="5.5" font-family="Arial">7</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Höhle</text>
+      </g>
+      <!-- 8. Ordeal – 7 o'clock -->
+      <g transform="rotate(210,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(255,100,100,.18)" stroke="rgba(255,100,100,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#ff8080" font-size="5.5" font-family="Arial">8</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Ordeal</text>
+      </g>
+      <!-- 9. Belohnung – 8 o'clock -->
+      <g transform="rotate(240,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(100,200,100,.18)" stroke="rgba(100,200,100,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#80cc80" font-size="5.5" font-family="Arial">9</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Belohnung</text>
+      </g>
+      <!-- 10. Rückweg – 9 o'clock -->
+      <g transform="rotate(270,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(100,200,100,.18)" stroke="rgba(100,200,100,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#80cc80" font-size="5.5" font-family="Arial">10</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Rückweg</text>
+      </g>
+      <!-- 11. Auferstehung – 10 o'clock -->
+      <g transform="rotate(300,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(100,200,100,.18)" stroke="rgba(100,200,100,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#80cc80" font-size="5.5" font-family="Arial">11</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Aufersteh.</text>
+      </g>
+      <!-- 12. Elixier – 11 o'clock -->
+      <g transform="rotate(330,100,100)">
+        <circle cx="100" cy="5" r="7" fill="rgba(100,200,100,.18)" stroke="rgba(100,200,100,.5)" stroke-width="1"/>
+        <text x="100" y="8" text-anchor="middle" fill="#80cc80" font-size="5.5" font-family="Arial">12</text>
+        <text x="100" y="-2" text-anchor="middle" fill="#d0c0a0" font-size="5" font-family="Arial">Elixier</text>
+      </g>
+
+      <!-- Phase arcs legend -->
+      <text x="15"  y="185" fill="rgba(100,160,255,.7)" font-size="6" font-family="Arial">● Aufbruch</text>
+      <text x="70"  y="185" fill="rgba(255,100,100,.7)" font-size="6" font-family="Arial">● Initiation</text>
+      <text x="128" y="185" fill="rgba(100,200,100,.7)" font-size="6" font-family="Arial">● Rückkehr</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 5 – AUFBRUCH DETAIL
+═══════════════════════════════════════════ -->
+<div class="slide bg-call" id="s4">
+  <div class="slide-badge">Phase 1</div>
+  <div class="slide-label">Der Aufbruch</div>
+  <h2>① <span>Aufbruch</span> – Die Reise beginnt</h2>
+  <div class="divider"></div>
+
+  <div class="phase-list">
+    <div class="phase-item">
+      <span class="phase-num">1</span>
+      <div class="phase-content">
+        <h3>Die gewöhnliche Welt</h3>
+        <p>Der Held lebt in einer vertrauten, wenn auch oft unbefriedigenden Umgebung. Der Status quo.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">2</span>
+      <div class="phase-content">
+        <h3>Der Ruf zum Abenteuer</h3>
+        <p>Ein Problem oder eine Herausforderung erschüttert die Gleichgewichtslage – der Held wird gerufen.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">3</span>
+      <div class="phase-content">
+        <h3>Weigerung des Rufs</h3>
+        <p>Anfangs zögert der Held aus Angst, Pflichtgefühl oder Zweifel. Ein menschlicher, nachvollziehbarer Moment.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">4</span>
+      <div class="phase-content">
+        <h3>Begegnung mit dem Mentor</h3>
+        <p>Eine weise Figur gibt Rat, Werkzeug oder Vertrauen – und ermöglicht den Aufbruch.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">5</span>
+      <div class="phase-content">
+        <h3>Überschreiten der ersten Schwelle</h3>
+        <p>Der Held verlässt seine Komfortzone endgültig. Es gibt kein einfaches Zurück mehr.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 6 – INITIATION
+═══════════════════════════════════════════ -->
+<div class="slide bg-ordeal" id="s5">
+  <div class="slide-badge">Phase 2</div>
+  <div class="slide-label">Die Initiation</div>
+  <h2>② <span>Initiation</span> – Die Prüfungen</h2>
+  <div class="divider"></div>
+
+  <div class="phase-list">
+    <div class="phase-item" style="border-color:#ff6464;">
+      <span class="phase-num" style="color:#ff8080;">6</span>
+      <div class="phase-content">
+        <h3>Prüfungen, Verbündete & Feinde</h3>
+        <p>Der Held lernt die Regeln der neuen Welt. Wer hilft – wer hindert? Werte werden getestet.</p>
+      </div>
+    </div>
+    <div class="phase-item" style="border-color:#ff6464;">
+      <span class="phase-num" style="color:#ff8080;">7</span>
+      <div class="phase-content">
+        <h3>Vordringen zur innersten Höhle</h3>
+        <p>Annäherung an den gefährlichsten Ort – physisch oder psychisch. Die größte Angst wartet hier.</p>
+      </div>
+    </div>
+    <div class="phase-item" style="border-color:#ff6464;">
+      <span class="phase-num" style="color:#ff8080;">8</span>
+      <div class="phase-content">
+        <h3>Die entscheidende Prüfung (Ordeal)</h3>
+        <p>Der dunkelste Moment. Der Held muss sterben – metaphorisch oder real – um neu geboren zu werden.</p>
+      </div>
+    </div>
+    <div class="phase-item" style="border-color:#ff6464;">
+      <span class="phase-num" style="color:#ff8080;">9</span>
+      <div class="phase-content">
+        <h3>Die Belohnung (Elixier)</h3>
+        <p>Der Held hat gesiegt und erlangt den Schatz: Wissen, Kraft, Liebe oder ein besonderes Objekt.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 7 – RÜCKKEHR
+═══════════════════════════════════════════ -->
+<div class="slide bg-return" id="s6">
+  <div class="slide-badge">Phase 3</div>
+  <div class="slide-label">Die Rückkehr</div>
+  <h2>③ <span>Rückkehr</span> – Der verwandelte Held</h2>
+  <div class="divider"></div>
+
+  <div class="phase-list">
+    <div class="phase-item" style="border-color:#64c864;">
+      <span class="phase-num" style="color:#80cc80;">10</span>
+      <div class="phase-content">
+        <h3>Der Rückweg</h3>
+        <p>Der Held macht sich auf den Heimweg – doch das Abenteuer ist noch nicht vorbei. Neue Gefahren drohen.</p>
+      </div>
+    </div>
+    <div class="phase-item" style="border-color:#64c864;">
+      <span class="phase-num" style="color:#80cc80;">11</span>
+      <div class="phase-content">
+        <h3>Auferstehung</h3>
+        <p>Eine letzte, entscheidende Krise – der finale Test, ob die Lektion wirklich gelernt wurde.</p>
+      </div>
+    </div>
+    <div class="phase-item" style="border-color:#64c864;">
+      <span class="phase-num" style="color:#80cc80;">12</span>
+      <div class="phase-content">
+        <h3>Rückkehr mit dem Elixier</h3>
+        <p>Der Held kehrt verwandelt zurück. Das Erlangte bereichert seine Gemeinschaft – der Kreislauf schließt sich.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="takeaway-box" style="margin-top:20px; padding:20px 32px;">
+    <p>Die Rückkehr ist entscheidend: <strong>Was nützt Transformation, wenn sie nicht geteilt wird?</strong></p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 8 – BEISPIELE
+═══════════════════════════════════════════ -->
+<div class="slide bg-examples" id="s7">
+  <div class="slide-badge">Anwendung</div>
+  <div class="slide-label">Bekannte Beispiele</div>
+  <h2>Die Heldenreise in der <span>Praxis</span></h2>
+  <div class="divider"></div>
+
+  <p class="subtitle">Das Muster durchzieht Literatur, Film, Musik und echtes Leben gleichermaßen.</p>
+
+  <div class="pill-grid">
+    <div class="pill"><span class="pill-icon">⭐</span> Star Wars – Luke Skywalker</div>
+    <div class="pill"><span class="pill-icon">💍</span> Herr der Ringe – Frodo</div>
+    <div class="pill"><span class="pill-icon">🦁</span> König der Löwen – Simba</div>
+    <div class="pill"><span class="pill-icon">🕷️</span> Spider-Man – Peter Parker</div>
+    <div class="pill"><span class="pill-icon">🪄</span> Harry Potter</div>
+    <div class="pill"><span class="pill-icon">🤖</span> Matrix – Neo</div>
+    <div class="pill"><span class="pill-icon">🐟</span> Findet Nemo – Marlin</div>
+    <div class="pill"><span class="pill-icon">🏔️</span> Siddhartha – H. Hesse</div>
+    <div class="pill"><span class="pill-icon">🚀</span> Elon Musk (real)</div>
+    <div class="pill"><span class="pill-icon">🎸</span> David Bowie (real)</div>
+    <div class="pill"><span class="pill-icon">🏅</span> Sportlegenden</div>
+    <div class="pill"><span class="pill-icon">🌍</span> Politische Führungspersonen</div>
+  </div>
+
+  <div class="takeaway-box" style="margin-top:24px; padding:16px 28px;">
+    <p>Auch <strong>Marketing & Branding</strong> nutzen die Heldenreise: Der Kunde ist der Held – das Unternehmen ist sein Mentor.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 9 – WARUM WIRKT ES?
+═══════════════════════════════════════════ -->
+<div class="slide bg-why" id="s8">
+  <div class="slide-badge">Psychologie</div>
+  <div class="slide-label">Die tiefere Wirkung</div>
+  <h2>Warum berührt sie uns <span>so tief?</span></h2>
+  <div class="divider"></div>
+
+  <div class="card-grid cols-2" style="max-width:820px; margin-top:20px;">
+    <div class="card">
+      <span class="icon">🪞</span>
+      <h3>Spiegelung</h3>
+      <p>Wir erkennen uns selbst im Helden. Seine Ängste, Zweifel und Triumphe sind unsere eigenen.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🧬</span>
+      <h3>Evolution</h3>
+      <p>Das Muster der Initiationsreise ist tief in unserer Psyche verankert – eine kollektive Erinnerung.</p>
+    </div>
+    <div class="card">
+      <span class="icon">❤️</span>
+      <h3>Empathie</h3>
+      <p>Transformation erzeugt emotionale Bindung. Wir wollen wissen: Schafft er es? Überlebt sie?</p>
+    </div>
+    <div class="card">
+      <span class="icon">💡</span>
+      <h3>Sinngebung</h3>
+      <p>Die Reise gibt Leiden einen Sinn. Jede Prüfung hat einen Zweck – das gibt Hoffnung.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 10 – KEY TAKEAWAYS
+═══════════════════════════════════════════ -->
+<div class="slide bg-key" id="s9">
+  <div class="slide-badge">Fazit</div>
+  <div class="slide-label">Zusammenfassung</div>
+  <h2>Die <span>3 Kernlehren</span></h2>
+  <div class="divider"></div>
+
+  <div class="card-grid cols-3" style="max-width:900px; margin-top:20px;">
+    <div class="card" style="border-color:rgba(201,162,39,.45);">
+      <span class="icon">🔥</span>
+      <h3>Transformation</h3>
+      <p>Kein Wachstum ohne Krise. Die dunkelste Stunde ist immer Teil des Weges – nicht sein Ende.</p>
+    </div>
+    <div class="card" style="border-color:rgba(201,162,39,.45);">
+      <span class="icon">🤝</span>
+      <h3>Gemeinschaft</h3>
+      <p>Der Held reist nie allein. Mentoren, Verbündete und Gemeinschaft sind unverzichtbar für den Erfolg.</p>
+    </div>
+    <div class="card" style="border-color:rgba(201,162,39,.45);">
+      <span class="icon">🎁</span>
+      <h3>Verantwortung</h3>
+      <p>Erkenntnisse verpflichten. Das Elixier ist nicht nur für den Helden – es soll weitergegeben werden.</p>
+    </div>
+  </div>
+
+  <div class="takeaway-box">
+    <p>
+      Die Heldenreise ist mehr als ein Erzählmuster —<br>
+      sie ist eine <strong>Landkarte für menschliches Wachstum.</strong><br>
+      Jeder Mensch ist Held seiner eigenen Geschichte.
+    </p>
+  </div>
+</div>
+
+</div><!-- end flipchart -->
+
+<!-- ── NAVIGATION ── -->
+<div class="key-hint">← → Pfeiltasten</div>
+
+<nav>
+  <button class="nav-btn" id="btnPrev" onclick="navigate(-1)" disabled>&#8592;</button>
+  <div class="dot-nav" id="dotNav"></div>
+  <span class="slide-counter" id="counter">1 / 10</span>
+  <button class="nav-btn" id="btnNext" onclick="navigate(1)">&#8594;</button>
+</nav>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  // Build dots
+  const dotNav = document.getElementById('dotNav');
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotNav.appendChild(d);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= slides.length) return;
+    slides[current].classList.remove('active');
+    slides[current].classList.add('exit');
+    const prev = current;
+    current = n;
+    slides[current].classList.add('active');
+    setTimeout(() => slides[prev].classList.remove('exit'), 450);
+
+    // Update dots & counter
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    document.getElementById('counter').textContent = `${current + 1} / ${slides.length}`;
+    document.getElementById('btnPrev').disabled = current === 0;
+    document.getElementById('btnNext').disabled = current === slides.length - 1;
+  }
+
+  function navigate(dir) { goTo(current + dir); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   navigate(-1);
+  });
+
+  // Touch/Swipe support
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+  });
+</script>
+</body>
+</html>

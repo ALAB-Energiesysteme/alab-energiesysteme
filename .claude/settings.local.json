@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"EXIT:$?\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx next:*)",
+      "Read(//mnt/c/Users/arben/OneDrive/Desktop/**)",
+      "Read(//c/Users/arben/**)",
+      "Bash(wc -l \"/c/Users/arben/OneDrive/Desktop/Webseite neu 10.03.2026/src/components/\"*.tsx)",
+      "Bash(npx tsc:*)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(dir \"C:\\\\Users\\\\arben\\\\OneDrive\\\\Desktop\\\\Webseite neu 10.03.2026\\\\public\\\\img\\\\gewerbliche-loesungen\" /od)",
+      "Bash(xargs ls *)",
+      "Bash(gh auth *)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); gh --version)",
+      "PowerShell(gh auth status)"
+    ]
+  }
+}

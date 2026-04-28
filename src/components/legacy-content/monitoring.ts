@@ -1,0 +1,700 @@
+﻿export const monitoringHtml = String.raw`
+<!-- libs & styles (im Content ist ok, 11ty hat hier kein Head-Slot) -->
+
+
+
+
+
+<div id="alab-monitor">
+<section id="hero" class="hero-section">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <!-- Animated 3D Particles -->
+            <div class="particles-container">
+                <div class="particle particle-1"></div>
+                <div class="particle particle-2"></div>
+                <div class="particle particle-3"></div>
+                <div class="particle particle-4"></div>
+                <div class="particle particle-5"></div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-badge">ANLAGENMONITORING</div>
+                <h1 class="hero-title">
+                    Anlagenmonitoring: 
+                    <span class="highlight-gold">Proaktiv.</span>
+                    <span class="highlight-blue">Messbar.</span>
+                    <span class="highlight-gold">Sicher.</span>
+                </h1>
+                <p class="hero-desc">
+                    Live-Daten zu <b>Produktion</b>, <b>Verbrauch</b> & <b>Autarkie</b>, 
+                    intelligente Alarme, Reports & KPIs.
+                </p>
+                <p class="hero-subdesc">
+                    Optional Modul-/Stringanalyse â€“ abhÃ¤ngig vom Portal bzw. der Hardware.
+                </p>
+                
+                <!-- Platform Chips mit 3D Effekt -->
+                <div class="platform-grid">
+                    <div class="platform-chip-3d">
+                        <i class="fas fa-solar-panel"></i>
+                        <span>SMA Energy / Sunny Portal</span>
+                    </div>
+                    <div class="platform-chip-3d">
+                        <i class="fas fa-sun"></i>
+                        <span>Fronius Solar.web</span>
+                    </div>
+                    <div class="platform-chip-3d">
+                        <i class="fas fa-cloud-sun"></i>
+                        <span>Sungrow iSolarCloud</span>
+                    </div>
+                    <div class="platform-chip-3d">
+                        <i class="fas fa-bolt"></i>
+                        <span>Huawei FusionSolar</span>
+                    </div>
+                    <div class="platform-chip-3d">
+                        <i class="fas fa-chart-line"></i>
+                        <span>SolarEdge Monitoring</span>
+                    </div>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="trust-badges">
+                    <span class="badge-item">24/7 Ãœberwachung</span>
+                    <span class="badge-item">SLA-Ticketing</span>
+                    <span class="badge-item">Monatsreport inkl. KPIs</span>
+                </div>
+
+                <div class="hero-cta-group">
+                    <button class="btn-primary">
+                        Monitoring anfragen
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-secondary">
+                        Fragen & Antworten
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero 3D Feature - Rotating Cube -->
+            <div class="hero-right">
+                <div class="hero-3d-container">
+                    <div class="rotating-cube">
+                        <div class="cube-face front">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Live-Monitoring</h3>
+                        </div>
+                        <div class="cube-face back">
+                            <i class="fas fa-bell"></i>
+                            <h3>Smart Alerts</h3>
+                        </div>
+                        <div class="cube-face right">
+                            <i class="fas fa-solar-panel"></i>
+                            <h3>PV-Analyse</h3>
+                        </div>
+                        <div class="cube-face left">
+                            <i class="fas fa-chart-bar"></i>
+                            <h3>Reports</h3>
+                        </div>
+                        <div class="cube-face top">
+                            <i class="fas fa-network-wired"></i>
+                            <h3>Fleet-View</h3>
+                        </div>
+                        <div class="cube-face bottom">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Sicherheit</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-benefits">
+                    <div class="benefit-item">
+                        <h3>Live & Prognose</h3>
+                        <p>Produktion/Verbrauch, Autarkie und PV-Forecast.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Alarme & Historie</h3>
+                        <p>Automatische Benachrichtigungen & Eskalation.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Fleet-View</h3>
+                        <p>Alle Standorte zentral verwalten.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compatible Platforms -->
+        <div class="platforms-bar">
+            <span class="platform-chip">SMA Energy / Sunny Portal</span>
+            <span class="platform-chip">Fronius Solar.web</span>
+            <span class="platform-chip">Sungrow iSolarCloud</span>
+            <span class="platform-chip">Huawei FusionSolar</span>
+            <span class="platform-chip">SolarEdge Monitoring</span>
+        </div>
+        </section>
+
+     <section id="functions" class="functions-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">FUNKTIONEN</span>
+                <h2 class="section-title">
+                    Alles Relevante kompakt: Daten, Alarme, Analyse, Reporting, Flotte & Sektoren.
+                </h2>
+            </div>
+
+            <!-- 3D Swiper wie in Bild 1 -->
+            <div class="swiper functions-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="function-card-3d">
+                            <div class="card-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring1.png" alt="Live-Daten">
+                                <div class="card-overlay-box">
+                                    <div class="overlay-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="overlay-content">
+                                        <h3>Live-Daten & Prognosen</h3>
+                                        <p>Produktion, Verbrauch, Autarkie inkl. Wetter-Forecast.</p>
+                                        <div class="overlay-features">
+                                            <span>âœ“ EchtzeitÃ¼berwachung</span>
+                                            <span>âœ“ Wetterbasierte Prognosen</span>
+                                            <span>âœ“ Historische Vergleiche</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="function-card-3d">
+                            <div class="card-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring2.png" alt="Alarmierung">
+                                <div class="card-overlay-box">
+                                    <div class="overlay-icon">
+                                        <i class="fas fa-bell"></i>
+                                    </div>
+                                    <div class="overlay-content">
+                                        <h3>Alarmierung & Ticketing</h3>
+                                        <p>Automatische Weitergabe, SLAs & Ereignis-Historie.</p>
+                                        <div class="overlay-features">
+                                            <span>âœ“ Multi-Channel Alerts</span>
+                                            <span>âœ“ SLA-Tracking</span>
+                                            <span>âœ“ Eskalationsmatrix</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="function-card-3d">
+                            <div class="card-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring3.png" alt="Modul-/Stringanalyse">
+                                <div class="card-overlay-box">
+                                    <div class="overlay-icon">
+                                        <i class="fas fa-solar-panel"></i>
+                                    </div>
+                                    <div class="overlay-content">
+                                        <h3>Modul-/Stringanalyse*</h3>
+                                        <p>*Wenn Portal/Hardware es unterstÃ¼tzt (z. B. SolarEdge).</p>
+                                        <div class="overlay-features">
+                                            <span>âœ“ String-Level Monitoring</span>
+                                            <span>âœ“ Defekt-Erkennung</span>
+                                            <span>âœ“ Performance-Analyse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="function-card-3d">
+                            <div class="card-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring4.png" alt="Reports & KPIs">
+                                <div class="card-overlay-box">
+                                    <div class="overlay-icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="overlay-content">
+                                        <h3>Reports & KPIs</h3>
+                                        <p>Monatliche Reports inkl. PR, VerfÃ¼gbarkeit & Top/Low-Performer.</p>
+                                        <div class="overlay-features">
+                                            <span>âœ“ PDF/CSV Export</span>
+                                            <span>âœ“ Automatische Reports</span>
+                                            <span>âœ“ Benchmark-Analysen</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <div class="function-card-3d">
+                            <div class="card-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring5.png" alt="Flotten-Monitoring">
+                                <div class="card-overlay-box">
+                                    <div class="overlay-icon">
+                                        <i class="fas fa-sitemap"></i>
+                                    </div>
+                                    <div class="overlay-content">
+                                        <h3>Flotten-Monitoring</h3>
+                                        <p>Portfolio-Ansicht, Filter nach Standort, GerÃ¤t, Status.</p>
+                                        <div class="overlay-features">
+                                            <span>âœ“ Zentrale Ãœbersicht</span>
+                                            <span>âœ“ Multi-Site Management</span>
+                                            <span>âœ“ Vergleichsanalysen</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="swiper-slide">
+                        <div class="function-card-3d">
+                            <div class="card-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring6.png" alt="Sektoren-Integration">
+                                <div class="card-overlay-box">
+                                    <div class="overlay-icon">
+                                        <i class="fas fa-plug"></i>
+                                    </div>
+                                    <div class="overlay-content">
+                                        <h3>Sektoren-Integration</h3>
+                                        <p>Speicher, Wallbox, WÃ¤rmepumpe â€“ einheitliche Ansicht.</p>
+                                        <div class="overlay-features">
+                                            <span>âœ“ Ganzheitliche Ansicht</span>
+                                            <span>âœ“ Sektorenkopplung</span>
+                                            <span>âœ“ Optimierung</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="swiper-button-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+     <section id="dataflow" class="dataflow-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">DATENFLUSS & ARCHITEKTUR</span>
+                <h2 class="section-title">
+                    Vom Sensor zur Entscheidung: Validierung, Alarmmatrix, Ticketing & Reporting.
+                </h2>
+            </div>
+
+            <div class="dataflow-diagram">
+                <div class="flow-row main-flow">
+                    <div class="flow-node">
+                        <div class="node-icon"><i class="fas fa-microchip"></i></div>
+                        <h4>Sensorik / ZÃ¤hler</h4>
+                        <p>(WR, Meter, Strings)</p>
+                    </div>
+                    <div class="flow-arrow">â†’</div>
+                    
+                    <div class="flow-node">
+                        <div class="node-icon"><i class="fas fa-cloud"></i></div>
+                        <h4>Gateway/Portal</h4>
+                        <p>(z. B. iSolarCloud)</p>
+                    </div>
+                    <div class="flow-arrow">â†’</div>
+                    
+                    <div class="flow-node">
+                        <div class="node-icon"><i class="fas fa-server"></i></div>
+                        <h4>Datenverarbeitung</h4>
+                        <p>Validierung/Alarme</p>
+                    </div>
+                    <div class="flow-arrow">â†’</div>
+                    
+                    <div class="flow-node">
+                        <div class="node-icon"><i class="fas fa-desktop"></i></div>
+                        <h4>Dashboard & Apps</h4>
+                        <p>Reports/Insights</p>
+                    </div>
+                    <div class="flow-arrow">â†’</div>
+                    
+                    <div class="flow-node">
+                        <div class="node-icon"><i class="fas fa-code"></i></div>
+                        <h4>Schnittstellen</h4>
+                        <p>(API/CSV)</p>
+                    </div>
+                </div>
+
+                <div class="flow-connectors">
+                    <div class="connector" style="left: 29%"></div>
+                    <div class="connector" style="left: 50%"></div>
+                    <div class="connector" style="left: 71%"></div>
+                </div>
+
+                <div class="flow-row sub-flow">
+                    <div class="flow-node secondary" style="margin-left: -215px;">
+                        <div class="node-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h4>Alarmmatrix</h4>
+                        <p>E-Mail/SMS/WA</p>
+                    </div>
+                    
+                    <div class="flow-node secondary">
+                        <div class="node-icon"><i class="fas fa-ticket-alt"></i></div>
+                        <h4>Ticketing</h4>
+                        <p>SLA/Eskalation</p>
+                    </div>
+                    
+                    <div class="flow-node secondary" style="margin-right: -215px;">
+                        <div class="node-icon"><i class="fas fa-chart-bar"></i></div>
+                        <h4>Reporting</h4>
+                        <p>Monat/Quartal</p>
+                    </div>
+                </div>
+                
+                <p class="dataflow-note">
+                    Beispielhafte Darstellung â€“ genaue Umsetzung portal-/herstellerabhÃ¤ngig.
+                </p>
+            </div>
+        </div>
+        </section>
+     <section id="cases" class="cases-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">PRAXIS-CASES</span>
+                <h2 class="section-title">
+                    Konkrete Beispiele aus Handel, Produktion und Logistik.
+                </h2>
+            </div>
+
+            <!-- Cases 3D Swiper -->
+            <div class="swiper cases-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Case 1 -->
+                    <div class="swiper-slide">
+                        <div class="case-card-3d">
+                            <div class="case-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring7.png" alt="HandelsflÃ¤che">
+                                <div class="case-overlay">
+                                    <div class="case-header">
+                                        <i class="fas fa-store"></i>
+                                        <h3>HandelsflÃ¤che Â· 99 kWp</h3>
+                                    </div>
+                                    <div class="case-content">
+                                        <div class="case-item">
+                                            <strong>Problem:</strong>
+                                            <p>Unterleistung eines Strings.</p>
+                                        </div>
+                                        <div class="case-item">
+                                            <strong>LÃ¶sung:</strong>
+                                            <p>String-Analyse & Thermografie â†’ defekte Steckverbindung.</p>
+                                        </div>
+                                        <div class="case-item">
+                                            <strong>Ergebnis:</strong>
+                                            <p>+8 % Ertrag im Folgemonat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="case-footer">
+                                        SLA: Reaktion < 4 h, EntstÃ¶rung 24 h
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2 -->
+                    <div class="swiper-slide">
+                        <div class="case-card-3d">
+                            <div class="case-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring8.png" alt="Produktion">
+                                <div class="case-overlay">
+                                    <div class="case-header">
+                                        <i class="fas fa-industry"></i>
+                                        <h3>Produktion Â· 500 kWp</h3>
+                                    </div>
+                                    <div class="case-content">
+                                        <div class="case-item">
+                                            <strong>Problem:</strong>
+                                            <p>Lastspitzen & Blindleistungskosten.</p>
+                                        </div>
+                                        <div class="case-item">
+                                            <strong>LÃ¶sung:</strong>
+                                            <p>Alarmregeln + SpeicherfÃ¼hrung (Peak-Shaving).</p>
+                                        </div>
+                                        <div class="case-item">
+                                            <strong>Ergebnis:</strong>
+                                            <p>âˆ’18 % Lastspitzen.</p>
+                                        </div>
+                                    </div>
+                                    <div class="case-footer">
+                                        Report mit PR, cos Ï† & THD
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3 -->
+                    <div class="swiper-slide">
+                        <div class="case-card-3d">
+                            <div class="case-3d-image">
+                                <img src="/assets/img/monitoring/anlagenmonitoring9.png" alt="Logistik">
+                                <div class="case-overlay">
+                                    <div class="case-header">
+                                        <i class="fas fa-truck"></i>
+                                        <h3>Logistik Â· 1 MWp</h3>
+                                    </div>
+                                    <div class="case-content">
+                                        <div class="case-item">
+                                            <strong>Problem:</strong>
+                                            <p>WR-Abregelungen bei Einstrahlungsspitzen.</p>
+                                        </div>
+                                        <div class="case-item">
+                                            <strong>LÃ¶sung:</strong>
+                                            <p>Parameter-Tuning & Temperatur-Monitoring.</p>
+                                        </div>
+                                        <div class="case-item">
+                                            <strong>Ergebnis:</strong>
+                                            <p>+3â€“5 % Jahresertrag (modelliert).</p>
+                                        </div>
+                                    </div>
+                                    <div class="case-footer">
+                                        Ticketing & Eskalationsmatrix
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="swiper-button-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="swiper-button-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        </section>
+     <section id="packages" class="packages-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">PAKETE & LEISTUNGEN</span>
+                <h2 class="section-title">
+                    Vom Einstieg bis Pro: skalierbar nach Bedarf & SLA.
+                </h2>
+            </div>
+
+            <div class="packages-grid">
+                <!-- Basic Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <span class="package-label">Einstieg</span>
+                        <h3>Monitoring BASIC</h3>
+                    </div>
+                    <div class="package-price">auf Anfrage</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Portal-Onboarding</li>
+                        <li><i class="fas fa-check"></i> Alarmierung per E-Mail</li>
+                        <li><i class="fas fa-check"></i> Monatsreport (Kern-KPIs)</li>
+                    </ul>
+                    <button class="package-btn">Anfragen</button>
+                </div>
+
+                <!-- Plus Package -->
+                <div class="package-card featured">
+                    <div class="featured-badge">BELIEBT</div>
+                    <div class="package-header">
+                        <span class="package-label">Beliebt</span>
+                        <h3>Monitoring PLUS</h3>
+                    </div>
+                    <div class="package-price">auf Anfrage</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Alarmmatrix (E-Mail/SMS/WA*)</li>
+                        <li><i class="fas fa-check"></i> Ticketing & SLA-Eskalation</li>
+                        <li><i class="fas fa-check"></i> Monatsreport inkl. PR & VerfÃ¼gbarkeit</li>
+                    </ul>
+                    <p class="package-note">*WhatsApp via Integration</p>
+                    <button class="package-btn">Anfragen</button>
+                </div>
+
+                <!-- Pro Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <span class="package-label">Pro</span>
+                        <h3>Monitoring PRO</h3>
+                    </div>
+                    <div class="package-price">auf Anfrage</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Flotten-Monitoring & Dashboards</li>
+                        <li><i class="fas fa-check"></i> Modul-/Stringanalyse* (falls verfÃ¼gbar)</li>
+                        <li><i class="fas fa-check"></i> Quartals-Review & Optimierung</li>
+                    </ul>
+                    <button class="package-btn">Anfragen</button>
+                </div>
+            </div>
+        </div>
+        </section>
+     <section id="integrations" class="integrations-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">INTEGRATIONEN & SICHERHEIT</span>
+                <h2 class="section-title">
+                    Plattformen, Protokolle & DSGVO-konforme Umsetzung.
+                </h2>
+            </div>
+
+            <div class="integrations-content">
+                <div class="integration-group">
+                    <h3>Plattformen</h3>
+                    <div class="chips-grid">
+                        <span class="chip">SMA Energy / Sunny Portal</span>
+                        <span class="chip">Fronius Solar.web</span>
+                        <span class="chip">Sungrow iSolarCloud</span>
+                        <span class="chip">Huawei FusionSolar</span>
+                        <span class="chip">SolarEdge Monitoring</span>
+                    </div>
+                </div>
+
+                <div class="integration-group">
+                    <h3>Protokolle & Exporte</h3>
+                    <div class="chips-grid">
+                        <span class="chip">Modbus/TCP</span>
+                        <span class="chip">SunSpec</span>
+                        <span class="chip">CSV/Excel Export</span>
+                        <span class="chip">API (portalabhÃ¤ngig)</span>
+                        <span class="chip">Webhook (Make/Zapier)</span>
+                    </div>
+                </div>
+
+                <div class="integration-group">
+                    <h3>Security & Compliance</h3>
+                    <div class="security-list">
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Rollen & Rechte (Least Privilege) im Portal</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>2-Faktor-Authentifizierung (wenn unterstÃ¼tzt)</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-database"></i>
+                            <span>Datenhaltung gemÃ¤ÃŸ Portal-Spezifikation</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-file-contract"></i>
+                            <span>Auftragsverarbeitung nach DSGVO â€“ projektabhÃ¤ngig</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+     <section id="faq" class="faq-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">
+                    Schnell geklÃ¤rt â€“ die hÃ¤ufigsten Fragen.
+                </h2>
+            </div>
+
+            <div class="faq-wrapper">
+                <!-- 3D FAQ Visual -->
+                <div class="faq-3d-container">
+                    <div class="faq-3d-scene">
+                        <div class="floating-cards">
+                            <div class="float-card card-1">
+                                <i class="fas fa-question"></i>
+                            </div>
+                            <div class="float-card card-2">
+                                <i class="fas fa-info"></i>
+                            </div>
+                            <div class="float-card card-3">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="float-card card-4">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                        </div>
+                        <div class="faq-3d-text">
+                            <h3>Wir haben Antworten</h3>
+                            <p>Auf alle Ihre Fragen zum Monitoring</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Items -->
+                <div class="faq-items">
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <h3>Welche Systeme unterstÃ¼tzt ihr?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>SMA, Fronius, Sungrow, Huawei, SolarEdge. Tiefe der Funktionen variiert je Portal/Hardware.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Ist Modul-Monitoring immer mÃ¶glich?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nur wenn die Komponenten das liefern (z. B. SolarEdge) â€“ sonst String/WR-Ebene.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Gibt es SLAs?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ja â€“ Reaktions- und EntstÃ¶rzeiten werden projektspezifisch vereinbart (z. B. < 4 h werktags).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Reports als PDF/CSV?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ja â€“ je nach Portal automatisierbar; Rohdaten via CSV/API.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+     
+</div>
+`;
+

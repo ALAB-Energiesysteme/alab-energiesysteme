@@ -1,0 +1,363 @@
+"use client";
+import { useEffect } from "react";
+
+const CSS = `
+  /* Kontakt – gekapselte Styles */
+  #alab-contact, #alab-contact * { box-sizing: border-box; font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif); }
+  #alab-contact{
+    --ac-accent: var(--color-accent, #2b6cb0);
+    --ac-accent-deep: var(--color-accent-deep, #1e4f8b);
+    --ac-accent-glow: var(--color-accent-glow, rgba(43,108,176,.35));
+    --ac-ink: var(--color-ink, #0f2533);
+    --ac-muted: var(--color-muted, #5b6b78);
+    --ac-line: var(--color-line, #e6edf5);
+    --ac-radius: var(--radius-card, 18px);
+    --ac-radius-btn: var(--radius-btn, 8px);
+    --ac-shadow: 0 10px 40px rgba(15,37,51,.08);
+    color: var(--ac-ink); background: #fff;
+  }
+  #alab-contact a{ color: var(--ac-accent); }
+  #alab-contact a:hover{ color: var(--ac-accent-deep); }
+  .ac-wrap{ max-width:1100px; margin:0 auto; padding:28px 16px 80px; }
+  .ac-hero{ display:grid; gap:14px; margin:12px 0 28px; }
+  .ac-eyebrow{ letter-spacing:.15em; text-transform:uppercase; font-weight:700; font-size:.75rem; color:var(--ac-accent); }
+  .ac-title{ font-size:clamp(1.6rem, 2.5vw + 1rem, 2.4rem); line-height:1.2; font-weight:800; color:var(--ac-ink); }
+  .ac-sub{ color:var(--ac-muted); max-width:60ch; }
+  .ac-grid{ display:grid; grid-template-columns: 1fr; gap:22px; margin-top:26px; }
+  @media(min-width:860px){ .ac-grid{ grid-template-columns: 1.1fr .9fr; } }
+  .ac-card{ background:#fff; border:1px solid var(--ac-line); border-radius:var(--ac-radius); box-shadow:var(--ac-shadow); }
+  .ac-card > .inner{ padding:22px; }
+  .ac-label{ font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ac-accent); font-weight:700; margin-bottom:8px; }
+  .ac-h2{ font-size:1.2rem; font-weight:700; margin-bottom:12px; color:var(--ac-ink); }
+  .ac-list{ list-style:none; padding:0; margin:0; }
+  .ac-list li{ padding:10px 0; border-top:1px dashed var(--ac-line); color:var(--ac-ink); font-size:.95rem; }
+  .ac-list li:first-child{ border-top:none; }
+  .ac-list li strong{ color:var(--ac-ink); }
+  .ac-form{ display:grid; gap:14px; }
+  .ac-row{ display:grid; gap:14px; grid-template-columns:1fr; }
+  @media(min-width:720px){ .ac-row{ grid-template-columns:1fr 1fr; } }
+  .ac-field{ position:relative; }
+  .ac-field label{ display:block; font-size:.9rem; font-weight:600; margin-bottom:6px; color:var(--ac-ink); }
+  .ac-input, .ac-textarea, .ac-select{ width:100%; padding:12px 14px; border-radius:var(--ac-radius-btn); border:1px solid var(--ac-line); outline:none; background:#fff; color:var(--ac-ink); font-size:.95rem; transition:border-color .15s ease, box-shadow .15s ease; }
+  .ac-input:focus, .ac-textarea:focus, .ac-select:focus{ border-color:var(--ac-accent); box-shadow:0 0 0 3px rgba(43,108,176,.12); }
+  .ac-textarea{ min-height:140px; resize:vertical; }
+  .ac-help{ font-size:.8rem; color:var(--ac-muted); margin-top:4px; }
+  .ac-error{ display:none; font-size:.8rem; color:#b00020; margin-top:6px; }
+  .is-invalid .ac-input, .is-invalid .ac-textarea, .is-invalid .ac-select{ border-color:#b00020; }
+  .is-invalid .ac-error{ display:block; }
+  .ac-legal{ display:flex; align-items:flex-start; gap:10px; font-size:.9rem; color:var(--ac-muted); }
+  .ac-legal input{ margin-top:3px; accent-color:var(--ac-accent); }
+  .ac-btn{ appearance:none; border:none; cursor:pointer; border-radius:var(--ac-radius-btn); padding:14px 18px; font-weight:700; font-size:1rem; background:var(--ac-accent); color:#fff; box-shadow:0 4px 12px var(--ac-accent-glow); transition: background .15s ease, transform .06s ease; }
+  .ac-btn:hover{ background:var(--ac-accent-deep); }
+  .ac-btn:active{ transform: translateY(1px); }
+  .ac-note{ font-size:.85rem; color:var(--ac-muted); margin-top:8px; }
+  .ac-success{ display:none; border:1px solid #c7f2c7; background:#f2fff2; color:#0f5f0f; padding:12px 14px; border-radius:var(--ac-radius-btn); font-weight:600; }
+  .ac-success.is-shown{ display:block; }
+  .ac-map{ aspect-ratio:16/9; width:100%; border:0; border-bottom-left-radius:var(--ac-radius); border-bottom-right-radius:var(--ac-radius); display:block; }
+  /* --- Danke-Toast --- */
+  #ac-success{
+    position: fixed;
+    left: 50%; top: 18px; transform: translate(-50%,-12px);
+    background:var(--ac-accent); color:#fff; padding:12px 16px;
+    border-radius:var(--ac-radius-btn); box-shadow:0 10px 30px rgba(0,0,0,.25);
+    opacity:0; visibility:hidden; transition:opacity .2s, transform .2s;
+    z-index:6000; font-weight:600;
+  }
+  #ac-success.is-shown{ opacity:1; visibility:visible; transform:translate(-50%,0); }
+
+  /* Consent: Pflichtfehler anzeigen & hervorheben */
+  #f-consent .ac-error{display:none;font-size:.8rem;color:#b00020;margin-top:6px}
+  #f-consent.is-invalid .ac-error{display:block}
+  #f-consent.is-invalid label{color:#b00020}
+  #f-consent.is-invalid input{outline:2px solid #b00020; outline-offset:2px}
+
+  /* =========================================
+     ALAB Kontakt – EXTRA COMPACT MOBILE
+     ========================================= */
+  @media (max-width: 768px){
+    #alab-contact{ overflow-x: clip; }
+    @supports not (overflow: clip){ #alab-contact{ overflow-x:hidden; } }
+
+    #alab-contact .ac-wrap{ padding: 20px 12px 36px; }
+
+    #alab-contact .ac-hero{ gap: 8px; margin: 6px 0 16px; }
+    #alab-contact .ac-eyebrow{ font-size: .72rem; letter-spacing: .1em; }
+    #alab-contact .ac-title{
+      font-size: clamp(1.25rem, 6.2vw, 1.6rem);
+      line-height: 1.22;
+      margin: 0;
+    }
+    #alab-contact .ac-sub{ font-size: .95rem; }
+
+    #alab-contact .ac-grid{ gap: 14px; margin-top: 16px; }
+
+    #alab-contact .ac-card{ border-radius: 12px; box-shadow: 0 6px 18px rgba(15,37,51,.07); }
+    #alab-contact .ac-card > .inner{ padding: 14px; }
+
+    #alab-contact .ac-label{ font-size: .72rem; margin-bottom: 6px; }
+    #alab-contact .ac-h2{ font-size: 1.05rem; margin-bottom: 8px; }
+    #alab-contact .ac-list li{ padding: 8px 0; }
+
+    #alab-contact .ac-form{ gap: 10px; }
+    #alab-contact .ac-row{ gap: 10px; grid-template-columns: 1fr; }
+    #alab-contact .ac-field label{ font-size: .86rem; margin-bottom: 4px; }
+
+    #alab-contact .ac-input,
+    #alab-contact .ac-select{
+      height: 42px;
+      padding: 9px 12px;
+      border-radius: var(--ac-radius-btn);
+      font-size: 16px;
+    }
+    #alab-contact .ac-textarea{
+      min-height: 100px;
+      padding: 9px 12px;
+      border-radius: var(--ac-radius-btn);
+      font-size: 16px;
+    }
+
+    #alab-contact .ac-help,
+    #alab-contact .ac-error{ font-size: .78rem; }
+
+    #alab-contact .ac-legal{
+      gap: 8px;
+      font-size: .9rem;
+      line-height: 1.35;
+    }
+    #alab-contact .ac-legal input{ width: 18px; height: 18px; margin-top: 2px; }
+
+    #alab-contact .ac-btn{
+      padding: 12px 14px;
+      font-size: .95rem;
+      border-radius: var(--ac-radius-btn);
+      width: 100%;
+    }
+    #alab-contact .ac-note{ font-size: .8rem; }
+
+    #alab-contact .ac-map{
+      aspect-ratio: 3 / 2;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
+    #ac-success{ padding: 10px 12px; border-radius: var(--ac-radius-btn); }
+  }
+
+  /* XS-Phones (<=480px) */
+  @media (max-width: 480px){
+    #alab-contact .ac-wrap{ padding: 16px 10px 28px; }
+    #alab-contact .ac-title{ font-size: clamp(1.2rem, 6.8vw, 1.45rem); }
+    #alab-contact .ac-card > .inner{ padding: 12px; }
+    #alab-contact .ac-input, #alab-contact .ac-select{ height: 40px; }
+    #alab-contact .ac-textarea{ min-height: 90px; }
+    #alab-contact .ac-map{ aspect-ratio: 4 / 3; }
+  }
+`;
+
+const HTML = `
+<main id="alab-contact" role="main">
+  <div class="ac-wrap">
+    <section class="ac-hero" aria-labelledby="kontakt-title">
+      <span class="ac-eyebrow">Kontakt</span>
+      <h1 class="ac-title" id="kontakt-title">Schnell &amp; direkt zu Ihrem PV-Projekt</h1>
+      <p class="ac-sub">Schreiben Sie uns eine kurze Nachricht – wir melden uns zügig mit einer konkreten Einschätzung oder einem Termin.</p>
+    </section>
+
+    <div class="ac-grid">
+      <!-- Formularkarte -->
+      <article class="ac-card" aria-labelledby="form-title">
+        <div class="inner">
+          <div class="ac-success" id="ac-success">Vielen Dank! Ihre Anfrage ist eingegangen.</div>
+          <h2 class="ac-h2" id="form-title">Kontaktformular</h2>
+          <form id="alab-contact-form" class="ac-form" novalidate>
+            <!-- Honeypot -->
+            <input type="text" name="company" id="company" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" tabindex="-1" aria-hidden="true">
+
+            <div class="ac-row">
+              <div class="ac-field" id="f-name">
+                <label for="name">Name*</label>
+                <input class="ac-input" id="name" name="name" type="text" autocomplete="name" required>
+                <div class="ac-error">Bitte geben Sie Ihren Namen ein.</div>
+              </div>
+              <div class="ac-field" id="f-email">
+                <label for="email">E-Mail*</label>
+                <input class="ac-input" id="email" name="email" type="email" inputmode="email" autocomplete="email" required>
+                <div class="ac-error">Bitte eine gültige E-Mail-Adresse eingeben.</div>
+              </div>
+            </div>
+
+            <div class="ac-row">
+              <div class="ac-field" id="f-phone">
+                <label for="phone">Telefon</label>
+                <input class="ac-input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel">
+                <div class="ac-help">Optional – für schnelle Rückfragen.</div>
+              </div>
+              <div class="ac-field" id="f-topic">
+                <label for="topic">Thema</label>
+                <select class="ac-select" id="topic" name="topic">
+                  <option>Allgemeine Anfrage</option>
+                  <option>Privat-PV</option>
+                  <option>Gewerbe-PV</option>
+                  <option>Service &amp; Wartung</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="ac-field" id="f-message">
+              <label for="message">Nachricht*</label>
+              <textarea class="ac-textarea" id="message" name="message" required placeholder="Kurze Beschreibung: Dachform, Fläche, Stromverbrauch, Zieltermin …"></textarea>
+              <div class="ac-error">Bitte geben Sie eine Nachricht ein.</div>
+            </div>
+
+            <div class="ac-field ac-legal" id="f-consent">
+              <input type="checkbox" id="consent" name="consent" required>
+              <label for="consent">
+                Ich willige ein, dass ALAB Energiesysteme meine Daten zur Bearbeitung meiner Anfrage verarbeitet.
+                Hinweise in der <a href="https://www.alabenergiesysteme.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
+              </label>
+              <div class="ac-error">Bitte willigen Sie die Datenschutzerklärung ein.</div>
+            </div>
+
+            <button class="ac-btn" type="submit" id="submitBtn">Anfrage senden</button>
+            <div class="ac-note">Mit * gekennzeichnete Felder sind Pflichtfelder.</div>
+          </form>
+        </div>
+      </article>
+
+      <!-- Infokarte + Karte -->
+      <aside class="ac-card" aria-labelledby="info-title">
+        <div class="inner">
+          <div class="ac-label">Kontaktinfos</div>
+          <h2 class="ac-h2" id="info-title">ALAB Energiesysteme e. K.</h2>
+          <ul class="ac-list" aria-label="Kontaktdaten">
+            <li><strong>E-Mail:</strong> <a href="mailto:info@alab-energiesysteme.de">info@alab-energiesysteme.de</a></li>
+            <li><strong>Telefon:</strong> <a href="tel:+4982617597176">08261 7597176</a></li>
+            <li><strong>Adresse:</strong> Kastanienweg 6, 87719 Mindelheim</li>
+            <li><strong>Geschäftszeiten:</strong> Mo–Do 08:00–17:00 Uhr</li>
+          </ul>
+        </div>
+        <!-- Interaktive Karte – Mindelheim -->
+        <iframe class="ac-map" title="Standort Mindelheim" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Kastanienweg%206%2C%2087719%20Mindelheim&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+      </aside>
+    </div>
+  </div>
+</main>
+`;
+
+export default function KontaktSection() {
+  useEffect(() => {
+    const MAKE_URL = "https://hook.eu2.make.com/yloo9gmjoxtsua7r2g5z6af9lqs0ei3y";
+
+    const $ = (s: string, r: Document | Element = document) => r.querySelector(s);
+    const form = $('#alab-contact-form') as HTMLFormElement | null;
+    const toastEl = $('#ac-success') as HTMLElement | null;
+    if (!form) return;
+
+    // Honeypot leeren (gegen Auto-Fill)
+    const hp = $('#company') as HTMLInputElement | null;
+    if (hp) hp.value = '';
+
+    function setInvalid(id: string, on: boolean) {
+      const el = $('#' + id);
+      if (!el) return;
+      if (on) el.classList.add('is-invalid'); else el.classList.remove('is-invalid');
+    }
+
+    function validate() {
+      let ok = true;
+      const name = $('#name') as HTMLInputElement;
+      const email = $('#email') as HTMLInputElement;
+      const message = $('#message') as HTMLTextAreaElement;
+      const consent = $('#consent') as HTMLInputElement;
+
+      setInvalid('f-name', !name.value.trim());        ok = ok && !!name.value.trim();
+      const emailOk = /.+@.+\..+/.test(email.value);   setInvalid('f-email', !emailOk); ok = ok && emailOk;
+      setInvalid('f-message', !message.value.trim());  ok = ok && !!message.value.trim();
+
+      if (!consent.checked) {
+        $('#f-consent')?.classList.add('is-invalid');
+        consent.setAttribute('aria-invalid', 'true');
+        ok = false;
+      } else {
+        $('#f-consent')?.classList.remove('is-invalid');
+        consent.removeAttribute('aria-invalid');
+      }
+
+      // Honeypot muss leer sein
+      if (hp && hp.value.trim().length) ok = false;
+
+      return ok;
+    }
+
+    function gaPush() {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: 'contact_form_sent',
+        form_location: 'contact_page',
+        topic: (($('#topic') as HTMLSelectElement)?.value || ''),
+        page_path: location.pathname
+      });
+    }
+
+    function showToast() {
+      if (!toastEl) return;
+      // a11y
+      toastEl.setAttribute('role', 'status');
+      toastEl.setAttribute('aria-live', 'polite');
+      toastEl.classList.add('is-shown');
+      // nach 4s ausblenden
+      setTimeout(() => toastEl.classList.remove('is-shown'), 4000);
+    }
+
+    const handleSubmit = function (e: Event) {
+      e.preventDefault();
+
+      if (hp) hp.value = '';           // Honeypot nochmal leeren
+      if (!validate()) return;
+
+      try { gaPush(); } catch (_) {}
+
+      // Payload bauen (x-www-form-urlencoded -> robust)
+      const p = new URLSearchParams();
+      p.set('Quelle', 'Kontaktseite – Hauptformular');
+      p.set('Seite', typeof window !== 'undefined' ? window.location.href : '');
+      p.set('Name', ($('#name') as HTMLInputElement).value.trim());
+      p.set('Email', ($('#email') as HTMLInputElement).value.trim());
+      p.set('Telefon', (($('#phone') as HTMLInputElement)?.value.trim() || ''));
+      p.set('Thema', (($('#topic') as HTMLSelectElement)?.value || ''));
+      p.set('Nachricht', ($('#message') as HTMLTextAreaElement).value.trim());
+      p.set('Consent', ($('#consent') as HTMLInputElement).checked ? '1' : '0');
+      p.set('Zeitstempel', new Date().toISOString());
+
+      const blob = new Blob([p.toString()], { type: 'application/x-www-form-urlencoded;charset=UTF-8' });
+
+      // Fire-and-forget: sicher beim Seitenfokuswechsel
+      try {
+        navigator.sendBeacon(MAKE_URL, blob);
+      } catch (_) {
+        try {
+          fetch(MAKE_URL, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }, body: p.toString() });
+        } catch (__) {}
+      }
+
+      // UI: Formular zurücksetzen + Toast zeigen
+      form.reset();
+      showToast();
+      // Fokus zurück auf Titel für klare Bestätigung
+      document.getElementById('form-title')?.focus?.();
+    };
+
+    form.addEventListener('submit', handleSubmit);
+
+    return () => {
+      form.removeEventListener('submit', handleSubmit);
+    };
+  }, []);
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
+      <div dangerouslySetInnerHTML={{ __html: HTML }} />
+    </>
+  );
+}
