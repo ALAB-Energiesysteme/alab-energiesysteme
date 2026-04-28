@@ -70,10 +70,9 @@ const TESTIMONIALS = [
     name: "Zehra",
   },
   {
-    title: "Kompetente Beratung und saubere Umsetzung",
     quote:
-      "Da wir uns mit dem Thema Photovoltaik anfangs kaum auskannten, war uns eine ehrliche Beratung besonders wichtig. Herr Bungu hat uns die Technik verständlich erklärt und uns schnell das Gefühl gegeben, bei einem seriösen Partner zu sein. Uns war eine langlebige Lösung von einem Betrieb aus der Region wichtig.\n\nDer Zeitplan wurde verlässlich eingehalten und die Männer haben vor Ort sehr sauber gearbeitet. Auch um die Formalitäten und Anmeldungen hat sich die Firma gekümmert. Positiv hervorzuheben ist auch der Abschluss: Wir haben eine komplette Anlagendokumentation inklusive Stringplan, Bildern der Anlage und Datenblätter der Komponenten erhalten.\n\nTechnisch läuft unser 10,8 kWp System mit dem 14 kWh Speicher einwandfrei. Das Zusammenspiel der Trina Module mit den Huawei-Komponenten klappt perfekt, und über die App hat man alles gut im Blick. Wer Wert auf Qualität legt, ist bei ALAB Energiesysteme gut aufgehoben.",
-    name: "MB",
+      "Top Ablauf von Anfang bis Ende. Eine super Kommunikation, saubere Planung und die Anlage war in drei Tagen montiert. Ein fester Ansprechpartner war jederzeit erreichbar und die Abstimmung lief super. Dazu gab's eine ausführliche Dokumentation. Anlage läuft einwandfrei, weshalb ich ALAB Energiesysteme klar empfehle.",
+    name: "Asim Berisha",
   },
   {
     quote:
