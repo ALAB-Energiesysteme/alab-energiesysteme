@@ -1,19 +1,13 @@
-﻿"use client";
-
-export default function HeroSection() {
+﻿export default function HeroSection() {
   return (
-    <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden max-[900px]:h-[60vh] max-[900px]:min-h-[450px] max-[479px]:h-[52vh] max-[479px]:min-h-[360px]">
+    <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden bg-ink max-[900px]:h-[60vh] max-[900px]:min-h-[450px] max-[479px]:h-[52vh] max-[479px]:min-h-[360px]">
       <video
         className="absolute inset-0 h-full w-full object-cover brightness-[0.7]"
         autoPlay
         muted
         loop
         playsInline
-        preload="auto"
-        onEnded={(event) => {
-          event.currentTarget.currentTime = 0;
-          void event.currentTarget.play();
-        }}
+        preload="metadata"
       >
         <source src="/homepage-video-hero.mp4" type="video/mp4" />
       </video>

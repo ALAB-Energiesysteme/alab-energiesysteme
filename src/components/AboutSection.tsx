@@ -1,4 +1,5 @@
 import { Check, ArrowRight } from "lucide-react";
+import LazyVideo from "@/components/LazyVideo";
 
 export default function AboutSection() {
   return (
@@ -43,15 +44,10 @@ export default function AboutSection() {
           </a>
         </div>
 
-        {/* ── Video Column (Endlosschleife, ersetzt das vorherige Team-Bild) ── */}
-        <div className="aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-card)] shadow-[0_10px_40px_rgba(15,37,51,0.12)]">
-          <video
+        {/* ── Video Column (Lazy: lädt erst beim Scrollen in den Viewport) ── */}
+        <div className="aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-card)] bg-slate-100 shadow-[0_10px_40px_rgba(15,37,51,0.12)]">
+          <LazyVideo
             src="/tradition-innovation.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
             className="h-full w-full object-cover"
           />
         </div>

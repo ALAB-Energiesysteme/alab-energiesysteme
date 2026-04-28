@@ -1,8 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
+import dynamic from "next/dynamic";
 import Footer from "@/components/Footer";
-import AngebotLightbox from "@/components/AngebotLightbox";
 import "./globals.css";
+
+// AngebotLightbox erst laden, wenn ein Angebot-CTA geklickt wird
+// → spart ~5-10 kB JS auf jedem ersten Seitenaufruf
+const AngebotLightbox = dynamic(() => import("@/components/AngebotLightbox"), {
+  ssr: true,
+});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -218,6 +224,11 @@ export default function RootLayout({
   return (
     <html lang="de" className={montserrat.variable}>
       <head>
+        {/* Performance: schon einmal die Verbindung zu kritischen Drittanbietern aufbauen */}
+        <link rel="preconnect" href="https://hook.eu2.make.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://hook.eu2.make.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

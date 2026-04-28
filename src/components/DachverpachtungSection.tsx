@@ -123,6 +123,7 @@ function DPHero() {
         muted
         loop
         playsInline
+        preload="metadata"
         className="absolute inset-0 h-full w-full object-cover opacity-30"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-ink/80 to-transparent" />

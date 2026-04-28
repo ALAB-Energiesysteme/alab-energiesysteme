@@ -1,10 +1,15 @@
-﻿export default function GebaeudeenergieHero() {
+import Image from "next/image";
+
+export default function GebaeudeenergieHero() {
   return (
-    <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden max-[900px]:h-[60vh] max-[900px]:min-h-[450px]">
-      <img
+    <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden bg-ink max-[900px]:h-[60vh] max-[900px]:min-h-[450px]">
+      <Image
         src="/gebaeudeenergie-bild.png"
         alt="Gebäudeenergie"
-        className="absolute inset-0 h-full w-full object-cover brightness-[0.7]"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover brightness-[0.7]"
       />
 
       <div className="absolute inset-0 z-[2] bg-gradient-to-b from-ink/30 via-ink/50 to-ink/70" />

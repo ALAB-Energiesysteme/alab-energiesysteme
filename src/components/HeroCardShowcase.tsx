@@ -1,4 +1,4 @@
-"use client";
+import Image from "next/image";
 
 export interface HeroCardShowcaseItem {
   title: string;
@@ -23,14 +23,16 @@ function HeroCard({ card }: { card: HeroCardShowcaseItem }) {
   const cardContent = (
     <>
       <div
-        className={`flex h-[220px] w-full items-center justify-center overflow-hidden ${
+        className={`relative flex h-[220px] w-full items-center justify-center overflow-hidden ${
           card.imageBgClassName ?? "bg-[#eef4fc]"
         }`}
       >
-        <img
+        <Image
           src={card.image}
           alt={card.imageAlt ?? card.title}
-          className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${
+          fill
+          sizes="(max-width: 1000px) 100vw, 33vw"
+          className={`transition-transform duration-500 group-hover:scale-105 ${
             card.imageMode === "contain" ? "object-contain p-5" : "object-cover"
           }`}
         />
@@ -68,11 +70,14 @@ export default function HeroCardShowcase({
 }: HeroCardShowcaseProps) {
   return (
     <>
-      <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden max-[900px]:h-[60vh] max-[900px]:min-h-[450px]">
-        <img
+      <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden bg-ink max-[900px]:h-[60vh] max-[900px]:min-h-[450px]">
+        <Image
           src={heroImage}
           alt={heroImageAlt}
-          className="absolute inset-0 h-full w-full object-cover brightness-[0.65]"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover brightness-[0.65]"
         />
         <div className="absolute inset-0 z-[2] bg-gradient-to-b from-ink/30 via-ink/50 to-ink/70" />
 

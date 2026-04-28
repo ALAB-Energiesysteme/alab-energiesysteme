@@ -31,6 +31,7 @@ function WPHero() {
         muted
         loop
         playsInline
+        preload="metadata"
         className="absolute inset-0 h-full w-full object-cover brightness-[0.65]"
       >
         <source src="/wp-hero-video.mp4" type="video/mp4" />
