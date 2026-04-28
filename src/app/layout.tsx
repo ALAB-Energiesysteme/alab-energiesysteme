@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import Footer from "@/components/Footer";
 import AngebotLightbox from "@/components/AngebotLightbox";
@@ -79,11 +79,34 @@ export const metadata: Metadata = {
     },
   },
   category: "Energietechnik",
+  manifest: "/favicons/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicons/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicons/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+  },
+  appleWebApp: {
+    title: "ALAB Energiesysteme",
+    statusBarStyle: "default",
+    capable: true,
+  },
   // TODO: Verification-Codes hier eintragen, sobald Search Console / Bing Webmaster eingerichtet:
   // verification: {
   //   google: "GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
   //   other: { "msvalidate.01": "BING_VERIFICATION_CODE" },
   // },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0f2533",
 };
 
 const localBusinessJsonLd = {
