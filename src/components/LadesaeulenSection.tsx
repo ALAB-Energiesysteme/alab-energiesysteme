@@ -37,18 +37,19 @@ function LSHero() {
           {/* Left: Text */}
           <div className="max-[900px]:text-center">
             <h1 className="mb-6 text-[clamp(2.2rem,5vw,3.5rem)] font-bold leading-[1.1] text-white">
-              Ladelösung für Tief&shy;garagen
+              Ladelösungen für jeden Bereich
             </h1>
-            <p className="mb-8 max-w-[520px] text-[clamp(0.95rem,1.8vw,1.1rem)] leading-[1.7] text-white/80 max-[900px]:mx-auto">
-              Vollständige E-Mobility Lösung für Mehrparteienhäuser und WEGs.
-              Machen Sie Ihre Tiefgarage jetzt bereit für E-Mobility!
+            <p className="mb-8 max-w-[540px] text-[clamp(0.95rem,1.8vw,1.1rem)] leading-[1.7] text-white/80 max-[900px]:mx-auto">
+              Vollständige E-Mobility-Lösungen für Standortn, Außenstellplätze,
+              Firmenparkplätze, Hotels, WEGs und Mehrparteienhäuser. Wir planen
+              und realisieren Ladeinfrastruktur überall, wo sie gebraucht wird.
             </p>
 
             <ul className="mb-10 flex flex-col gap-3 max-[900px]:items-center">
               {[
-                "Prüfen der Tiefgarage auf Umsetzbarkeit",
-                "Grundinstallation der Netzwerktechnik und Lastmanagements",
-                "Hochwertige Wallbox und Stromlieferung für die Stellplätze",
+                "Standort-Analyse & Prüfung der Umsetzbarkeit",
+                "Grundinstallation der Netzwerktechnik und Lastmanagement",
+                "Hochwertige Wallboxen und Ladesäulen für jeden Stellplatz",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-white/90">
                   <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#fbbf24]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -73,7 +74,7 @@ function LSHero() {
           <div className="relative flex items-end justify-center max-[900px]:mt-8">
             <img
               src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=80"
-              alt="E-Auto in Tiefgarage"
+              alt="E-Auto in Standort"
               className="h-auto max-h-[480px] w-full rounded-t-[24px] object-cover object-center shadow-[0_-10px_40px_rgba(0,0,0,0.2)]"
             />
           </div>
@@ -94,18 +95,16 @@ const SCROLL_STEPS = [
     features: [
       "Vor-Ort-Begehung, Ermittlung der Gebäudedaten und Aufnahme des Ist-Zustands",
       "Anfrage und Abstimmung mit dem zuständigen Netzbetreiber",
-      "Erstellung des Berichts mit Preiskalkulation und Präsentation der Ergebnisse",
-      "ggf. Leistungsmessung von mindestens 2 Wochen",
-      "Die Hälfte der Kosten werden bei einem Folgeauftrag (Grundinstallation) angerechnet",
+      "Erstellung des Berichts mit Handlungsempfehlung und Präsentation der Ergebnisse",
     ],
-    price: "Preis: ab 2.699 € *",
+    price: "",
     image: "https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?w=900&q=80",
-    imageAlt: "Tiefgarage Analyse",
+    imageAlt: "Standort-Analyse Ladeinfrastruktur",
     bgColor: "bg-white",
   },
   {
     num: "2",
-    title: "Installation in der Tiefgarage",
+    title: "Installation in der Standort",
     subtitle: "Errichtung der Grundinstallation mit optimaler Raumnutzung:",
     features: [
       "Ausführung sämtlicher Kernlochbohrungen",
@@ -115,7 +114,7 @@ const SCROLL_STEPS = [
     ],
     price: null,
     image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=900&q=80",
-    imageAlt: "Tiefgarage Installation",
+    imageAlt: "Standort Installation",
     bgColor: "bg-[#f4f6f8]",
   },
   {
@@ -367,11 +366,11 @@ function LSScrollytelling() {
           <div className="lss-wrap">
             <div className="lss-intro-inner">
               <h2 className="lss-intro-title">
-                Statten Sie jetzt Ihre Tiefgarage mit einer zukunftsfähigen und einfach umsetzbaren E-Mobility-Lösung aus.
+                Statten Sie Ihren Standort mit einer zukunftsfähigen E-Mobility-Lösung aus – ob Standort, Außenparkplatz, Firmengelände, Hotel oder WEG.
               </h2>
               <p className="lss-intro-body">
                 Profitieren Sie von unserer Rundum-Sorglos-Lösung inklusive Lade- und Lastmanagement.
-                Von der Analyse über die Installation bis zur Stromlieferung – alles aus einer Hand von ALAB Energiesysteme.
+                Von der Analyse über die Installation bis zur Inbetriebnahme – alles aus einer Hand von ALAB Energiesysteme.
               </p>
             </div>
           </div>
@@ -474,15 +473,15 @@ const FAQ_ITEMS = [
   },
   {
     question: "Ist der Einbau von Wallboxen in meiner Wohnanlage möglich?",
-    answer: "Das wird im Rahmen unserer Analyse Professional detailliert geprüft. Unsere Experten begutachten die Tiefgarage vor Ort, ermitteln alle relevanten Gebäudedaten und stimmen sich mit dem Netzbetreiber ab. Am Ende erhalten Sie einen klaren Bericht mit Handlungsempfehlungen.",
+    answer: "Das wird im Rahmen unserer Analyse Professional detailliert geprüft. Unsere Experten begutachten die Standort vor Ort, ermitteln alle relevanten Gebäudedaten und stimmen sich mit dem Netzbetreiber ab. Am Ende erhalten Sie einen klaren Bericht mit Handlungsempfehlungen.",
   },
   {
     question: "Gibt es auch eine Ladelösung für mein Eigenheim?",
     answer: "Ja! Für Eigenheim-Besitzer bieten wir unseren Wallbox-Service mit Vor-Ort-Installationscheck an. Besuchen Sie unsere Wallbox-Seite für alle Details zu Festpreisen, Installation und Fördermöglichkeiten.",
   },
   {
-    question: "Ist eine Besichtigung der Tiefgarage vor Ort nötig?",
-    answer: "Ja, die Vor-Ort-Begehung ist Teil der Analyse Professional. Nur so können wir alle technischen Gegebenheiten zuverlässig prüfen. Die Hälfte der Kosten für die Analyse wird bei einem Folgeauftrag angerechnet.",
+    question: "Ist eine Besichtigung der Standort vor Ort nötig?",
+    answer: "Ja, die Vor-Ort-Begehung ist Teil der Analyse Professional. Nur so können wir alle technischen Gegebenheiten zuverlässig prüfen.",
   },
   {
     question: "Reicht der vorhandene Hausanschluss aus?",
@@ -565,7 +564,7 @@ function LSCtaAbschluss() {
           {/* Background image */}
           <img
             src="https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?w=1400&q=80"
-            alt="Tiefgarage mit Elektroautos"
+            alt="Standort mit Elektroautos"
             className="h-[550px] w-full object-cover max-[768px]:h-[700px]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -582,7 +581,7 @@ function LSCtaAbschluss() {
             >
               <div className="rounded-[18px] bg-white/90 px-8 py-10">
                 <p className="mb-2 text-[clamp(1.1rem,2.5vw,1.4rem)] leading-[1.4] text-[#0f2533]">
-                  Machen Sie Ihre Tiefgarage jetzt bereit für die
+                  Machen Sie Ihren Standort jetzt bereit für die
                 </p>
                 <p className="mb-2 text-[clamp(1.1rem,2.5vw,1.4rem)] font-bold leading-[1.4] text-[#0f2533]">
                   E-Mobilität von morgen!
@@ -624,7 +623,7 @@ function LSKontaktFormular() {
       <div className="mx-auto max-w-[1320px] px-7">
         <div className="mx-auto max-w-[800px]">
           <h2 className="mb-3 text-center text-[clamp(1.6rem,3.5vw,2.4rem)] font-bold text-[#0f2533]">
-            Ladelösung für Tiefgaragen
+            Ladelösung anfragen
           </h2>
           <p className="mb-10 text-center text-[1.05rem] text-[#5b6b78]">
             Jetzt kostenlose Beratung anfordern!

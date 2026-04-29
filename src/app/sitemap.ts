@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/waermepumpen", priority: 0.95, changeFrequency: "weekly" },
     { path: "/wallbox", priority: 0.85, changeFrequency: "weekly" },
     { path: "/gebaeudeenergie", priority: 0.9, changeFrequency: "weekly" },
-    { path: "/beleuchtungstechnik", priority: 0.9, changeFrequency: "weekly" },
     { path: "/geschaeftskunden", priority: 0.9, changeFrequency: "weekly" },
     { path: "/gewerbliche-loesungen", priority: 0.95, changeFrequency: "weekly" },
     { path: "/ladesaeulen", priority: 0.85, changeFrequency: "weekly" },

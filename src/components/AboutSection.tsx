@@ -1,4 +1,4 @@
-import { Check, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 import LazyVideo from "@/components/LazyVideo";
 
 export default function AboutSection() {
@@ -35,13 +35,6 @@ export default function AboutSection() {
             ))}
           </ul>
 
-          <a
-            href="#team"
-            className="group mt-8 inline-flex items-center gap-2 rounded-[var(--radius-btn)] bg-accent px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_12px_var(--color-accent-glow)] transition hover:bg-accent-deep hover:-translate-y-0.5 hover:shadow-[0_6px_20px_var(--color-accent-glow)]"
-          >
-            Lernen Sie das Team kennen
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
         </div>
 
         {/* ── Video Column (Lazy: lädt erst beim Scrollen in den Viewport) ── */}

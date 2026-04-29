@@ -19,8 +19,6 @@ const SERVICES: Service[] = [
   { icon: Zap, text: "Planung & Realisierung aller Elektroinstallationsarbeiten" },
   { icon: Power, text: "Schaltanlagenbau" },
   { icon: Cable, text: "Installation, Inbetriebnahme & Austausch von Energietechnik" },
-  { icon: Settings, text: "Planung & Montage von Stromschienen" },
-  { icon: BarChart3, text: "Netzanalysen von Versorgungsnetzen" },
   { icon: Wrench, text: "Wartung & Instandhaltung elektrischer Schaltanlagen" },
 ];
 
@@ -56,12 +54,11 @@ export default function EnergietechnikSection() {
             </p>
 
             <p className="mt-6 text-[0.95rem] leading-[1.75] text-muted">
-              Relevante energietechnische Themen sind unter anderem erneuerbare
-              Energien, Kerntechnik sowie Kraftwerktechnik. Entsprechende
-              Lösungen entwickeln wir bedarfsgerecht. Davon zeugen beispielsweise
+              Im Fokus stehen erneuerbare Energien sowie moderne Konzepte zur
+              sicheren Energieverteilung im Gebäude. Davon zeugen beispielsweise
               unsere Konzepte zur Energieverteilung mittels Schaltanlagen- und
-              Unterverteilungsbau, MS-Anlagen und
-              Niederspannungshauptverteilungen.
+              Unterverteilungsbau – ingenieurmäßig geplant und durch unsere
+              eigenen Fachkräfte normgerecht umgesetzt.
             </p>
 
             <a

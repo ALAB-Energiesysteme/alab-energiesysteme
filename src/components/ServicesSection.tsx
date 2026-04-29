@@ -23,7 +23,7 @@ const SERVICES = [
     text: "Verpachten Sie Ihr Dach und profitieren Sie von regelmäßigen Einnahmen – ohne eigene Investition. Wir übernehmen Planung, Installation und Wartung.",
     image:
       "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&q=80",
-    href: "#dachverpachtung",
+    href: "/dachverpachtung",
   },
 ];
 

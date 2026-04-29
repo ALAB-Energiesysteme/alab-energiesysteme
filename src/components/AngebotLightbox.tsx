@@ -207,7 +207,7 @@ export default function AngebotLightbox() {
   background: rgba(15, 37, 51, 0.55);
   backdrop-filter: blur(4px);
   z-index: 9999;
-  padding: 20px;
+  padding: 12px;
   overflow-y: auto;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
@@ -217,46 +217,48 @@ export default function AngebotLightbox() {
   background: var(--lb-bg);
   border: 1px solid var(--lb-border);
   border-radius: var(--lb-radius-xl);
-  width: 100%; max-width: 640px;
+  width: 100%; max-width: 560px;
   box-shadow: 0 20px 60px rgba(15, 37, 51, .22), 0 6px 18px rgba(15, 37, 51, .08);
   animation: alabLbSlide .28s cubic-bezier(.16,1,.3,1);
   font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
 }
 #alabAngebotLB .alab-lb-header {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 24px; border-bottom: 1px solid var(--lb-border);
+  padding: 14px 18px; border-bottom: 1px solid var(--lb-border);
 }
 #alabAngebotLB .alab-lb-title {
-  display: flex; align-items: center; gap: 12px;
-  margin: 0; font-size: 20px; font-weight: 700; color: var(--lb-ink);
+  display: flex; align-items: center; gap: 10px;
+  margin: 0; font-size: 17px; font-weight: 700; color: var(--lb-ink);
   font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
 }
-#alabAngebotLB .alab-lb-title svg { width: 26px; height: 26px; color: var(--lb-primary); flex-shrink: 0; }
+#alabAngebotLB .alab-lb-title svg { width: 22px; height: 22px; color: var(--lb-primary); flex-shrink: 0; }
 #alabAngebotLB .alab-lb-close {
   background: var(--lb-bg-soft); border: 1px solid var(--lb-border);
-  width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+  width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
   display: grid; place-items: center; transition: transform .12s ease, background .12s ease;
 }
 #alabAngebotLB .alab-lb-close:hover { transform: scale(1.05); background: var(--lb-border); }
-#alabAngebotLB .alab-lb-close svg { width: 18px; height: 18px; color: var(--lb-muted); }
-#alabAngebotLB .alab-lb-body { padding: 20px 24px 24px; }
+#alabAngebotLB .alab-lb-close svg { width: 16px; height: 16px; color: var(--lb-muted); }
+#alabAngebotLB .alab-lb-body { padding: 14px 18px 18px; }
 #alabAngebotLB .alab-lb-desc {
-  margin: 0 0 24px; color: var(--lb-muted); font-size: 14px; line-height: 1.6;
+  margin: 0 0 14px; color: var(--lb-muted); font-size: 13px; line-height: 1.5;
   font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
 }
-#alabAngebotLB form { display: flex; flex-direction: column; gap: 18px; font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif); }
-#alabAngebotLB .alab-lb-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+#alabAngebotLB form { display: flex; flex-direction: column; gap: 10px; font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif); }
+#alabAngebotLB .alab-lb-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 #alabAngebotLB .alab-lb-row.street { grid-template-columns: 2fr 1fr; }
 #alabAngebotLB .alab-lb-row.city { grid-template-columns: 1fr 2fr; }
-#alabAngebotLB .alab-lb-field { display: flex; flex-direction: column; gap: 6px; }
+#alabAngebotLB .alab-lb-field { display: flex; flex-direction: column; gap: 4px; }
 #alabAngebotLB .alab-lb-field label {
-  font-weight: 600; font-size: 13px; color: var(--lb-ink); padding-left: 2px;
+  font-weight: 600; font-size: 12px; color: var(--lb-ink); padding-left: 2px;
   font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
 }
 #alabAngebotLB .alab-lb-field input,
 #alabAngebotLB .alab-lb-field textarea {
-  padding: 13px 16px; border: 1.5px solid var(--lb-border); border-radius: var(--lb-radius-md);
-  background: var(--lb-bg-soft); font-size: 15px; color: var(--lb-ink); font-family: inherit;
+  padding: 10px 12px; border: 1.5px solid var(--lb-border); border-radius: var(--lb-radius-md);
+  background: var(--lb-bg-soft); font-size: 14px; color: var(--lb-ink); font-family: inherit;
   transition: border-color .15s ease, box-shadow .15s ease;
 }
 #alabAngebotLB .alab-lb-field input::placeholder,
@@ -268,9 +270,9 @@ export default function AngebotLightbox() {
   outline: none; border-color: var(--lb-primary);
   box-shadow: 0 0 0 3px rgba(43,108,176,.15);
 }
-#alabAngebotLB .alab-lb-field textarea { resize: vertical; min-height: 96px; }
+#alabAngebotLB .alab-lb-field textarea { resize: vertical; min-height: 64px; }
 #alabAngebotLB .alab-lb-consent {
-  display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--lb-ink);
+  display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--lb-ink); line-height: 1.45;
   font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
 }
 #alabAngebotLB .alab-lb-consent a {
@@ -278,10 +280,10 @@ export default function AngebotLightbox() {
 }
 #alabAngebotLB .alab-lb-consent a:hover { text-decoration: none; }
 #alabAngebotLB .alab-lb-submit {
-  background: var(--lb-primary); color: #fff; border: none; padding: 15px 24px;
-  border-radius: var(--lb-radius-lg); font-weight: 700; font-size: 16px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
-  margin-top: 4px; box-shadow: 0 4px 12px rgba(43,108,176,.25);
+  background: var(--lb-primary); color: #fff; border: none; padding: 11px 20px;
+  border-radius: var(--lb-radius-lg); font-weight: 700; font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+  margin-top: 2px; box-shadow: 0 4px 12px rgba(43,108,176,.25);
   transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
   font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
 }
@@ -316,19 +318,23 @@ export default function AngebotLightbox() {
 @keyframes alabThanksIn { from { transform: translateX(-50%) translateY(20px); opacity: 0 } to { transform: translateX(-50%) translateY(0); opacity: 1 } }
 
 @media (max-width: 640px) {
-  #alabAngebotLB { padding: 10px; }
-  #alabAngebotLB .alab-lb-card { border-radius: 18px; }
-  #alabAngebotLB .alab-lb-header { padding: 14px 16px; }
-  #alabAngebotLB .alab-lb-title { font-size: 18px; }
-  #alabAngebotLB .alab-lb-body { padding: 14px 16px 16px; }
-  #alabAngebotLB .alab-lb-desc { font-size: 13.5px; margin-bottom: 16px; }
-  #alabAngebotLB form { gap: 14px; }
-  #alabAngebotLB .alab-lb-row,
-  #alabAngebotLB .alab-lb-row.street,
-  #alabAngebotLB .alab-lb-row.city { grid-template-columns: 1fr; gap: 14px; }
+  #alabAngebotLB { padding: 6px; align-items: flex-start; }
+  #alabAngebotLB .alab-lb-card { border-radius: 14px; max-height: calc(100vh - 12px); margin-top: 4px; }
+  #alabAngebotLB .alab-lb-header { padding: 10px 14px; }
+  #alabAngebotLB .alab-lb-title { font-size: 15px; gap: 8px; }
+  #alabAngebotLB .alab-lb-title svg { width: 18px; height: 18px; }
+  #alabAngebotLB .alab-lb-close { width: 28px; height: 28px; }
+  #alabAngebotLB .alab-lb-body { padding: 10px 14px 14px; }
+  #alabAngebotLB .alab-lb-desc { font-size: 12px; margin-bottom: 10px; line-height: 1.4; }
+  #alabAngebotLB form { gap: 8px; }
+  /* Mobile: 2-Spalten-Grid für kurze Felder beibehalten, damit das Formular ohne Scrollen passt */
+  #alabAngebotLB .alab-lb-row { gap: 8px; }
+  #alabAngebotLB .alab-lb-field label { font-size: 11px; }
   #alabAngebotLB .alab-lb-field input,
-  #alabAngebotLB .alab-lb-field textarea { padding: 11px 13px; font-size: 14px; }
-  #alabAngebotLB .alab-lb-submit { padding: 12px 16px; font-size: 15px; }
+  #alabAngebotLB .alab-lb-field textarea { padding: 8px 10px; font-size: 13px; }
+  #alabAngebotLB .alab-lb-field textarea { min-height: 48px; }
+  #alabAngebotLB .alab-lb-consent { font-size: 11px; }
+  #alabAngebotLB .alab-lb-submit { padding: 9px 14px; font-size: 13px; }
 }
         `,
         }}

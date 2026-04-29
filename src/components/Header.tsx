@@ -64,13 +64,6 @@ const NAV_ITEMS: NavItem[] = [
         href: "/gebaeudeenergie",
         imageScale: 1.8,
       },
-      {
-        title: "Beleuchtungstechnik",
-        description: "Professionelle Lichtplanung & Installation.",
-        image: "/beleuchtungstechnik-restaurant.png",
-        href: "/beleuchtungstechnik",
-        imageScale: 1.8,
-      },
     ],
   },
   {
@@ -115,7 +108,7 @@ const NAV_ITEMS: NavItem[] = [
 
 /* Map pathnames to nav labels for active highlighting */
 const PATH_TO_LABEL: Record<string, string> = {
-  "/gebaeudeenergie": "Geschäftskunden",
+  "/gebaeudeenergie": "Privatkunden",
   "/gewerbliche-loesungen": "Geschäftskunden",
   "/privatkunden": "Privatkunden",
   "/servicepakete": "Geschäftskunden",
@@ -123,7 +116,6 @@ const PATH_TO_LABEL: Record<string, string> = {
   "/wartung": "Geschäftskunden",
   "/monitoring": "Geschäftskunden",
   "/ladesaeulen": "Geschäftskunden",
-  "/beleuchtungstechnik": "Privatkunden",
   "/dachverpachtung": "Dachverpachtung",
   "/ueber-uns": "Über uns",
   "/kontakt": "Kontakt",

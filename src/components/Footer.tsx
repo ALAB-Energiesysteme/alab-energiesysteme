@@ -10,7 +10,6 @@ const PRIVATKUNDEN = [
   { label: "Wallboxen", href: "/wallbox" },
   { label: "Wärmepumpen", href: "/waermepumpen" },
   { label: "Gebäudeenergie", href: "/gebaeudeenergie" },
-  { label: "Beleuchtungstechnik", href: "/beleuchtungstechnik" },
 ];
 
 const GESCHAEFTSKUNDEN = [

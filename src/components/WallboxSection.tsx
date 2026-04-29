@@ -176,26 +176,13 @@ function WBFestpreis() {
                 <li className="flex items-start gap-3">
                   <span className="mt-1.5 h-2 w-2 shrink-0 rotate-45 bg-[#2b6cb0]" />
                   <p className="text-[1rem] leading-[1.7] text-[#0f2533]">
-                    Dadurch sicherst du dir den Preis für die Wallbox für bis zu 4 Wochen nach Erhalt deines Kauf- und Installationsangebots
+                    Festes Angebot mit transparenter Preisstruktur nach individueller Vor-Ort-Prüfung
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1.5 h-2 w-2 shrink-0 rotate-45 bg-[#2b6cb0]" />
                   <p className="text-[1rem] leading-[1.7] text-[#0f2533]">
-                    <strong>300 € Rabatt</strong> <sup>1</sup> für ALAB Energiesysteme Kunden und alle, die es werden
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rotate-45 bg-[#2b6cb0]" />
-                  <p className="text-[1rem] leading-[1.7] text-[#0f2533]">
-                    <strong>Preis für Kunden von ALAB Energiesysteme</strong> und solche, die es werden:<br />
-                    <span className="text-[#2b6cb0] font-semibold">529 € (829 € minus 300 € Rabatt <sup>1</sup>)</span>
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rotate-45 bg-[#2b6cb0]" />
-                  <p className="text-[1rem] leading-[1.7] text-[#0f2533]">
-                    Preis für Nicht-ALAB-Kunden: <span className="text-[#2b6cb0] font-semibold">829 €</span>
+                    Sonderkonditionen für Bestandskunden von ALAB Energiesysteme
                   </p>
                 </li>
               </ul>
@@ -243,7 +230,7 @@ function WBSchritte() {
             <p className="mb-2 text-[1.1rem] font-bold text-[#22c55e]">1. Schritt</p>
             <h3 className="mb-3 text-[1.15rem] font-bold text-[#0f2533]">Vor-Ort-Installationscheck</h3>
             <p className="max-w-[320px] text-[0.92rem] leading-[1.65] text-[#5b6b78]">
-              Fachgerechte Prüfung der Situation vor Ort durch unseren regionalen Handwerkspartner. Für nur 199 € erhältst Du eine fachkundige Einschätzung.
+              Fachgerechte Prüfung der Situation vor Ort durch unsere eigenen Elektrofachkräfte. So erhältst du eine kompetente Einschätzung deiner individuellen Voraussetzungen.
             </p>
           </div>
 
@@ -255,7 +242,7 @@ function WBSchritte() {
             <p className="mb-2 text-[1.1rem] font-bold text-[#22c55e]">2. Schritt</p>
             <h3 className="mb-3 text-[1.15rem] font-bold text-[#0f2533]">Festpreisangebot</h3>
             <p className="max-w-[320px] text-[0.92rem] leading-[1.65] text-[#5b6b78]">
-              Festpreisangebot für die Wallbox mit Installation bei dir zu Hause. Bei Annahme des Angebots innerhalb von vier Wochen werden die Kosten aus Schritt 1 angerechnet.
+              Festpreisangebot für die Wallbox mit Installation bei dir zu Hause – bei Annahme innerhalb von zwei Wochen werden die Kosten aus Schritt 1 angerechnet.
             </p>
           </div>
 
@@ -267,7 +254,7 @@ function WBSchritte() {
             <p className="mb-2 text-[1.1rem] font-bold text-[#22c55e]">3. Schritt</p>
             <h3 className="mb-3 text-[1.15rem] font-bold text-[#0f2533]">Installation und Inbetriebnahme</h3>
             <p className="max-w-[320px] text-[0.92rem] leading-[1.65] text-[#5b6b78]">
-              Installation der Wallbox mit anschließender Einweisung durch unseren regionalen Handwerkspartner.
+              Installation der Wallbox mit anschließender Einweisung – durchgeführt von unseren eigenen Fachkräften.
             </p>
           </div>
         </div>
@@ -335,13 +322,13 @@ function WBCheckLohnt() {
               />
             </div>
             <h3 className="mb-4 text-[clamp(1.4rem,2.5vw,1.8rem)] font-bold text-[#0f2533]">
-              Vergünstigte Wallbox für Kunden von ALAB Energiesysteme
+              Sonderkonditionen für Kunden von ALAB Energiesysteme
             </h3>
             <p className="mb-3 text-[0.95rem] leading-[1.7] text-[#5b6b78]">
-              Als besonderes Extra für unsere treuen Stromkunden bieten wir dir einen Rabatt in Höhe von 300 € auf die hochwertige Wallbox an.
+              Als besonderes Extra für unsere Bestandskunden erhältst du attraktive Sonderkonditionen auf unsere hochwertigen Wallboxen.
             </p>
             <p className="text-[0.92rem] leading-[1.7] text-[#5b6b78]">
-              Übrigens: Auch alle, die sich jetzt für einen unserer Stromtarife entscheiden, profitieren von 300 € Rabatt <sup>1</sup> auf die Wallbox.
+              Übrigens: Auch wer jetzt mit ALAB Energiesysteme startet, profitiert von unseren Vorzugskonditionen für die Wallbox.
             </p>
           </div>
         </div>
@@ -528,7 +515,7 @@ const FAQ_ITEMS = [
   {
     question: "Was kostet die Installation einer Wallbox?",
     answer: (
-      <p>Die Kosten variieren je nach den örtlichen Gegebenheiten. Mit unserem Vor-Ort-Installationscheck für nur 199 € erhältst du ein verbindliches Festpreisangebot. Die 199 € werden bei Beauftragung der Installation vollständig angerechnet. Kunden von ALAB Energiesysteme erhalten zusätzlich 300 € Rabatt auf die Wallbox.</p>
+      <p>Die Kosten variieren je nach den örtlichen Gegebenheiten. Mit unserem Vor-Ort-Installationscheck erhältst du ein verbindliches Festpreisangebot – transparent und ohne versteckte Kosten. Die Kosten der Vor-Ort-Prüfung werden bei Beauftragung der Installation vollständig angerechnet. Bestandskunden von ALAB Energiesysteme erhalten zusätzlich Sonderkonditionen auf die Wallbox.</p>
     ),
   },
   {

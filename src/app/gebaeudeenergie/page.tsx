@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     "Elektriker Neubau Mindelheim",
     "Elektriker Sanierung",
     "Schaltanlagenbau",
-    "Niederspannungshauptverteilung",
     "Unterverteilungsbau",
     "Energietechnik",
     "Smart Home Mindelheim",
@@ -51,7 +50,7 @@ const gebJsonLd = {
   serviceType: "Gebäudeenergie & Elektroinstallation",
   name: "Gebäudeenergie für Neubau und Sanierung – schlüsselfertig",
   description:
-    "Planung und Ausführung der gesamten Gebäudeenergie: Elektroinstallation, Schaltanlagenbau, Schaltanlagen- und Unterverteilungsbau, MS-Anlagen, Niederspannungshauptverteilungen sowie Smart-Home-Anbindung. Für Neubau und Sanierung – schlüsselfertig vom Ingenieurbüro und Elektrofachbetrieb.",
+    "Planung und Ausführung der gesamten Gebäudeenergie: Elektroinstallation, Schaltanlagen- und Unterverteilungsbau sowie Smart-Home-Anbindung. Für Neubau und Sanierung – schlüsselfertig vom Ingenieurbüro und Elektrofachbetrieb.",
   provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: [
     { "@type": "State", name: "Bayern" },

@@ -140,7 +140,6 @@ export default function GeschaeftskundenOverview() {
       <GKServices />
       <GKAbout />
       <GKBeratungsformular />
-      <GKTestimonials />
       <GKCta />
     </>
   );
@@ -660,8 +659,7 @@ function GKCta() {
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
-            href="#angebot"
-            data-open-angebot="geschaeftskunden-overview-direkt-anrufen"
+            href="tel:+4982617597176"
             className="inline-flex items-center gap-2 rounded-[var(--radius-btn)] border border-line px-8 py-4 text-sm font-semibold text-ink transition-all hover:border-accent/40 hover:bg-accent/5"
           >
             <Phone className="h-4 w-4" />

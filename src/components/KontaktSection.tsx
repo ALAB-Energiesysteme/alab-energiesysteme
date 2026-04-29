@@ -189,18 +189,25 @@ const HTML = `
 
             <div class="ac-row">
               <div class="ac-field" id="f-phone">
-                <label for="phone">Telefon</label>
-                <input class="ac-input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel">
-                <div class="ac-help">Optional – für schnelle Rückfragen.</div>
+                <label for="phone">Telefon*</label>
+                <input class="ac-input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+                <div class="ac-error">Bitte geben Sie eine Telefonnummer ein.</div>
               </div>
               <div class="ac-field" id="f-topic">
-                <label for="topic">Thema</label>
-                <select class="ac-select" id="topic" name="topic">
-                  <option>Allgemeine Anfrage</option>
-                  <option>Privat-PV</option>
-                  <option>Gewerbe-PV</option>
+                <label for="topic">Thema*</label>
+                <select class="ac-select" id="topic" name="topic" required>
+                  <option value="">Bitte auswählen…</option>
+                  <option>Photovoltaik (Privatkunden)</option>
+                  <option>Photovoltaik (Gewerbe)</option>
+                  <option>Wärmepumpe</option>
+                  <option>Wallbox</option>
+                  <option>Ladesäulen / Ladeinfrastruktur</option>
+                  <option>Gebäudeenergie &amp; Elektroinstallation</option>
+                  <option>Dachverpachtung</option>
                   <option>Service &amp; Wartung</option>
+                  <option>Allgemeine Anfrage</option>
                 </select>
+                <div class="ac-error">Bitte wählen Sie ein Thema aus.</div>
               </div>
             </div>
 
@@ -237,8 +244,6 @@ const HTML = `
             <li><strong>Geschäftszeiten:</strong> Mo–Do 08:00–17:00 Uhr</li>
           </ul>
         </div>
-        <!-- Interaktive Karte – Mindelheim -->
-        <iframe class="ac-map" title="Standort Mindelheim" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Kastanienweg%206%2C%2087719%20Mindelheim&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
       </aside>
     </div>
   </div>
@@ -268,11 +273,15 @@ export default function KontaktSection() {
       let ok = true;
       const name = $('#name') as HTMLInputElement;
       const email = $('#email') as HTMLInputElement;
+      const phone = $('#phone') as HTMLInputElement;
+      const topic = $('#topic') as HTMLSelectElement;
       const message = $('#message') as HTMLTextAreaElement;
       const consent = $('#consent') as HTMLInputElement;
 
       setInvalid('f-name', !name.value.trim());        ok = ok && !!name.value.trim();
       const emailOk = /.+@.+\..+/.test(email.value);   setInvalid('f-email', !emailOk); ok = ok && emailOk;
+      setInvalid('f-phone', !phone.value.trim());      ok = ok && !!phone.value.trim();
+      setInvalid('f-topic', !topic.value.trim());      ok = ok && !!topic.value.trim();
       setInvalid('f-message', !message.value.trim());  ok = ok && !!message.value.trim();
 
       if (!consent.checked) {

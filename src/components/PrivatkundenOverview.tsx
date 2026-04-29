@@ -48,13 +48,6 @@ const SERVICES: ServiceItem[] = [
     objectPosition: "center 70%",
   },
   {
-    image: "/beleuchtung-restaurant.png",
-    title: "Beleuchtungstechnik",
-    description:
-      "Architektonische Lichtplanung und professionelle Installation – alles aus einer Hand.",
-    href: "/beleuchtungstechnik",
-  },
-  {
     image: "/servicepaketen-bild.jpeg",
     title: "Service & Wartung",
     description:
@@ -146,14 +139,14 @@ function PKServices() {
           <div className="mx-auto h-[3px] w-14 rounded-full bg-accent" />
         </div>
 
+        {/* Reihe 1: 3 gleiche Karten */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-[767px]:gap-4">
-          {SERVICES.map((s) => (
+          {SERVICES.slice(0, 3).map((s) => (
             <a
               key={s.title}
               href={s.href}
-              className="group relative overflow-hidden rounded-[var(--radius-card)] bg-white shadow-[0_4px_20px_rgba(15,37,51,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(15,37,51,0.12)]"
+              className="group relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-white shadow-[0_4px_20px_rgba(15,37,51,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(15,37,51,0.12)]"
             >
-              {/* Image */}
               <div className="h-[200px] w-full overflow-hidden">
                 <img
                   src={s.image}
@@ -162,14 +155,41 @@ function PKServices() {
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-
-              <div className="p-7 max-[767px]:p-5">
+              <div className="flex flex-1 flex-col p-7 max-[767px]:p-5">
                 <h3 className="mb-3 text-xl font-bold text-ink max-[767px]:mb-2 max-[767px]:text-[1.05rem]">{s.title}</h3>
-                <p className="mb-6 text-[0.95rem] leading-relaxed text-muted max-[767px]:mb-4 max-[767px]:text-[0.9rem] max-[767px]:leading-[1.55]">
+                <p className="mb-6 flex-1 text-[0.95rem] leading-relaxed text-muted max-[767px]:mb-4 max-[767px]:text-[0.9rem] max-[767px]:leading-[1.55]">
                   {s.description}
                 </p>
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-all group-hover:gap-3">
+                  Mehr erfahren
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
 
-                {/* Arrow link */}
+        {/* Reihe 2: 2 zentrierte Karten */}
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:mx-auto sm:max-w-[880px] sm:grid-cols-2 max-[767px]:gap-4">
+          {SERVICES.slice(3).map((s) => (
+            <a
+              key={s.title}
+              href={s.href}
+              className="group relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-white shadow-[0_4px_20px_rgba(15,37,51,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(15,37,51,0.12)]"
+            >
+              <div className="h-[210px] w-full overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  style={{ objectPosition: s.objectPosition }}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-7 max-[767px]:p-5">
+                <h3 className="mb-3 text-xl font-bold text-ink max-[767px]:mb-2 max-[767px]:text-[1.05rem]">{s.title}</h3>
+                <p className="mb-6 flex-1 text-[0.95rem] leading-relaxed text-muted max-[767px]:mb-4 max-[767px]:text-[0.9rem] max-[767px]:leading-[1.55]">
+                  {s.description}
+                </p>
                 <span className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-all group-hover:gap-3">
                   Mehr erfahren
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -307,7 +327,6 @@ import {
   BatteryCharging as BatteryIcon,
   Flame as FlameIcon,
   Zap as ZapIcon,
-  Lightbulb as LightbulbIcon,
   ShieldCheck as ShieldIcon,
   ThumbsUp,
   ThumbsDown,
@@ -344,7 +363,6 @@ const STEP_LEISTUNG: TileOption[] = [
   { icon: SunIcon, label: "Photovoltaik", value: "pv" },
   { icon: BatteryIcon, label: "Wallbox", value: "wallbox" },
   { icon: ZapIcon, label: "Gebäudeenergie", value: "gebaeudeenergie" },
-  { icon: LightbulbIcon, label: "Beleuchtungstechnik", value: "beleuchtung" },
   { icon: ShieldIcon, label: "Service & Wartung", value: "wartung" },
 ];
 
@@ -675,8 +693,7 @@ function PKCta() {
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
-            href="#angebot"
-            data-open-angebot="privatkunden-overview-direkt-anrufen"
+            href="tel:+4982617597176"
             className="inline-flex items-center gap-2 rounded-[var(--radius-btn)] border border-line px-8 py-4 text-sm font-semibold text-ink transition-all hover:border-accent/40 hover:bg-accent/5"
           >
             <Phone className="h-4 w-4" />

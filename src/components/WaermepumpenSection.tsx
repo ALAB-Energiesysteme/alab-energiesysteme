@@ -131,11 +131,11 @@ function WPHighlight() {
           <p className="flex-1 text-[0.95rem] leading-[1.7] text-[#475569]">
             Wärmepumpen sind die innovative Lösung, wenn es um nachhaltiges und effizientes Heizen geht.
             Sie gewinnen Energie direkt aus der Umwelt und wandeln diese in Wärme um.
-            Gemeinsam mit unseren renommierten Partnern bieten wir Ihnen zukunftsweisende
-            Wärmepumpen-Technologie sowie einen professionellen Installations-Service durch erfahrene
-            regionale Handwerkspartner. Die Wärmepumpen überzeugen durch ihr modernes, kompaktes Design
-            und zählen zu den leisesten ihrer Klasse. Besonders wirtschaftlich wird Ihre Wärmepumpe
-            in Verbindung mit einer Photovoltaikanlage.
+            Als Ingenieurbüro und zertifizierter Elektrofachbetrieb bieten wir Ihnen zukunftsweisende
+            Wärmepumpen-Technologie und übernehmen Planung, Installation und Inbetriebnahme mit unseren
+            eigenen Fachkräften – aus einer Hand. Die Wärmepumpen überzeugen durch ihr modernes,
+            kompaktes Design und zählen zu den leisesten ihrer Klasse. Besonders wirtschaftlich wird
+            Ihre Wärmepumpe in Verbindung mit einer Photovoltaikanlage.
           </p>
         </div>
 
@@ -191,7 +191,7 @@ const VORTEILE = [
   {
     num: "02",
     title: "Fachgerechte Installation",
-    text: "Erfahrene Handwerkspartner aus der Region sorgen für einen reibungslosen und fachmännischen Einbau. Lehnen Sie sich zurück und erleben Sie modernste Heizungstechnik.",
+    text: "Unsere eigenen Elektrofachkräfte sorgen für einen reibungslosen und fachmännischen Einbau. Planung, Installation und Inbetriebnahme aus einer Hand – Sie lehnen sich zurück und erleben modernste Heizungstechnik.",
     icon: (
       <img src="/icon-wp-02.png" alt="Fachgerechte Installation" className="h-48 w-48 object-contain" />
     ),
@@ -301,8 +301,8 @@ function WPVorteile() {
                   <div className="flex h-[280px] items-center justify-center">
                     {v.icon}
                   </div>
-                  {/* Content */}
-                  <div className="relative flex flex-1 flex-col px-8 pb-10">
+                  {/* Content – Text wird vor dem Punkt-Muster umgebrochen */}
+                  <div className="relative z-20 flex flex-1 flex-col px-8 pb-10 pr-[210px] max-[640px]:pr-[160px]">
                     <span className="mb-1 text-[0.85rem] font-bold text-accent">
                       {v.num}
                     </span>
@@ -413,7 +413,7 @@ function WPLoslegen() {
               Lass uns loslegen
             </h2>
             <p className="mb-10 max-w-[500px] text-[1.05rem] leading-[1.75] text-muted">
-              Über 150 Jahre Vaillant, über 120 Jahre LEW – bei deinem Wärmepumpen-Projekt stehen dir zwei traditionelle und zuverlässige Unternehmen als Partner zur Seite.
+              Bei deinem Wärmepumpen-Projekt steht dir ALAB Energiesysteme als verlässlicher Partner zur Seite – Ingenieurbüro und zertifizierter Elektrofachbetrieb mit eigenen Fachkräften. Von der ersten Beratung über die ingenieurmäßige Auslegung bis zur schlüsselfertigen Inbetriebnahme – alles aus einer Hand.
             </p>
 
             {/* Features */}

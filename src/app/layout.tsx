@@ -204,14 +204,6 @@ const localBusinessJsonLd = {
           url: `${SITE_URL}/gebaeudeenergie`,
         },
       },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Beleuchtungstechnik & Lichtplanung",
-          url: `${SITE_URL}/beleuchtungstechnik`,
-        },
-      },
     ],
   },
 };
