@@ -10,8 +10,8 @@ export default function LadesaeulenSection() {
     <div className="font-[Montserrat,sans-serif]">
       <LSHero />
       <LSScrollytelling />
-      <LSFaq />
       <LSCtaAbschluss />
+      <LSFaq />
       <LSKontaktFormular />
     </div>
   );

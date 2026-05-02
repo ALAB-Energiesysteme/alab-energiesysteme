@@ -72,19 +72,19 @@ const FAQ_ITEMS = [
 const DP_HERO_CARDS: HeroCardShowcaseItem[] = [
   {
     title: "Pachteinnahmen ohne Investition",
-    subtitle: "Planbar ueber 20+ Jahre",
-    text: "Wir uebernehmen Planung, Bau, Betrieb und Versicherung, waehrend Ihre Dachflaeche zu einer ruhigen, sicheren Einnahmequelle wird.",
-    image: "/img/gewerbliche-loesungen/pv-gewerbe-gewerbedach2.jpg",
+    subtitle: "Planbar über 20+ Jahre",
+    text: "Wir übernehmen Planung, Bau, Betrieb und Versicherung, während Ihre Dachfläche zu einer ruhigen, sicheren Einnahmequelle wird.",
+    image: "/dachverpachtung-pachteinnahmen.jpeg",
   },
   {
     title: "Dachsanierung gegen Verpachtung",
     subtitle: "Neueindeckung statt Sanierungskosten",
-    text: "Besonders fuer Landwirtschaft und Bestandshallen: professionelle Sanierung, neue Dachhaut und anschliessend wirtschaftliche PV-Nutzung.",
+    text: "Besonders für Landwirtschaft und Bestandshallen: professionelle Sanierung, neue Dachhaut und anschließend wirtschaftliche PV-Nutzung.",
     image: "/solaranlage-neu-alab.png",
   },
   {
     title: "PPA & Bilanzoptimierung",
-    subtitle: "Green Energy fuer Gewerbe",
+    subtitle: "Green Energy für Gewerbe",
     text: "Auf Wunsch verbinden wir Dachverpachtung mit direktem Strombezug, stabilen Konditionen und einem sichtbaren Nachhaltigkeitsgewinn.",
     image: "/bilanzoptimierung-dach.jpg",
   },
@@ -96,7 +96,7 @@ export default function DachverpachtungSection() {
       <HeroCardShowcase
         title="DACHVERPACHTUNG FÜR GROSSE DACHFLÄCHEN"
         description="Sichere Pachteinnahmen, optionale Dachsanierung und professionell strukturierte PV-Projekte für Landwirtschaft und Gewerbe – ingenieurmäßig geplant und durch unseren zertifizierten Elektrofachbetrieb sauber umgesetzt."
-        heroImage="/bilanzoptimierung-dach.jpg"
+        heroImage="/dachverpachtung-hero.png"
         heroImageAlt="Großes Dach mit Photovoltaik zur Verpachtung"
         cards={DP_HERO_CARDS}
       />
