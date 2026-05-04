@@ -160,7 +160,7 @@ const HTML = `
   <div class="ac-wrap">
     <section class="ac-hero" aria-labelledby="kontakt-title">
       <span class="ac-eyebrow">Kontakt</span>
-      <h1 class="ac-title" id="kontakt-title">Schnell &amp; direkt zu Ihrem PV-Projekt</h1>
+      <h1 class="ac-title" id="kontakt-title">Schnell &amp; direkt zu Ihrem Projekt</h1>
       <p class="ac-sub">Schreiben Sie uns eine kurze Nachricht – wir melden uns zügig mit einer konkreten Einschätzung oder einem Termin.</p>
     </section>
 

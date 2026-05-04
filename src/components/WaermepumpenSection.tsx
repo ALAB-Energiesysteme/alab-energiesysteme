@@ -292,9 +292,9 @@ function WPVorteile() {
                   className="relative flex flex-[0_0_calc(50%-12px)] flex-col overflow-hidden rounded-[20px] shadow-[0_10px_40px_rgba(15,37,51,0.18)] max-[640px]:flex-[0_0_100%]"
                   style={{ backgroundColor: "rgb(20, 42, 56)" }}
                 >
-                  {/* Dot pattern effect bottom-right */}
+                  {/* Dot pattern effect bottom-right – auf Mobile kleiner, damit Text genug Platz hat */}
                   <div
-                    className="pointer-events-none absolute bottom-0 right-0 z-10 h-[180px] w-[240px]"
+                    className="pointer-events-none absolute bottom-0 right-0 z-10 h-[180px] w-[240px] max-[640px]:h-[100px] max-[640px]:w-[120px]"
                     style={{
                       backgroundImage: `radial-gradient(circle, ${dotColor} 1.5px, transparent 1.5px)`,
                       backgroundSize: "7px 7px",
@@ -307,7 +307,7 @@ function WPVorteile() {
                     {v.icon}
                   </div>
                   {/* Content – Text wird vor dem Punkt-Muster umgebrochen */}
-                  <div className="relative z-20 flex flex-1 flex-col px-8 pb-10 pr-[210px] max-[640px]:pr-[160px]">
+                  <div className="relative z-20 flex flex-1 flex-col px-8 pb-10 pr-[210px] max-[640px]:px-6 max-[640px]:pb-8 max-[640px]:pr-[100px]">
                     <span className="mb-1 text-[0.85rem] font-bold text-accent">
                       {v.num}
                     </span>

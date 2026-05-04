@@ -58,7 +58,7 @@ const SERVICES: ServiceItem[] = [
     image: "/img/geschaeftskunden/servicepaketen-geschaeftskunden.png",
     title: "Servicepakete",
     description:
-      "Wartung, Monitoring und Betriebsführung für Ihre PV-Anlage – alles in einem Paket.",
+      "Montage, Wartung, Monitoring und Betriebsführung für Ihre PV-Anlage – alles in einem Paket.",
     href: "/servicepakete",
   },
   {

@@ -61,7 +61,7 @@ function UUWerWirSind() {
             ALAB Energiesysteme
           </p>
           <h2 className="mb-6 text-[clamp(1.8rem,3.5vw,2.6rem)] font-bold leading-tight text-ink">
-            Ingenieurbüro &amp; Elektrofachbetrieb aus Mindelheim mit Leidenschaft für Energie.
+            Ingenieurbüro &amp; Elektrofachbetrieb aus Mindelheim.
           </h2>
 
           <p className="mb-5 text-[1rem] leading-[1.8] text-muted">
