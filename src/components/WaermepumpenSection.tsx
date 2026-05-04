@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 
 /* ═══════════════════════════════════════════════
@@ -87,11 +88,13 @@ function WPServices() {
             key={service.title}
             className="group overflow-hidden rounded-[var(--radius-card)] bg-white shadow-[0_10px_40px_rgba(15,37,51,0.12)] transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(15,37,51,0.18)]"
           >
-            <div className="flex h-[220px] w-full items-center justify-center overflow-hidden bg-[#f0f6ff]">
-              <img
+            <div className="relative flex h-[220px] w-full items-center justify-center overflow-hidden bg-[#f0f6ff]">
+              <Image
                 src={service.image}
                 alt={service.title}
-                className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                fill
+                sizes="(max-width: 1000px) 100vw, 33vw"
+                className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             <div className="p-7">
@@ -141,11 +144,13 @@ function WPHighlight() {
 
         <div className="mx-auto max-w-[1000px] overflow-hidden rounded-[var(--radius-card)] bg-white shadow-[0_10px_40px_rgba(15,37,51,0.10)]">
           <div className="grid grid-cols-2 max-[768px]:grid-cols-1">
-            <div className="h-full min-h-[300px] overflow-hidden max-[768px]:h-[260px]">
-              <img
+            <div className="relative h-full min-h-[300px] overflow-hidden max-[768px]:h-[260px]">
+              <Image
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80"
                 alt="Familie im Garten"
-                className="h-full w-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
             <div className="flex flex-col justify-center p-8 max-[768px]:p-6">
@@ -185,7 +190,7 @@ const VORTEILE = [
     title: "Nachhaltige Wärmequelle",
     text: "Wärmepumpen beziehen ca. 75 % der Energie direkt aus der Umwelt – eine besonders nachhaltige Art zu heizen. Der Wechsel von fossilen Heizsystemen senkt Ihre Heizkosten langfristig.",
     icon: (
-      <img src="/icon-wp-01.png" alt="Nachhaltige Wärmequelle" className="h-48 w-48 object-contain" />
+      <Image src="/icon-wp-01.png" alt="Nachhaltige Wärmequelle" width={192} height={192} sizes="192px" className="h-48 w-48 object-contain" />
     ),
   },
   {
@@ -193,7 +198,7 @@ const VORTEILE = [
     title: "Fachgerechte Installation",
     text: "Unsere eigenen Elektrofachkräfte sorgen für einen reibungslosen und fachmännischen Einbau. Planung, Installation und Inbetriebnahme aus einer Hand – Sie lehnen sich zurück und erleben modernste Heizungstechnik.",
     icon: (
-      <img src="/icon-wp-02.png" alt="Fachgerechte Installation" className="h-48 w-48 object-contain" />
+      <Image src="/icon-wp-02.png" alt="Fachgerechte Installation" width={192} height={192} sizes="192px" className="h-48 w-48 object-contain" />
     ),
   },
   {
@@ -201,7 +206,7 @@ const VORTEILE = [
     title: "Premium Qualität",
     text: "Wir setzen auf Wärmepumpen mit Premium-Qualität von namenhaften Herstellern. Die Produkte sind mehrfach ausgezeichnet und gehören zu den führenden Geräten ihrer Klasse.",
     icon: (
-      <img src="/icon-wp-03.png" alt="Premium Qualität" className="h-48 w-48 object-contain" />
+      <Image src="/icon-wp-03.png" alt="Premium Qualität" width={192} height={192} sizes="192px" className="h-48 w-48 object-contain" />
     ),
   },
   {
@@ -209,7 +214,7 @@ const VORTEILE = [
     title: "Kombinierbar mit PV-Anlage",
     text: "Besonders wirtschaftlich wird Ihre Wärmepumpe in Verbindung mit einer Photovoltaikanlage. Nutzen Sie Ihren Solarstrom, um Heizkosten weiter zu senken.",
     icon: (
-      <img src="/icon-wp-04.png" alt="Kombinierbar mit PV-Anlage" className="h-48 w-48 object-contain" />
+      <Image src="/icon-wp-04.png" alt="Kombinierbar mit PV-Anlage" width={192} height={192} sizes="192px" className="h-48 w-48 object-contain" />
     ),
   },
   {
@@ -217,7 +222,7 @@ const VORTEILE = [
     title: "Attraktive Förderung",
     text: "Sichern Sie sich bis zu 70 % Förderung vom Staat. Wir unterstützen Sie bei der Antragstellung und maximieren Ihre Fördersumme.",
     icon: (
-      <img src="/icon-wp-05.png" alt="Attraktive Förderung" className="h-48 w-48 object-contain" />
+      <Image src="/icon-wp-05.png" alt="Attraktive Förderung" width={192} height={192} sizes="192px" className="h-48 w-48 object-contain" />
     ),
   },
 ];
@@ -378,11 +383,13 @@ function WPCta() {
         </div>
 
         {/* House Image */}
-        <div className="-mt-20 overflow-hidden rounded-[24px]">
-          <img
+        <div className="relative -mt-20 h-[550px] overflow-hidden rounded-[24px] max-[768px]:h-[350px]">
+          <Image
             src="/wp-haus-unten.png"
             alt="Haus mit Wärmepumpe"
-            className="h-[550px] w-full object-cover max-[768px]:h-[350px]"
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
         </div>
       </div>
@@ -399,11 +406,13 @@ function WPLoslegen() {
       <div className="mx-auto max-w-[1320px] px-7">
         <div className="relative grid grid-cols-[1fr_1.3fr] items-center max-[900px]:grid-cols-1">
           {/* Image */}
-          <div className="relative z-10 overflow-hidden rounded-[20px] shadow-[0_15px_50px_rgba(15,37,51,0.18)] max-[900px]:mx-auto max-[900px]:w-full">
-            <img
+          <div className="relative z-10 h-[500px] overflow-hidden rounded-[20px] shadow-[0_15px_50px_rgba(15,37,51,0.18)] max-[900px]:mx-auto max-[900px]:h-[350px] max-[900px]:w-full">
+            <Image
               src="/wp-loslegen.jpg"
               alt="Bosch Wärmepumpe am Haus"
-              className="h-[500px] w-full object-cover max-[900px]:h-[350px]"
+              fill
+              sizes="(max-width: 900px) 100vw, 45vw"
+              className="object-cover"
             />
           </div>
 
@@ -494,7 +503,7 @@ const FAQ_ITEMS = [
     answer: (
       <>
         <p>Eine Luft-Wasser-Wärmepumpe funktioniert, indem sie Wärme aus der Außenluft aufnimmt und auf eine höhere Temperatur anhebt, um Gebäude zu heizen oder zu kühlen. Dies geschieht durch einen Kreislaufprozess, der im Wesentlichen aus vier Hauptkomponenten besteht:</p>
-        <img src="/was-passiert-im-inneren-einer-waermepumpe.webp" alt="Funktionsweise einer Wärmepumpe – Kreislauf mit Verdampfer, Verdichter, Verflüssiger und Expansionsventil" className="my-6 mx-auto max-w-[600px] w-full rounded-lg" />
+        <Image src="/was-passiert-im-inneren-einer-waermepumpe.webp" alt="Funktionsweise einer Wärmepumpe – Kreislauf mit Verdampfer, Verdichter, Verflüssiger und Expansionsventil" width={600} height={400} sizes="(max-width: 640px) 100vw, 600px" className="my-6 mx-auto max-w-[600px] w-full rounded-lg h-auto" />
         <p className="mt-4"><strong>Verdampfer:</strong><br />Im Verdampfer wird die Wärme aus der Außenluft aufgenommen. Ein Kältemittel verdampft bei niedriger Temperatur, indem es Wärme aus der Quelle aufnimmt.</p>
         <p className="mt-4"><strong>Verdichter:</strong><br />Der verdampfte Kältemittel-Dampf wird in den Verdichter geleitet, der den Druck und die Temperatur des Gases erhöht. Dies führt dazu, dass das Kältemittel sehr heiß wird.</p>
         <p className="mt-4"><strong>Verflüssiger:</strong><br />Das heiße, komprimierte Kältemittel strömt in den Verflüssiger, wo es seine Wärme an das Heizsystem abgibt. Dadurch kondensiert es wieder zu einem flüssigen Zustand.</p>
