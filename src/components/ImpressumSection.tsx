@@ -14,7 +14,8 @@ export default function ImpressumSection() {
     <>
       <style dangerouslySetInnerHTML={{ __html: `
         /* schlanke, lokale Styles – wie bei Datenschutz */
-        .legal-wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
+        .legal-wrap{max-width:1100px;margin:0 auto;padding:140px 16px 80px}
+        @media (max-width: 768px){ .legal-wrap{ padding-top:120px } }
         .legal h1{font-size:clamp(1.6rem,2.2vw + 1rem,2.2rem);margin:0 0 10px;font-weight:800}
         .legal h2{font-size:1.25rem;margin:26px 0 10px;font-weight:800}
         .legal h3{font-size:1.05rem;margin:20px 0 8px;font-weight:700}
