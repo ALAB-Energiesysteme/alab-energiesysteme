@@ -281,7 +281,11 @@ function WPVorteile() {
         >
           <div
             className="flex gap-6 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
-            style={{ transform: `translateX(-${page * (100 / cardsPerView)}%)` }}
+            style={{
+              // pro Page: 1 Kartenbreite + 1 Gap (24px) verschieben.
+              // Kartenbreite = 100% / cardsPerView. Gap pro Page = 24/cardsPerView px.
+              transform: `translateX(calc(-${page} * (${100 / cardsPerView}% + ${24 / cardsPerView}px)))`,
+            }}
           >
             {VORTEILE.map((v, idx) => {
               const isEven = idx % 2 === 0;
@@ -292,9 +296,9 @@ function WPVorteile() {
                   className="relative flex flex-[0_0_calc(50%-12px)] flex-col overflow-hidden rounded-[20px] shadow-[0_10px_40px_rgba(15,37,51,0.18)] max-[640px]:flex-[0_0_100%]"
                   style={{ backgroundColor: "rgb(20, 42, 56)" }}
                 >
-                  {/* Dot pattern effect bottom-right – auf Mobile kleiner, damit Text genug Platz hat */}
+                  {/* Dot pattern effect bottom-right – nur Desktop (auf Mobile zu wenig Platz) */}
                   <div
-                    className="pointer-events-none absolute bottom-0 right-0 z-10 h-[180px] w-[240px] max-[640px]:h-[100px] max-[640px]:w-[120px]"
+                    className="pointer-events-none absolute bottom-0 right-0 z-10 h-[180px] w-[240px] max-[640px]:hidden"
                     style={{
                       backgroundImage: `radial-gradient(circle, ${dotColor} 1.5px, transparent 1.5px)`,
                       backgroundSize: "7px 7px",
@@ -303,11 +307,11 @@ function WPVorteile() {
                     }}
                   />
                   {/* Icon area */}
-                  <div className="flex h-[280px] items-center justify-center">
+                  <div className="flex h-[280px] items-center justify-center max-[640px]:h-[200px]">
                     {v.icon}
                   </div>
                   {/* Content – Text wird vor dem Punkt-Muster umgebrochen */}
-                  <div className="relative z-20 flex flex-1 flex-col px-8 pb-10 pr-[210px] max-[640px]:px-6 max-[640px]:pb-8 max-[640px]:pr-[100px]">
+                  <div className="relative z-20 flex flex-1 flex-col px-8 pb-10 pr-[210px] max-[640px]:px-6 max-[640px]:pb-6 max-[640px]:pr-6">
                     <span className="mb-1 text-[0.85rem] font-bold text-accent">
                       {v.num}
                     </span>
