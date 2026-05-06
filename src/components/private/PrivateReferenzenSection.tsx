@@ -11,7 +11,6 @@ const SLIDES: { src: string; alt: string }[] = [
   { src: `${BASE}anlage5_P.avif`, alt: "Private Photovoltaik-Referenz 5" },
   { src: `${BASE}anlage6_P.avif`, alt: "Private Photovoltaik-Referenz 6" },
   { src: `${BASE}anlage12_P.avif`, alt: "Private Photovoltaik-Referenz 7" },
-  { src: `${BASE}anlage7_P.avif`, alt: "Private Photovoltaik-Referenz 8" },
   { src: `${BASE}joerg-seider.jpg`, alt: "PV-Aufdachanlage – Jörg Seider" },
 ];
 
