@@ -2,8 +2,18 @@
 
 import { useEffect } from "react";
 
-const SLIDES = [1, 2, 3, 4, 5, 6, 12, 7, 8, 9, 10, 11];
 const BASE = "/assets/img/referenzen-privat/";
+const SLIDES: { src: string; alt: string }[] = [
+  { src: `${BASE}anlage1_P.avif`, alt: "Private Photovoltaik-Referenz 1" },
+  { src: `${BASE}anlage2_P.avif`, alt: "Private Photovoltaik-Referenz 2" },
+  { src: `${BASE}anlage3_P.avif`, alt: "Private Photovoltaik-Referenz 3" },
+  { src: `${BASE}anlage4_P.avif`, alt: "Private Photovoltaik-Referenz 4" },
+  { src: `${BASE}anlage5_P.avif`, alt: "Private Photovoltaik-Referenz 5" },
+  { src: `${BASE}anlage6_P.avif`, alt: "Private Photovoltaik-Referenz 6" },
+  { src: `${BASE}anlage12_P.avif`, alt: "Private Photovoltaik-Referenz 7" },
+  { src: `${BASE}anlage7_P.avif`, alt: "Private Photovoltaik-Referenz 8" },
+  { src: `${BASE}joerg-seider.jpg`, alt: "PV-Aufdachanlage – Jörg Seider" },
+];
 
 export default function PrivateReferenzenSection() {
   useEffect(() => {
@@ -281,18 +291,15 @@ export default function PrivateReferenzenSection() {
 
             <div className="rg__viewport" tabIndex={0}>
               <ul className="rg__track">
-                {SLIDES.map((n) => {
-                  const src = `${BASE}anlage${n}_P.avif`;
-                  return (
-                    <li key={n} className="rg__slide">
-                      <a className="rg__figure" href={src}>
-                        <div className="rg__media">
-                          <img src={src} alt={`Private Photovoltaik-Referenz ${n}`} decoding="async" loading="lazy" draggable={false} />
-                        </div>
-                      </a>
-                    </li>
-                  );
-                })}
+                {SLIDES.map((slide) => (
+                  <li key={slide.src} className="rg__slide">
+                    <a className="rg__figure" href={slide.src}>
+                      <div className="rg__media">
+                        <img src={slide.src} alt={slide.alt} decoding="async" loading="lazy" draggable={false} />
+                      </div>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
