@@ -30,8 +30,7 @@ function UUHero() {
       <img
         src="/Alab team bild für webseite.png"
         alt="ALAB Energiesysteme Team"
-        className="absolute inset-0 h-full w-full object-cover opacity-40"
-        style={{ objectPosition: "center top" }}
+        className="absolute inset-0 h-full w-full opacity-40 object-contain object-top sm:object-cover sm:object-top"
       />
       <div className="relative z-10 px-6 text-center">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-accent">
