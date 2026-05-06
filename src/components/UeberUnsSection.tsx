@@ -26,11 +26,11 @@ export default function UeberUnsSection() {
    ═══════════════════════════════════════════════ */
 function UUHero() {
   return (
-    <section className="relative flex min-h-[40vh] items-center justify-center overflow-hidden bg-ink sm:min-h-[55vh]">
+    <section className="relative flex min-h-[50vh] items-center justify-center overflow-hidden bg-ink pt-[80px] sm:min-h-[55vh] sm:pt-0">
       <img
         src="/Alab team bild für webseite.png"
         alt="ALAB Energiesysteme Team"
-        className="absolute inset-0 h-full w-full object-cover opacity-40 object-top"
+        className="absolute inset-x-0 bottom-0 top-[80px] object-cover opacity-40 object-top sm:top-0"
       />
       <div className="relative z-10 px-6 text-center">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-accent">
