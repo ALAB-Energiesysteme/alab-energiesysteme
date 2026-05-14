@@ -101,28 +101,14 @@ const PROCESS_STEPS = [
   },
 ];
 
-const REFERENZEN = [
-  { src: "/assets/img/referenzen-montage/anlage1_M.jpg", label: "Flachdach mit sauberem Modulraster" },
-  { src: "/assets/img/referenzen-montage/anlage2_M.jpg", label: "Hallendach mit sauber geführten Reihen" },
-  { src: "/assets/img/referenzen-montage/anlage3_M.jpg", label: "Großflächige Anlage in der Umsetzung" },
-  { src: "/assets/img/referenzen-montage/anlage4_M.jpg", label: "Gewerbedach mit ausgerichteter UK" },
-  { src: "/assets/img/referenzen-montage/anlage5_M.jpg", label: "Modulfelder mit klarer Linienführung" },
-  { src: "/assets/img/referenzen-montage/anlage6_M.jpg", label: "Montagebild aus laufendem Projekt" },
-  { src: "/assets/img/referenzen-montage/anlage7_M.jpg", label: "Saubere Montage auf Bestandsdach" },
-  { src: "/assets/img/referenzen-montage/anlage8_M.jpg", label: "PV-System mit strukturierter Belegung" },
-  { src: "/assets/img/referenzen-montage/anlage9_M.jpg", label: "Installiertes Dachsystem" },
-  { src: "/assets/img/referenzen-montage/anlage10_M.jpg", label: "Montage auf gewerblicher Fläche" },
-  { src: "/assets/img/referenzen-montage/anlage11_M.jpg", label: "Projekt mit dokumentierter Ausführung" },
-  { src: "/assets/img/referenzen-montage/anlage12_M.jpg", label: "Reihenbild mit technischem Look" },
-  { src: "/assets/img/referenzen-montage/anlage13_M.jpeg", label: "Referenzfoto aus der Montagepraxis" },
-  { src: "/assets/img/referenzen-montage/anlage14_M.jpg", label: "Dachbelegung mit präziser Ausrichtung" },
-  { src: "/assets/img/referenzen-montage/anlage15_M.jpeg", label: "Fertigstellung mit sauberer Moduloptik" },
-  { src: "/assets/img/referenzen-montage/anlage16_M.jpg", label: "Sauber integrierte Modulfelder" },
-  { src: "/assets/img/referenzen-montage/anlage17_M.jpg", label: "Referenzprojekt mit Qualität" },
-  { src: "/assets/img/referenzen-montage/anlage18_M.jpg", label: "Projektaufnahme aus dem Bestand" },
-  { src: "/assets/img/referenzen-montage/anlage19_M.jpg", label: "Technisch sauberes Rasterbild" },
-  { src: "/assets/img/referenzen-montage/anlage20_M.jpg", label: "Fertige Anlage aus der ALAB Praxis" },
-];
+const REFERENZEN = Array.from({ length: 20 }, (_, i) => {
+  const n = i + 1;
+  const ext = n === 13 || n === 15 ? "jpeg" : "jpg";
+  return {
+    src: `/assets/img/referenzen-montage/anlage${n}_M.${ext}`,
+    label: `ALAB Energiesysteme – Montage-Referenz ${n}`,
+  };
+});
 
 const QUALITY_CARDS = [
   {
