@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   ArrowRight,
   Cable,
@@ -101,14 +101,13 @@ const PROCESS_STEPS = [
   },
 ];
 
-const REFERENZEN = Array.from({ length: 20 }, (_, i) => {
-  const n = i + 1;
-  const ext = n === 13 || n === 15 ? "jpeg" : "jpg";
-  return {
-    src: `/assets/img/referenzen-montage/anlage${n}_M.${ext}`,
-    label: `ALAB Energiesysteme – Montage-Referenz ${n}`,
-  };
-});
+// Bilder 13 und 15 existieren nicht / sind leer und werden ausgelassen
+const REFERENZEN = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 20].map(
+  (n) => ({
+    src: `/assets/img/referenzen-montage/anlage${n}_M.jpg`,
+    alt: `ALAB Energiesysteme – Montage-Referenz ${n}`,
+  }),
+);
 
 const QUALITY_CARDS = [
   {
@@ -376,20 +375,41 @@ function MTProcess() {
    ═══════════════════════════════════════════════ */
 function MTReferenzen() {
   const [current, setCurrent] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const [perPage, setPerPage] = useState(3);
+  const touchStart = useRef(0);
+  const touchEnd = useRef(0);
 
-  /* Show 3 at a time on desktop */
-  const perPage = 3;
-  const maxPage = Math.ceil(REFERENZEN.length / perPage) - 1;
+  // Responsive: Mobile 1 Bild, Tablet 2, Desktop 3
+  useEffect(() => {
+    function calc() {
+      const w = window.innerWidth;
+      setPerPage(w < 640 ? 1 : w < 1024 ? 2 : 3);
+    }
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
 
-  const goTo = useCallback(
-    (dir: number) =>
-      setCurrent((c) => Math.max(0, Math.min(maxPage, c + dir))),
-    [maxPage]
-  );
+  const maxPage = Math.max(0, REFERENZEN.length - perPage);
+
+  function goTo(dir: number) {
+    setCurrent((c) => Math.max(0, Math.min(maxPage, c + dir)));
+  }
+
+  function onTouchStart(e: React.TouchEvent) {
+    touchStart.current = e.targetTouches[0].clientX;
+  }
+  function onTouchMove(e: React.TouchEvent) {
+    touchEnd.current = e.targetTouches[0].clientX;
+  }
+  function onTouchEnd() {
+    const diff = touchStart.current - touchEnd.current;
+    if (diff > 60) goTo(1);
+    if (diff < -60) goTo(-1);
+  }
 
   return (
-    <section className="bg-ink px-6 py-24 md:py-32 lg:px-12">
+    <section className="bg-white px-6 py-24 md:py-32 lg:px-12">
       <div className="mx-auto max-w-[1280px]">
         {/* Header */}
         <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -397,10 +417,10 @@ function MTReferenzen() {
             <p className="mb-3 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-accent">
               Referenzen
             </p>
-            <h2 className="text-[clamp(1.8rem,3.4vw,2.6rem)] font-bold leading-[1.12] text-white">
+            <h2 className="text-[clamp(1.8rem,3.4vw,2.6rem)] font-bold leading-[1.12] text-ink">
               Einblicke in die Montagepraxis.
             </h2>
-            <p className="mt-5 text-[1rem] leading-[1.85] text-white/60">
+            <p className="mt-5 text-[1rem] leading-[1.85] text-muted">
               Projekte aus dem Bestand, die zeigen, wie wir arbeiten: technisch
               klar, hochwertig und deutlich näher an Ihrem Qualitätsanspruch.
             </p>
@@ -411,7 +431,7 @@ function MTReferenzen() {
             <button
               onClick={() => goTo(-1)}
               disabled={current === 0}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white transition-all hover:border-white/40 hover:bg-white/10 disabled:opacity-30"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white text-ink transition-all hover:border-accent/40 hover:bg-accent/5 hover:text-accent disabled:opacity-30"
               aria-label="Zurück"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -419,7 +439,7 @@ function MTReferenzen() {
             <button
               onClick={() => goTo(1)}
               disabled={current === maxPage}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white transition-all hover:border-white/40 hover:bg-white/10 disabled:opacity-30"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white text-ink transition-all hover:border-accent/40 hover:bg-accent/5 hover:text-accent disabled:opacity-30"
               aria-label="Weiter"
             >
               <ChevronRight className="h-5 w-5" />
@@ -427,42 +447,36 @@ function MTReferenzen() {
           </div>
         </div>
 
-        {/* Gallery */}
-        <div className="overflow-hidden">
+        {/* 1-Reihen-Swipe-Galerie */}
+        <div
+          className="overflow-hidden"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           <div
-            ref={trackRef}
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${current * 100}%)` }}
+            className="flex gap-6 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
+            style={{
+              // pro Page: 1 Kartenbreite + 1 Gap (24px)
+              transform: `translateX(calc(-${current} * (${100 / perPage}% + ${24 / perPage}px)))`,
+            }}
           >
-            {/* Render in groups of 3 */}
-            {Array.from({ length: maxPage + 1 }).map((_, pageIdx) => (
-              <div
-                key={pageIdx}
-                className="grid w-full shrink-0 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            {REFERENZEN.map((ref) => (
+              <a
+                key={ref.src}
+                href={ref.src}
+                className="group block shrink-0 overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(15,37,51,0.10)] transition-all hover:-translate-y-1 hover:shadow-[0_14px_42px_rgba(15,37,51,0.18)]"
+                style={{
+                  flex: `0 0 calc(${100 / perPage}% - ${(24 * (perPage - 1)) / perPage}px)`,
+                }}
               >
-                {REFERENZEN.slice(pageIdx * perPage, pageIdx * perPage + perPage).map(
-                  (ref) => (
-                    <div
-                      key={ref.src}
-                      className="group overflow-hidden rounded-[26px] bg-ink shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.35)]"
-                    >
-                      <div className="overflow-hidden">
-                        <img
-                          src={ref.src}
-                          alt={ref.label}
-                          className="h-[260px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="px-5 py-4">
-                        <p className="text-[0.85rem] font-semibold text-white/80">
-                          {ref.label}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
+                <img
+                  src={ref.src}
+                  alt={ref.alt}
+                  className="h-[280px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </a>
             ))}
           </div>
         </div>
@@ -476,7 +490,7 @@ function MTReferenzen() {
               className={`h-2 rounded-full transition-all ${
                 i === current
                   ? "w-8 bg-accent"
-                  : "w-2.5 bg-white/20 hover:bg-white/40"
+                  : "w-2.5 bg-line hover:bg-accent/40"
               }`}
               aria-label={`Seite ${i + 1}`}
             />
