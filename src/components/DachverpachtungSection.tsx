@@ -128,7 +128,7 @@ function DPHero() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-ink/80 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-[1320px] px-5 py-32 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1320px] px-5 py-32 lg:px-8 max-[768px]:py-24">
         <div className="max-w-[680px]">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-accent">
             ALAB Energiesysteme — Großprojekte ab 600 m²

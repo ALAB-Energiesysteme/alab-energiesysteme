@@ -70,7 +70,7 @@ export default function HeroCardShowcase({
 }: HeroCardShowcaseProps) {
   return (
     <>
-      <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden bg-ink max-[900px]:h-[60vh] max-[900px]:min-h-[450px]">
+      <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden bg-ink max-[900px]:h-[65vh] max-[900px]:min-h-[520px]">
         <Image
           src={heroImage}
           alt={heroImageAlt}
@@ -81,7 +81,7 @@ export default function HeroCardShowcase({
         />
         <div className="absolute inset-0 z-[2] bg-gradient-to-b from-ink/30 via-ink/50 to-ink/70" />
 
-        <div className="relative z-[3] flex h-full flex-col items-center justify-center px-7 pt-[100px] pb-[60px] text-center">
+        <div className="relative z-[3] flex h-full flex-col items-center justify-center px-7 pt-[120px] pb-[60px] text-center max-[768px]:pt-[140px]">
           <h1 className="m-0 max-w-[1100px] text-[clamp(2.35rem,5vw,4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-white [text-shadow:0_4px_30px_rgba(0,0,0,0.3)]">
             {title}
           </h1>

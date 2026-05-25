@@ -215,7 +215,7 @@ export default function BeleuchtungstechnikSection() {
   return (
     <div id="beleuchtungstechnik" className="scroll-mt-24">
       {/* ─── HERO with video background ─── */}
-      <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-ink pt-20">
+      <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-ink pt-[120px] max-[768px]:pt-[140px]">
         {/* Background video */}
         <video
           autoPlay

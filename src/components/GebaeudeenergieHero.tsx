@@ -14,7 +14,7 @@ export default function GebaeudeenergieHero() {
 
       <div className="absolute inset-0 z-[2] bg-gradient-to-b from-ink/30 via-ink/50 to-ink/70" />
 
-      <div className="relative z-[3] flex h-full flex-col items-center justify-center px-7 pb-[60px] pt-[100px] text-center">
+      <div className="relative z-[3] flex h-full flex-col items-center justify-center px-7 pb-[60px] pt-[120px] text-center max-[768px]:pt-[140px]">
         <h1 className="m-0 text-[clamp(2.5rem,6vw,4.5rem)] font-light uppercase tracking-[0.15em] text-white [text-shadow:0_4px_30px_rgba(0,0,0,0.3)]">
           Gebäudeenergie
         </h1>

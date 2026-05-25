@@ -22,7 +22,7 @@ export default function LadesaeulenSection() {
    ═══════════════════════════════════════════════ */
 function LSHero() {
   return (
-    <section className="relative overflow-hidden bg-[#2b6cb0] pt-[80px]">
+    <section className="relative overflow-hidden bg-[#2b6cb0] pt-[120px] max-[768px]:pt-[140px]">
       {/* Subtle pattern overlay */}
       <div
         className="absolute inset-0 opacity-[0.04]"
