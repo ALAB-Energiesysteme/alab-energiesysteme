@@ -107,6 +107,12 @@ export default function CookieConsent() {
       /* localStorage gesperrt – Consent bleibt nur für diese Session */
     }
     applyConsent(choice);
+    // Anderen Komponenten Bescheid geben (z. B. ClarityAnalytics)
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("cookie-consent-updated", { detail: choice }),
+      );
+    }
     setOpen(false);
     setShowSettings(false);
   }

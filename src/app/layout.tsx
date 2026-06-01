@@ -5,6 +5,7 @@ import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import ClarityAnalytics from "@/components/ClarityAnalytics";
 import "./globals.css";
 
 // AngebotLightbox erst laden, wenn ein Angebot-CTA geklickt wird
@@ -270,6 +271,7 @@ export default function RootLayout({
         <Footer />
         <AngebotLightbox />
         <CookieConsent />
+        <ClarityAnalytics />
       </body>
       <GoogleTagManager gtmId={GTM_ID} />
     </html>
