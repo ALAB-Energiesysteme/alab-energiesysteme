@@ -23,7 +23,9 @@ type GtagFn = (
 
 declare global {
   interface Window {
-    dataLayer?: object[];
+    // muss exakt zu @next/third-parties passen (Object groß)
+    // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
+    dataLayer?: Object[];
     gtag?: GtagFn;
   }
 }
@@ -46,7 +48,7 @@ function applyConsent(choice: ConsentChoice) {
   dl.push({
     event: "cookie_consent_update",
     consent: choice,
-  } as object);
+  });
 
   if (typeof window.gtag === "function") {
     window.gtag("consent", "update", {
