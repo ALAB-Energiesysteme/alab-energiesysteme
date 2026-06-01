@@ -175,6 +175,19 @@ export default function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new Event("open-cookie-settings"));
+                  }
+                }}
+                className="cursor-pointer bg-transparent p-0 text-left text-sm text-muted transition hover:text-accent"
+              >
+                Cookie-Einstellungen
+              </button>
+            </li>
           </ul>
         </div>
 

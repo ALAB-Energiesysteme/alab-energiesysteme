@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import dynamic from "next/dynamic";
+import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
 // AngebotLightbox erst laden, wenn ein Angebot-CTA geklickt wird
@@ -9,6 +12,8 @@ import "./globals.css";
 const AngebotLightbox = dynamic(() => import("@/components/AngebotLightbox"), {
   ssr: true,
 });
+
+const GTM_ID = "GTM-NJZV7GTH";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -221,6 +226,38 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://hook.eu2.make.com" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+        {/*
+          Google Consent Mode v2 – MUSS vor GTM laden.
+          Setzt alle Tracking-Kategorien default auf "denied",
+          bis der User im Cookie-Banner zustimmt.
+        */}
+        <Script
+          id="consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'personalization_storage': 'denied',
+                'functionality_storage': 'granted',
+                'security_storage': 'granted',
+                'wait_for_update': 500
+              });
+              gtag('set', 'ads_data_redaction', true);
+              gtag('set', 'url_passthrough', true);
+            `,
+          }}
+        />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -232,7 +269,9 @@ export default function RootLayout({
         {children}
         <Footer />
         <AngebotLightbox />
+        <CookieConsent />
       </body>
+      <GoogleTagManager gtmId={GTM_ID} />
     </html>
   );
 }
