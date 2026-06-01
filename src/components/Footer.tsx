@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 
 /* ── Link data (synced with Header NAV_ITEMS) ── */
@@ -32,10 +33,14 @@ const MAKE_URL =
   "https://hook.eu2.make.com/yloo9gmjoxtsua7r2g5z6af9lqs0ei3y";
 
 export default function Footer() {
+  const pathname = usePathname();
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [consent, setConsent] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+
+  // Auf Ads-Landing-Pages: kein globaler Footer – LP hat eigenen Mini-Footer
+  if (pathname?.startsWith("/lp/")) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Globales Kontakt-/Angebots-Lightbox.
@@ -18,6 +19,7 @@ const PRIVACY_URL = "/datenschutz";
 const QUEUE_KEY = "alabLeadQueueGlobal";
 
 export default function AngebotLightbox() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [quelle, setQuelle] = useState<string>("website");
   const [sending, setSending] = useState(false);
@@ -183,6 +185,9 @@ export default function AngebotLightbox() {
     window.addEventListener("online", flush);
     return () => window.removeEventListener("online", flush);
   }, []);
+
+  // Auf Ads-Landing-Pages: keine globale Angebot-Lightbox
+  if (pathname?.startsWith("/lp/")) return null;
 
   return (
     <>
