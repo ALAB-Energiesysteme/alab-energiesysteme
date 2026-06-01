@@ -23,7 +23,7 @@ type GtagFn = (
 
 declare global {
   interface Window {
-    dataLayer: unknown[];
+    dataLayer?: object[];
     gtag?: GtagFn;
   }
 }
@@ -41,12 +41,12 @@ function readStored(): ConsentChoice | null {
 
 function applyConsent(choice: ConsentChoice) {
   if (typeof window === "undefined") return;
-  window.dataLayer = window.dataLayer || [];
+  const dl = (window.dataLayer = window.dataLayer || []);
   // GTM/GA4 Consent Mode v2 – Update mit User-Entscheidung
-  window.dataLayer.push({
+  dl.push({
     event: "cookie_consent_update",
     consent: choice,
-  });
+  } as object);
 
   if (typeof window.gtag === "function") {
     window.gtag("consent", "update", {
