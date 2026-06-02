@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ShieldCheck } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────
    DSGVO-konformer Cookie-Banner mit Google Consent Mode v2
@@ -161,70 +162,89 @@ export default function CookieConsent() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="cookie-title"
-        className={`fixed z-[9999] ${
+        className={`fixed z-[9999] overflow-hidden border border-[#e5edf5] bg-white shadow-[0_30px_80px_-20px_rgba(15,37,51,0.30)] ${
           showSettings
-            ? "left-1/2 top-1/2 max-h-[88vh] w-[min(92vw,560px)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto"
-            : "bottom-4 left-1/2 w-[min(92vw,720px)] -translate-x-1/2 sm:bottom-6"
-        } rounded-[20px] border border-line bg-white p-6 shadow-[0_24px_60px_-12px_rgba(15,37,51,0.25)] sm:p-7`}
+            ? "left-1/2 top-1/2 max-h-[88vh] w-[min(92vw,580px)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-[18px]"
+            : "bottom-4 left-1/2 w-[min(94vw,820px)] -translate-x-1/2 rounded-[18px] sm:bottom-6"
+        }`}
       >
+        {/* Schmaler Akzent-Balken oben */}
+        <div className="h-[3px] w-full bg-gradient-to-r from-accent-deep via-accent to-accent-deep" />
+
+        <div className="p-6 sm:p-8">
         {!showSettings ? (
-          <>
-            <h2
-              id="cookie-title"
-              className="mb-2 text-[1.1rem] font-bold text-ink"
-            >
-              🍪 Wir respektieren Ihre Privatsphäre
-            </h2>
-            <p className="mb-5 text-[0.92rem] leading-relaxed text-muted">
-              Wir nutzen Cookies und ähnliche Technologien, um diese Website
-              bestmöglich an Ihre Bedürfnisse anzupassen sowie unsere Inhalte zu
-              verbessern. Nicht-essenzielle Cookies werden nur mit Ihrer
-              Zustimmung gesetzt. Mehr Details in unserer{" "}
-              <a
-                href="/datenschutz"
-                className="font-semibold text-accent underline underline-offset-2 hover:text-accent-deep"
-              >
-                Datenschutzerklärung
-              </a>
-              .
-            </p>
-            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-end">
-              <button
-                type="button"
-                onClick={() => setShowSettings(true)}
-                className="rounded-full border border-line bg-white px-5 py-2.5 text-[0.88rem] font-semibold text-ink transition-all hover:border-accent/40 hover:bg-accent/5 hover:text-accent"
-              >
-                Einstellungen
-              </button>
-              <button
-                type="button"
-                onClick={rejectAll}
-                className="rounded-full border border-line bg-white px-5 py-2.5 text-[0.88rem] font-semibold text-ink transition-all hover:border-accent/40 hover:bg-accent/5 hover:text-accent"
-              >
-                Nur notwendige
-              </button>
-              <button
-                type="button"
-                onClick={acceptAll}
-                className="rounded-full bg-accent px-6 py-2.5 text-[0.88rem] font-bold text-white shadow-[0_4px_14px_rgba(43,108,176,0.35)] transition-all hover:-translate-y-0.5 hover:bg-accent-deep"
-              >
-                Alle akzeptieren
-              </button>
+          <div className="sm:flex sm:items-start sm:gap-6">
+            {/* Icon links */}
+            <div className="mb-4 hidden h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 sm:flex">
+              <ShieldCheck className="h-6 w-6 text-accent" strokeWidth={1.8} />
             </div>
-          </>
+
+            <div className="flex-1">
+              <h2
+                id="cookie-title"
+                className="mb-2 text-[1.05rem] font-bold tracking-[-0.005em] text-ink sm:text-[1.15rem]"
+              >
+                Wir respektieren Ihre Privatsphäre
+              </h2>
+              <p className="mb-5 text-[0.9rem] leading-relaxed text-muted sm:text-[0.92rem]">
+                Wir nutzen Cookies und ähnliche Technologien, um Ihnen ein
+                optimales Erlebnis zu bieten und unsere Inhalte zu verbessern.
+                Nicht-essenzielle Cookies werden nur mit Ihrer ausdrücklichen
+                Zustimmung gesetzt. Details in unserer{" "}
+                <a
+                  href="/datenschutz"
+                  className="font-semibold text-accent underline underline-offset-2 hover:text-accent-deep"
+                >
+                  Datenschutzerklärung
+                </a>
+                .
+              </p>
+
+              <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() => setShowSettings(true)}
+                  className="text-[0.85rem] font-semibold text-muted underline underline-offset-4 transition-colors hover:text-accent sm:mr-auto sm:no-underline"
+                >
+                  Einstellungen anpassen
+                </button>
+                <button
+                  type="button"
+                  onClick={rejectAll}
+                  className="rounded-md border border-[#e5edf5] bg-white px-5 py-2.5 text-[0.86rem] font-semibold text-ink transition-all hover:border-accent/40 hover:bg-[#f3f7fc] hover:text-accent"
+                >
+                  Nur notwendige
+                </button>
+                <button
+                  type="button"
+                  onClick={acceptAll}
+                  className="rounded-md bg-gradient-to-r from-accent-deep to-accent px-6 py-2.5 text-[0.86rem] font-bold tracking-[-0.005em] text-white shadow-[0_2px_8px_-2px_rgba(30,79,139,0.30)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_16px_-4px_rgba(30,79,139,0.45)]"
+                >
+                  Alle akzeptieren
+                </button>
+              </div>
+            </div>
+          </div>
         ) : (
           <>
-            <h2
-              id="cookie-title"
-              className="mb-2 text-[1.1rem] font-bold text-ink"
-            >
-              Cookie-Einstellungen
-            </h2>
-            <p className="mb-5 text-[0.9rem] leading-relaxed text-muted">
-              Wählen Sie selbst, welche Kategorien Sie zulassen möchten. Die
-              technisch notwendigen Cookies sind für den Betrieb der Seite
-              unverzichtbar.
-            </p>
+            <div className="mb-5 flex items-start gap-4">
+              <div className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10 sm:flex">
+                <ShieldCheck className="h-5 w-5 text-accent" strokeWidth={1.8} />
+              </div>
+              <div className="flex-1">
+                <h2
+                  id="cookie-title"
+                  className="mb-2 text-[1.05rem] font-bold tracking-[-0.005em] text-ink sm:text-[1.15rem]"
+                >
+                  Cookie-Einstellungen
+                </h2>
+                <p className="text-[0.88rem] leading-relaxed text-muted">
+                  Wählen Sie selbst, welche Kategorien Sie zulassen möchten.
+                  Die technisch notwendigen Cookies sind für den Betrieb der
+                  Seite unverzichtbar.
+                </p>
+              </div>
+            </div>
 
             <div className="mb-5 space-y-3">
               <ConsentRow
@@ -254,33 +274,33 @@ export default function CookieConsent() {
               />
             </div>
 
-            <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
+            <div className="flex flex-col gap-2 border-t border-[#e5edf5] pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
               <button
                 type="button"
                 onClick={rejectAll}
-                className="rounded-full border border-line bg-white px-5 py-2.5 text-[0.88rem] font-semibold text-ink transition-all hover:border-accent/40 hover:bg-accent/5 hover:text-accent"
+                className="rounded-md border border-[#e5edf5] bg-white px-5 py-2.5 text-[0.86rem] font-semibold text-ink transition-all hover:border-accent/40 hover:bg-[#f3f7fc] hover:text-accent sm:mr-auto"
               >
                 Nur notwendige
               </button>
               <button
                 type="button"
                 onClick={saveCustom}
-                className="rounded-full border border-line bg-white px-5 py-2.5 text-[0.88rem] font-semibold text-ink transition-all hover:border-accent/40 hover:bg-accent/5 hover:text-accent"
+                className="rounded-md border border-[#e5edf5] bg-white px-5 py-2.5 text-[0.86rem] font-semibold text-ink transition-all hover:border-accent/40 hover:bg-[#f3f7fc] hover:text-accent"
               >
                 Auswahl speichern
               </button>
               <button
                 type="button"
                 onClick={acceptAll}
-                className="rounded-full bg-accent px-6 py-2.5 text-[0.88rem] font-bold text-white shadow-[0_4px_14px_rgba(43,108,176,0.35)] transition-all hover:-translate-y-0.5 hover:bg-accent-deep"
+                className="rounded-md bg-gradient-to-r from-accent-deep to-accent px-6 py-2.5 text-[0.86rem] font-bold tracking-[-0.005em] text-white shadow-[0_2px_8px_-2px_rgba(30,79,139,0.30)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_16px_-4px_rgba(30,79,139,0.45)]"
               >
                 Alle akzeptieren
               </button>
             </div>
 
-            <p className="mt-5 text-[0.78rem] text-muted">
+            <p className="mt-5 text-[0.76rem] leading-relaxed text-muted">
               Sie können Ihre Einstellungen jederzeit über den Link
-              „Cookie-Einstellungen" im Footer ändern. Details:{" "}
+              „Cookie-Einstellungen" im Footer ändern. Details in unserer{" "}
               <a
                 href="/datenschutz"
                 className="text-accent underline underline-offset-2 hover:text-accent-deep"
@@ -291,6 +311,7 @@ export default function CookieConsent() {
             </p>
           </>
         )}
+        </div>
       </div>
     </>
   );

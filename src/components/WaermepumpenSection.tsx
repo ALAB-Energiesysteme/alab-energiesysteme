@@ -24,7 +24,7 @@ export default function WaermepumpenSection() {
 /* ═══════════════════════════════════════════════
    SECTION 1 – Hero Video
    ═══════════════════════════════════════════════ */
-function WPHero() {
+export function WPHero() {
   return (
     <section className="relative h-[75vh] min-h-[550px] w-full overflow-hidden max-[900px]:h-[60vh] max-[900px]:min-h-[450px]">
       <video
@@ -79,7 +79,7 @@ const SERVICES = [
   },
 ];
 
-function WPServices() {
+export function WPServices() {
   return (
     <section className="relative z-10 -mt-[120px] px-7 pb-20 max-[1000px]:-mt-20">
       <div className="mx-auto grid max-w-[1320px] grid-cols-3 gap-[30px] max-[1000px]:mx-auto max-[1000px]:max-w-[500px] max-[1000px]:grid-cols-1 max-[1000px]:gap-6">
@@ -119,7 +119,7 @@ function WPServices() {
 /* ═══════════════════════════════════════════════
    SECTION 3 – Hochmoderne Wärmepumpen (Feature style)
    ═══════════════════════════════════════════════ */
-function WPHighlight() {
+export function WPHighlight() {
   return (
     <section className="bg-[#f4f6f8] px-8 py-[60px]">
       <div className="mx-auto max-w-[1200px]">
@@ -227,7 +227,7 @@ const VORTEILE = [
   },
 ];
 
-function WPVorteile() {
+export function WPVorteile() {
   const [page, setPage] = useState(0);
   const cardsPerView = useCardsPerView();
   const maxPage = Math.max(0, VORTEILE.length - cardsPerView);
@@ -404,7 +404,7 @@ function WPCta() {
 /* ═══════════════════════════════════════════════
    SECTION 6 – Lass uns loslegen
    ═══════════════════════════════════════════════ */
-function WPLoslegen() {
+export function WPLoslegen() {
   return (
     <section className="py-[100px]">
       <div className="mx-auto max-w-[1320px] px-7">
@@ -589,7 +589,7 @@ function FaqItem({ item, isOpen, onToggle }: { item: typeof FAQ_ITEMS[0]; isOpen
   );
 }
 
-function WPFaq() {
+export function WPFaq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
