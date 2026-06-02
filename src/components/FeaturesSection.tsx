@@ -19,8 +19,8 @@ export default function FeaturesSection() {
     <section className="bg-[#f4f6f8] py-[60px] px-8 max-[767px]:py-10 max-[767px]:px-4 max-[479px]:py-8">
       <div className="mx-auto max-w-[1200px]">
         {/* Top: Title + Description */}
-        <div className="mb-[60px] flex gap-[60px] max-[900px]:flex-col max-[900px]:gap-8 max-[767px]:mb-8 max-[767px]:gap-5">
-          <div className="min-w-[280px] shrink-0 max-[767px]:min-w-0">
+        <div className="mb-[60px] flex gap-[60px] max-[1100px]:flex-col max-[1100px]:gap-8 max-[767px]:mb-8 max-[767px]:gap-5">
+          <div className="w-[320px] shrink-0 max-[1100px]:w-full max-[767px]:min-w-0">
             <h2 className="text-[1.75rem] font-bold leading-[1.3] text-[#0f172a] max-[767px]:text-[1.4rem] max-[767px]:leading-[1.25]">
               Ihr Partner für{" "}
               <span className="text-[#0369a1]">
