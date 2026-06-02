@@ -757,22 +757,17 @@ export default function PrivateKomponentenSection() {
   #alab-hero .stat-value{ font-size:1.25rem; }
   #alab-hero .feature-card h4{ font-size:.85rem; }
 }
-@media (max-width:968px){
-  #alab-hero .hotspot-container{ flex-direction: column; }
-  #alab-hero .side-panel{ width:100%; flex-direction:row; justify-content:center; }
-  #alab-hero .left-panel, #alab-hero .right-panel{ align-items:center; }
-  #alab-hero .stat-card, #alab-hero .feature-card{ max-width:200px; }
-}
-@media (max-width:768px){
+/* Tablet & Mobile (< 1024px): Hotspot-Galerie ausblenden,
+   stattdessen die saubere mobile Komponentenliste zeigen.
+   Die ehemalige horizontale Quetschung der Side-Panels entfaellt damit. */
+@media (max-width:1023px){
   #alab-hero .alab-container{ padding: var(--spacing-lg) var(--spacing-sm); }
   #alab-hero .hotspot-container{ display:none; }
   #alab-hero .mobile-component-list{ display:block; }
+}
+@media (max-width:768px){
   #alab-hero .title{ font-size:1.75rem; }
   #alab-hero .subtitle{ font-size:1rem; }
-}
-@media (min-width:769px) and (max-width:1024px){
-  #alab-hero .info-card{ width:320px; }
-  #alab-hero .hero-image-wrapper{ max-width:100%; }
 }
 
 @media print{
