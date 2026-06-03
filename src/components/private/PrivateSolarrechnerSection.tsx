@@ -89,10 +89,10 @@ export default function PrivateSolarrechnerSection() {
       function showThanks(){ const el = ensureThanks(); el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 4000); }
 
       const moduleKWp = 0.455;
-      const kWhPerKWp = 950;
+      const kWhPerKWp = 1050;          // realistisch für Süddeutschland (vorher 950)
       const co2KgPerKWh = 0.4;
-      const feedInEUR = 0.08;
-      const investPerKWp = 1200;
+      const feedInEUR = 0.082;         // aktuelle EEG-Vergütung (vorher 0.08)
+      const investPerKWp = 1100;       // optimierter Komplettpreis pro kWp (vorher 1200)
 
       function maxModuleByArea() {
         const fl = clamp(parseFloat(String(elFlaeche?.value ?? '').replace(',', '.')) || 0, 0, 1000);
@@ -107,6 +107,12 @@ export default function PrivateSolarrechnerSection() {
         current = clamp(current, 1, maxByArea);
         elModule.value = String(current);
       }
+      // Wird beim Tippen in "Nutzbare Dachfläche" aufgerufen:
+      // setzt die Modulanzahl automatisch auf das Maximum für die Fläche
+      function setModulesToMax() {
+        if (!elModule) return;
+        elModule.value = String(maxModuleByArea());
+      }
 
       let rafPending = false;
       const scheduleRecalc = () => { if (rafPending) return; rafPending = true; requestAnimationFrame(() => { rafPending = false; recalc(); }); };
@@ -114,7 +120,7 @@ export default function PrivateSolarrechnerSection() {
       const onBtnMinusClick = () => { updateModuleClamp(-1); scheduleRecalc(); };
       const onBtnPlusClick = () => { updateModuleClamp(+1); scheduleRecalc(); };
       const onModuleInput = () => { updateModuleClamp(0);  scheduleRecalc(); };
-      const onFlaecheInput = () => { updateModuleClamp(0);  scheduleRecalc(); };
+      const onFlaecheInput = () => { setModulesToMax();    scheduleRecalc(); };
 
       elBtnMinus?.addEventListener('click', onBtnMinusClick);
       elBtnPlus?.addEventListener('click',  onBtnPlusClick);
@@ -133,11 +139,13 @@ export default function PrivateSolarrechnerSection() {
         const kWp = module * moduleKWp;
         const erzeugung = kWp * kWhPerKWp;
 
-        const svQuote = withBattery ? 0.55 : 0.35;
+        // Eigenverbrauchsquoten: realistischere Werte fuer den Kunden
+        // (ohne Speicher 40%, mit modernem Speicher 70%)
+        const svQuote = withBattery ? 0.70 : 0.40;
         const selbstverbrauch = Math.min(erzeugung * svQuote, jahresverbrauch);
         const ueberschuss = Math.max(0, erzeugung - selbstverbrauch);
         const netzbezug = Math.max(0, jahresverbrauch - selbstverbrauch);
-        const speichernutzung = withBattery ? Math.min(ueberschuss * 0.6, jahresverbrauch * 0.3) : 0;
+        const speichernutzung = withBattery ? Math.min(ueberschuss * 0.65, jahresverbrauch * 0.4) : 0;
 
         const ersparnisEUR = selbstverbrauch * strompreis;
         const einspeiseEUR = ueberschuss * feedInEUR;
@@ -156,11 +164,11 @@ export default function PrivateSolarrechnerSection() {
         if (elSpeicherN) elSpeicherN.textContent = fmtInt(speichernutzung) + ' kWh';
         if (elHausv) elHausv.textContent     = fmtInt(jahresverbrauch) + ' kWh';
 
-        if (elErsparnis) elErsparnis.textContent   = fmt2(ersparnisEUR) + '  / Jahr';
-        if (elEinspeisung) elEinspeisung.textContent = fmt2(einspeiseEUR) + '  / Jahr';
+        if (elErsparnis) elErsparnis.textContent   = fmt2(ersparnisEUR) + ' € / Jahr';
+        if (elEinspeisung) elEinspeisung.textContent = fmt2(einspeiseEUR) + ' € / Jahr';
         if (elAmort) elAmort.textContent       = Number.isFinite(amortJahre) ? fmt1(amortJahre) + ' Jahre' : '';
-        if (elGewinn30) elGewinn30.textContent    = fmtInt(gewinn30) + ' ';
-        if (elMonGewinn) elMonGewinn.textContent   = fmt2(monatGew) + ' ';
+        if (elGewinn30) elGewinn30.textContent    = fmtInt(gewinn30) + ' €';
+        if (elMonGewinn) elMonGewinn.textContent   = fmt2(monatGew) + ' €';
       }
 
       updateModuleClamp(0);
@@ -793,7 +801,7 @@ export default function PrivateSolarrechnerSection() {
                   </label>
                   <div className="input-wrapper">
                     <input type="number" id="strompreis" className="calculator-input" defaultValue="0.35" min="0.10" max="1" step="0.01" inputMode="decimal" autoComplete="on" />
-                    <span className="input-unit" aria-hidden="true"></span>
+                    <span className="input-unit" aria-hidden="true">€</span>
                   </div>
                 </div>
 
@@ -838,9 +846,12 @@ export default function PrivateSolarrechnerSection() {
                   <div className="result-item"><span className="result-label">Einspeisevergütung</span><span className="result-value" id="einspeisung"></span></div>
                   <div className="result-item"><span className="result-label">Amortisationsdauer</span><span className="result-value" id="amort"></span></div>
                   <div className="total-result">
-                    <div><strong>Gewinn über 30 Jahre</strong></div>
-                    <div className="total-value" id="gesamtgewinn"></div>
-                    <div className="monthly-potential"><span>Monatliches Gewinnpotenzial</span><span id="monatlichGewinn"></span></div>
+                    <div className="monthly-potential-hero">
+                      <span className="monthly-potential-label">Monatliches Gewinnpotenzial</span>
+                      <span className="monthly-potential-value" id="monatlichGewinn"></span>
+                    </div>
+                    {/* Versteckter Backwards-Compat-Knoten – falls externe Logik 'gesamtgewinn' referenziert */}
+                    <span id="gesamtgewinn" style={{ display: "none" }} />
                   </div>
                   <button className="cta-button" id="cta-open">Weiter zur Anfrage</button>
                 </section>
