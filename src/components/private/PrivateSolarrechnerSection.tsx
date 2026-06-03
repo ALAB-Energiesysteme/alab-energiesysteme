@@ -390,9 +390,47 @@ export default function PrivateSolarrechnerSection() {
 #alab-solarcalc .result-item:first-of-type { border-top: none; }
 #alab-solarcalc .result-label { color: var(--text-secondary); }
 #alab-solarcalc .result-value { font-weight: 700; color: var(--primary-light); }
-#alab-solarcalc .total-result { margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+#alab-solarcalc .total-result { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 18px; }
 #alab-solarcalc .total-value { font-size: 26px; font-weight: 800; margin-top: 6px; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 #alab-solarcalc .monthly-potential { display: flex; justify-content: space-between; color: var(--text-secondary); margin-top: 6px; font-size: 14px; }
+
+/* Monatliches Gewinnpotenzial – Hero-Darstellung (prominenter Block) */
+#alab-solarcalc .monthly-potential-hero {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  padding: 20px 22px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, rgba(43,108,176,0.10), rgba(43,108,176,0.03)) !important;
+  border: 1px solid rgba(43,108,176,0.22) !important;
+  box-shadow: 0 6px 20px -8px rgba(43,108,176,0.22) !important;
+}
+#alab-solarcalc .monthly-potential-label {
+  display: block !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.10em !important;
+  color: var(--text-secondary) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+#alab-solarcalc .monthly-potential-value {
+  display: block !important;
+  font-size: 38px !important;
+  font-weight: 800 !important;
+  line-height: 1.05 !important;
+  background: var(--primary-gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  letter-spacing: -0.01em !important;
+}
+@media (max-width: 640px) {
+  #alab-solarcalc .monthly-potential-hero { padding: 16px 18px !important; }
+  #alab-solarcalc .monthly-potential-label { font-size: 11.5px !important; }
+  #alab-solarcalc .monthly-potential-value { font-size: 30px !important; }
+}
 #alab-solarcalc .cta-button { display: inline-block; margin-top: 18px; padding: 14px 22px; border-radius: var(--radius-lg); background: var(--primary-gradient); border: none; color: #ffffff; font-weight: 700; font-size: 16px; cursor: pointer; width: 100%; transition: transform .12s ease; box-shadow: var(--shadow-sm); }
 #alab-solarcalc .cta-button:hover { transform: translateY(-1px); }
 
