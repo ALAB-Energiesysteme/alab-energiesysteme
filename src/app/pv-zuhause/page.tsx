@@ -45,11 +45,15 @@ const pvJsonLd = {
   description:
     "Planung und schlüsselfertige Installation von Photovoltaikanlagen mit Stromspeicher und Wallbox für Einfamilienhäuser. Ingenieurmäßige Auslegung, normgerechte Montage und persönliche Betreuung – alles aus einer Hand.",
   provider: { "@id": `${SITE_URL}/#organization` },
-  areaServed: [
-    { "@type": "City", name: "Mindelheim" },
-    { "@type": "State", name: "Bayern" },
-    { "@type": "Country", name: "Deutschland" },
-  ],
+  areaServed: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 48.0445,
+      longitude: 10.4889,
+    },
+    geoRadius: 50000,
+  },
   audience: {
     "@type": "Audience",
     audienceType: "Eigenheimbesitzer",

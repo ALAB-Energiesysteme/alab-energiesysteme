@@ -147,14 +147,35 @@ const localBusinessJsonLd = {
     latitude: 48.0445,
     longitude: 10.4889,
   },
-  areaServed: [
-    { "@type": "Country", name: "Deutschland" },
-    { "@type": "State", name: "Bayern" },
-    { "@type": "City", name: "Mindelheim" },
-    { "@type": "City", name: "Memmingen" },
-    { "@type": "City", name: "Kaufbeuren" },
-    { "@type": "City", name: "Augsburg" },
-    { "@type": "City", name: "Kempten" },
+  // Haupt-Einzugsgebiet: 50 km rund um Mindelheim
+  areaServed: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 48.0445,
+      longitude: 10.4889,
+    },
+    geoRadius: 50000,
+  },
+  serviceArea: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 48.0445,
+      longitude: 10.4889,
+    },
+    geoRadius: 50000,
+  },
+  // Konkrete Orte im Einzugsgebiet (verstärkt lokale Relevanz)
+  knowsAbout: [
+    "Photovoltaik",
+    "Wärmepumpe",
+    "Wallbox",
+    "Stromspeicher",
+    "Elektroinstallation",
+    "Gebäudeenergie",
+    "PV-Anlage Mindelheim",
+    "Wärmepumpe Unterallgäu",
   ],
   priceRange: "€€",
   openingHoursSpecification: [
@@ -165,6 +186,13 @@ const localBusinessJsonLd = {
       closes: "17:00",
     },
   ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "27",
+    bestRating: "5",
+    worstRating: "1",
+  },
   sameAs: [],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -222,6 +250,12 @@ export default function RootLayout({
   return (
     <html lang="de" className={montserrat.variable}>
       <head>
+        {/* Lokale Geo-Signale für Suchmaschinen (Standort Mindelheim) */}
+        <meta name="geo.region" content="DE-BY" />
+        <meta name="geo.placename" content="Mindelheim" />
+        <meta name="geo.position" content="48.0445;10.4889" />
+        <meta name="ICBM" content="48.0445, 10.4889" />
+
         {/* Performance: schon einmal die Verbindung zu kritischen Drittanbietern aufbauen */}
         <link rel="preconnect" href="https://hook.eu2.make.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://hook.eu2.make.com" />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import WaermepumpenSection from "@/components/WaermepumpenSection";
+import EinsatzgebietSection from "@/components/EinsatzgebietSection";
 
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
@@ -47,11 +48,15 @@ const wpJsonLd = {
   description:
     "Planung, Auslegung und schlüsselfertige Installation moderner Luft-Wasser-Wärmepumpen für Sanierung und Neubau. Inklusive Beratung zur BEG-Förderung (bis 70 %), hydraulischem Abgleich und Inbetriebnahme.",
   provider: { "@id": `${SITE_URL}/#organization` },
-  areaServed: [
-    { "@type": "City", name: "Mindelheim" },
-    { "@type": "State", name: "Bayern" },
-    { "@type": "Country", name: "Deutschland" },
-  ],
+  areaServed: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 48.0445,
+      longitude: 10.4889,
+    },
+    geoRadius: 50000,
+  },
   url: `${SITE_URL}/waermepumpen`,
 };
 
@@ -116,6 +121,7 @@ export default function WaermepumpenPage() {
       <Header />
       <main>
         <WaermepumpenSection />
+        <EinsatzgebietSection leistung="Wärmepumpen" />
       </main>
     </>
   );
