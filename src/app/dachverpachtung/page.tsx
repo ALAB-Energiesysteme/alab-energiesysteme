@@ -5,10 +5,12 @@ import DachverpachtungSection from "@/components/DachverpachtungSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Dachverpachtung für Photovoltaik – Pachteinnahmen für Ihr Dach | ALAB Energiesysteme",
+  title: {
+    absolute:
+      "Dachverpachtung Photovoltaik – Pacht fürs Dach | ALAB Energiesysteme",
+  },
   description:
-    "Dachflächen verpachten für Photovoltaik: ALAB Energiesysteme aus Mindelheim übernimmt Planung, Bau, Betrieb und Versicherung. Sichere Pachteinnahmen über 20+ Jahre für Landwirte und Gewerbe.",
+    "Dach verpachten & 20+ Jahre sichere Pachteinnahmen ohne Investition. ALAB aus Mindelheim übernimmt Planung, Bau, Betrieb & Versicherung. Jetzt Ertrag prüfen!",
   alternates: { canonical: `${SITE_URL}/dachverpachtung` },
   keywords: [
     "Dachverpachtung Photovoltaik",

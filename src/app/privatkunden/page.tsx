@@ -5,10 +5,12 @@ import PrivatkundenOverview from "@/components/PrivatkundenOverview";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Privatkunden – Photovoltaik, Wärmepumpe & Energietechnik fürs Eigenheim",
+  title: {
+    absolute:
+      "Photovoltaik & Wärmepumpe fürs Eigenheim Mindelheim | ALAB",
+  },
   description:
-    "Energielösungen für Privatkunden aus 87719 Mindelheim: Photovoltaik, Wärmepumpe, Wallbox, Gebäudetechnik & Beleuchtung schlüsselfertig. ALAB Energiesysteme – Ingenieurbüro & zertifizierter Elektrofachbetrieb fürs Eigenheim.",
+    "Energielösungen fürs Eigenheim aus Mindelheim: Photovoltaik, Wärmepumpe, Wallbox & Gebäudetechnik schlüsselfertig vom Ingenieurbüro & Elektrofachbetrieb. Jetzt kostenlos beraten lassen!",
   alternates: { canonical: `${SITE_URL}/privatkunden` },
   keywords: [
     "Photovoltaik Privatkunden",

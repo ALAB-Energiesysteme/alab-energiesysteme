@@ -6,10 +6,12 @@ import EinsatzgebietSection from "@/components/EinsatzgebietSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Wärmepumpe Mindelheim – Luft-Wasser-Wärmepumpe planen & einbauen lassen",
+  title: {
+    absolute:
+      "Wärmepumpe Mindelheim & Allgäu – bis 70% Förderung | ALAB",
+  },
   description:
-    "Luft-Wasser-Wärmepumpe aus 87719 Mindelheim: ALAB Energiesysteme plant und installiert Ihre Wärmepumpe schlüsselfertig – inkl. Förderantrag (BEG bis 70 %), Inbetriebnahme und Wartung. Ingenieurbüro & zertifizierter Elektrofachbetrieb.",
+    "Luft-Wasser-Wärmepumpe aus Mindelheim 🔥 schlüsselfertig inkl. Förderantrag (BEG bis 70%), Einbau in 4–6 Wochen & Festpreis. Jetzt kostenlos beraten lassen!",
   alternates: { canonical: `${SITE_URL}/waermepumpen` },
   keywords: [
     "Wärmepumpe Mindelheim",

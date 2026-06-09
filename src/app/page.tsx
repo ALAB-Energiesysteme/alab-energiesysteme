@@ -7,10 +7,12 @@ import AboutSection from "@/components/AboutSection";
 import DeutschlandSection from "@/components/DeutschlandSection";
 
 export const metadata: Metadata = {
-  title:
-    "ALAB Energiesysteme Mindelheim – Photovoltaik, Wärmepumpe & Elektroinstallation",
+  title: {
+    absolute:
+      "Photovoltaik & Wärmepumpe Mindelheim | ALAB Energiesysteme",
+  },
   description:
-    "ALAB Energiesysteme aus 87719 Mindelheim – Ingenieurbüro & zertifizierter Elektrofachbetrieb. Planung und schlüsselfertige Umsetzung von Photovoltaik, Wärmepumpe, Wallbox, Gebäudeenergie & Beleuchtungstechnik für Privat- und Gewerbekunden.",
+    "Ihr Ingenieurbüro & Elektrofachbetrieb aus Mindelheim ⚡ Photovoltaik, Wärmepumpe, Wallbox & Elektroinstallation – schlüsselfertig zum Festpreis. 5★ bei 70+ Bewertungen. Jetzt beraten lassen!",
   alternates: { canonical: "https://www.alabenergiesysteme.de" },
   keywords: [
     "ALAB Energiesysteme",

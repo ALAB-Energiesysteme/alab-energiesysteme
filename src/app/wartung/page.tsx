@@ -5,9 +5,11 @@ import WartungSection from "@/components/WartungSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title: "PV-Wartung – Photovoltaik-Wartung & Instandhaltung | ALAB Energiesysteme",
+  title: {
+    absolute: "PV-Wartung & Anlagencheck Mindelheim | ALAB Energiesysteme",
+  },
   description:
-    "Professionelle Wartung Ihrer Photovoltaikanlage durch ALAB Energiesysteme aus 87719 Mindelheim: Maximale Erträge, volle Betriebssicherheit und Erhalt von Garantie und Versicherungsschutz – mit zertifiziertem Fachservice.",
+    "PV-Wartung vom zertifizierten Fachbetrieb aus Mindelheim: mehr Ertrag, volle Betriebssicherheit & Erhalt von Garantie und Versicherung. Jetzt Wartung anfragen!",
   alternates: { canonical: `${SITE_URL}/wartung` },
   keywords: [
     "PV Wartung",

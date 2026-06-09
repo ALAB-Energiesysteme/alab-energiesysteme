@@ -5,10 +5,12 @@ import GewerbeLandingSection from "@/components/gewerbe/GewerbeLandingSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Photovoltaik für Gewerbe & Industrie – PV-Anlage schlüsselfertig | ALAB Energiesysteme Mindelheim",
+  title: {
+    absolute:
+      "Photovoltaik Gewerbe & Industrie Mindelheim | ALAB Energiesysteme",
+  },
   description:
-    "Gewerbliche Photovoltaik aus 87719 Mindelheim: ALAB Energiesysteme plant und realisiert PV-Anlagen für Hallendächer, Betriebsstandorte und Gewerbeimmobilien. Eigenverbrauch maximieren, Energiekosten senken – schlüsselfertig vom Ingenieurbüro & Elektrofachbetrieb.",
+    "Gewerbe-Photovoltaik aus Mindelheim: PV-Anlagen für Hallendächer & Betriebe – Stromkosten bis 70% senken, Eigenverbrauch maximieren. Schlüsselfertig vom Ingenieurbüro. Jetzt anfragen!",
   alternates: { canonical: `${SITE_URL}/gewerbliche-loesungen` },
   keywords: [
     "Photovoltaik Gewerbe",

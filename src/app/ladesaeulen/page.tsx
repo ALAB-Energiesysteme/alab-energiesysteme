@@ -5,10 +5,12 @@ import LadesaeulenSection from "@/components/LadesaeulenSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Ladesäulen für Gewerbe & Industrie – Ladeinfrastruktur aus Mindelheim",
+  title: {
+    absolute:
+      "Ladesäulen & Ladeinfrastruktur Mindelheim | ALAB Energiesysteme",
+  },
   description:
-    "Ladeinfrastruktur für Unternehmen, Hotels, Parkplätze und Mitarbeiterparkplätze. ALAB Energiesysteme aus 87719 Mindelheim plant und installiert AC- und DC-Ladesäulen schlüsselfertig – Ingenieurbüro & Elektrofachbetrieb.",
+    "Ladeinfrastruktur aus Mindelheim für Unternehmen, Hotels & Parkplätze: AC- und DC-Ladesäulen schlüsselfertig geplant & installiert vom Ingenieurbüro & Elektrofachbetrieb.",
   alternates: { canonical: `${SITE_URL}/ladesaeulen` },
   keywords: [
     "Ladesäulen Gewerbe",

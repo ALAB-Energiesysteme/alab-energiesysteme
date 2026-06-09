@@ -5,10 +5,11 @@ import MonitoringSection from "@/components/MonitoringSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "PV-Monitoring – Anlagenüberwachung & Live-Daten | ALAB Energiesysteme",
+  title: {
+    absolute: "PV-Monitoring & Anlagenüberwachung Mindelheim | ALAB",
+  },
   description:
-    "Anlagenmonitoring für Photovoltaikanlagen aus 87719 Mindelheim: Live-Daten zu Produktion und Autarkie, intelligente Alarme und KPI-Reports. Proaktiv, messbar und sicher.",
+    "PV-Monitoring aus Mindelheim: Live-Daten zu Produktion & Autarkie, intelligente Alarme und KPI-Reports. Maximale Erträge proaktiv sichern – jetzt informieren!",
   alternates: { canonical: `${SITE_URL}/monitoring` },
   keywords: [
     "PV Monitoring",

@@ -5,10 +5,12 @@ import WallboxSection from "@/components/WallboxSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Wallbox installieren Mindelheim – E-Auto-Ladestation fürs Eigenheim",
+  title: {
+    absolute:
+      "Wallbox installieren Mindelheim & Allgäu | ALAB Energiesysteme",
+  },
   description:
-    "Wallbox-Installation aus 87719 Mindelheim: ALAB Energiesysteme plant und installiert Ihre Wallbox – mit PV-Kopplung, Lastmanagement und Festpreisangebot. Ingenieurbüro & zertifizierter Elektrofachbetrieb.",
+    "Wallbox vom Elektrofachbetrieb aus Mindelheim ⚡ Planung & Installation mit PV-Kopplung, Lastmanagement & Festpreis. Jetzt kostenloses Angebot sichern!",
   alternates: { canonical: `${SITE_URL}/wallbox` },
   keywords: [
     "Wallbox Mindelheim",

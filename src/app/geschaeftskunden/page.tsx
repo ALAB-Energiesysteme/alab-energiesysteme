@@ -5,10 +5,12 @@ import GeschaeftskundenOverview from "@/components/GeschaeftskundenOverview";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Geschäftskunden – Photovoltaik, Ladesäulen & Energietechnik für Gewerbe",
+  title: {
+    absolute:
+      "Energielösungen für Gewerbe Mindelheim | ALAB Energiesysteme",
+  },
   description:
-    "Gewerbliche Energielösungen aus 87719 Mindelheim: Photovoltaik, Ladesäulen, Hallenelektrik und Gebäudetechnik schlüsselfertig vom Ingenieurbüro & Elektrofachbetrieb. Eigenverbrauch optimieren, Betriebskosten senken.",
+    "Gewerbliche Energietechnik aus Mindelheim: Photovoltaik, Ladesäulen, Hallenelektrik & Gebäudetechnik schlüsselfertig vom Ingenieurbüro. Betriebskosten senken – jetzt anfragen!",
   alternates: { canonical: `${SITE_URL}/geschaeftskunden` },
   keywords: [
     "Photovoltaik Gewerbe",

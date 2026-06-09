@@ -5,9 +5,11 @@ import KontaktSection from "@/components/KontaktSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title: "Kontakt – ALAB Energiesysteme Mindelheim",
+  title: {
+    absolute: "Kontakt & kostenlose Beratung Mindelheim | ALAB Energiesysteme",
+  },
   description:
-    "Kontakt zu ALAB Energiesysteme aus 87719 Mindelheim: Telefon 08261 7597176, info@alabenergiesysteme.de. Jetzt unverbindlich Beratung anfragen – Ingenieurbüro & Elektrofachbetrieb.",
+    "Kontakt zu ALAB Energiesysteme aus Mindelheim ☎ 08261 7597176. Jetzt unverbindlich zu Photovoltaik, Wärmepumpe & Co. beraten lassen – Antwort innerhalb von 24 Stunden.",
   alternates: { canonical: `${SITE_URL}/kontakt` },
   keywords: [
     "Kontakt ALAB Energiesysteme",

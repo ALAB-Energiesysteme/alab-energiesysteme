@@ -5,10 +5,12 @@ import FreiflaechenSection from "@/components/FreiflaechenSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Freiflächen-Photovoltaik – PV-Großanlagen für Landwirtschaft & Investoren | ALAB Energiesysteme",
+  title: {
+    absolute:
+      "Freiflächen-Photovoltaik & Solarpark Bayern | ALAB Energiesysteme",
+  },
   description:
-    "Freiflächen-Photovoltaik aus 87719 Mindelheim: ALAB Energiesysteme plant und realisiert PV-Großanlagen auf Acker- und Konversionsflächen. Verpachtung, EPC und schlüsselfertige Umsetzung – Ingenieurbüro & Elektrofachbetrieb.",
+    "Freiflächen-PV aus Mindelheim: PV-Großanlagen auf Acker- & Konversionsflächen für Landwirte & Investoren. Verpachtung, EPC & schlüsselfertige Umsetzung. Jetzt Fläche prüfen lassen!",
   alternates: { canonical: `${SITE_URL}/freiflaechen` },
   keywords: [
     "Freiflächen Photovoltaik",

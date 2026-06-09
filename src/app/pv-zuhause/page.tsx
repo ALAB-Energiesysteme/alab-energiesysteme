@@ -5,10 +5,12 @@ import PrivateLoesungenSection from "@/components/PrivateLoesungenSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Photovoltaik Einfamilienhaus Mindelheim – PV-Anlage schlüsselfertig planen & installieren",
+  title: {
+    absolute:
+      "Photovoltaik Mindelheim & Allgäu – PV-Anlage schlüsselfertig | ALAB",
+  },
   description:
-    "Photovoltaik fürs Einfamilienhaus aus 87719 Mindelheim: ALAB Energiesysteme plant und installiert Ihre PV-Anlage mit Stromspeicher und Wallbox – schlüsselfertig, normgerecht und wirtschaftlich. Ingenieurbüro & Elektrofachbetrieb mit Festpreisgarantie.",
+    "Photovoltaik fürs Eigenheim aus Mindelheim ☀ PV-Anlage mit Stromspeicher & Wallbox – schlüsselfertig zum Festpreis vom Ingenieurbüro & Elektrofachbetrieb. Jetzt Solarpotenzial berechnen!",
   alternates: { canonical: `${SITE_URL}/pv-zuhause` },
   keywords: [
     "Photovoltaik Einfamilienhaus",

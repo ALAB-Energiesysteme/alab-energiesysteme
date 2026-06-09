@@ -5,9 +5,11 @@ import UeberUnsSection from "@/components/UeberUnsSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title: "Über uns – ALAB Energiesysteme Mindelheim",
+  title: {
+    absolute: "Über uns – Ingenieurbüro & Elektrofachbetrieb Mindelheim | ALAB",
+  },
   description:
-    "ALAB Energiesysteme – inhabergeführtes Ingenieurbüro & zertifizierter Elektrofachbetrieb aus 87719 Mindelheim. Eigene Ingenieure und Fachkräfte planen und realisieren Energietechnik schlüsselfertig in ganz Deutschland.",
+    "ALAB Energiesysteme – inhabergeführtes Ingenieurbüro & zertifizierter Elektrofachbetrieb aus Mindelheim. Eigene Ingenieure & Fachkräfte, regional verwurzelt im Allgäu. Lernen Sie uns kennen!",
   alternates: { canonical: `${SITE_URL}/ueber-uns` },
   keywords: [
     "ALAB Energiesysteme über uns",

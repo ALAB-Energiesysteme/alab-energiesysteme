@@ -9,10 +9,12 @@ import MultiStepForm from "@/components/MultiStepForm";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Gebäudeenergie & Elektroinstallation Mindelheim – Neubau & Sanierung",
+  title: {
+    absolute:
+      "Elektroinstallation Mindelheim – Neubau & Sanierung | ALAB",
+  },
   description:
-    "Gebäudeenergie aus 87719 Mindelheim: ALAB Energiesysteme plant und realisiert Elektroinstallation, Schaltanlagenbau und Energietechnik für Neubau und Sanierung – schlüsselfertig vom Ingenieurbüro & zertifizierten Elektrofachbetrieb.",
+    "Gebäudeenergie & Elektroinstallation aus Mindelheim für Neubau & Sanierung: Schaltanlagenbau, Energietechnik & Smart Home – schlüsselfertig vom Ingenieurbüro & Elektrofachbetrieb.",
   alternates: { canonical: `${SITE_URL}/gebaeudeenergie` },
   keywords: [
     "Gebäudeenergie Mindelheim",

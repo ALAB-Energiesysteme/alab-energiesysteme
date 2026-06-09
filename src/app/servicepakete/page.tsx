@@ -5,10 +5,11 @@ import ServicepaketeSection from "@/components/ServicepaketeSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Servicepakete für PV-Anlagen – Wartung, Monitoring & Service | ALAB Energiesysteme",
+  title: {
+    absolute: "PV-Servicepakete Mindelheim – Wartung & Monitoring | ALAB",
+  },
   description:
-    "Wartung, Monitoring und Service für Photovoltaikanlagen aus 87719 Mindelheim. ALAB Energiesysteme bietet Servicepakete für maximale Erträge, Betriebssicherheit und Werterhalt Ihrer PV-Anlage.",
+    "PV-Servicepakete aus Mindelheim: Montage, Wartung, Monitoring & Betriebsführung aus einer Hand – für maximale Erträge, Betriebssicherheit & Werterhalt Ihrer Anlage.",
   alternates: { canonical: `${SITE_URL}/servicepakete` },
   keywords: [
     "PV Wartung",

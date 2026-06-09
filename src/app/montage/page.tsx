@@ -5,9 +5,11 @@ import MontageSection from "@/components/MontageSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title: "PV-Montage – Photovoltaik fachgerecht montieren | ALAB Energiesysteme",
+  title: {
+    absolute: "PV-Montage Mindelheim & Allgäu | ALAB Energiesysteme",
+  },
   description:
-    "Photovoltaik-Montage aus 87719 Mindelheim: ALAB Energiesysteme montiert PV-Anlagen auf Privat- und Gewerbedächern – sauber dokumentiert, normgerecht und mit eigenen Fachkräften.",
+    "Photovoltaik-Montage vom Fachbetrieb aus Mindelheim: PV-Anlagen auf Privat- & Gewerbedächern, normgerecht montiert mit eigenen Fachkräften & voller Dokumentation.",
   alternates: { canonical: `${SITE_URL}/montage` },
   keywords: ["PV Montage", "Photovoltaik Montage", "Solaranlage Montage", "PV-Montage Bayern"],
   openGraph: {

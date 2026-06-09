@@ -5,10 +5,11 @@ import PartnerWerdenSection from "@/components/PartnerWerdenSection";
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
 export const metadata: Metadata = {
-  title:
-    "Partner werden – Kooperation für Architekten, Makler & PV-Unternehmen",
+  title: {
+    absolute: "Partner werden – Kooperation Photovoltaik & Wärmepumpe | ALAB",
+  },
   description:
-    "Werden Sie Partner von ALAB Energiesysteme. Kooperationen für Architekten, Immobilienmakler und Photovoltaikunternehmen – Planung, AC/DC-Montage und Wärmepumpenlösungen aus einer Hand. Ingenieurbüro & Elektrofachbetrieb aus Mindelheim.",
+    "Partner von ALAB Energiesysteme werden: Kooperation für Architekten, Makler & PV-Unternehmen – Planung, AC/DC-Montage & Wärmepumpen aus einer Hand. Jetzt Partnerschaft anfragen!",
   alternates: { canonical: `${SITE_URL}/partner-werden` },
   keywords: [
     "Partner werden ALAB Energiesysteme",
