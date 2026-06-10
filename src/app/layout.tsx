@@ -147,16 +147,41 @@ const localBusinessJsonLd = {
     latitude: 48.0445,
     longitude: 10.4889,
   },
-  // Haupt-Einzugsgebiet: 50 km rund um Mindelheim
-  areaServed: {
-    "@type": "GeoCircle",
-    geoMidpoint: {
-      "@type": "GeoCoordinates",
-      latitude: 48.0445,
-      longitude: 10.4889,
+  // Haupt-Einzugsgebiet: 50 km rund um Mindelheim (GeoCircle)
+  // + konkrete Orte im Schema (unsichtbar für Besucher, lesbar für Crawler).
+  areaServed: [
+    {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: 48.0445,
+        longitude: 10.4889,
+      },
+      geoRadius: 50000,
     },
-    geoRadius: 50000,
-  },
+    { "@type": "City", name: "Mindelheim" },
+    { "@type": "City", name: "Bad Wörishofen" },
+    { "@type": "City", name: "Memmingen" },
+    { "@type": "City", name: "Türkheim" },
+    { "@type": "City", name: "Kirchheim in Schwaben" },
+    { "@type": "City", name: "Pfaffenhausen" },
+    { "@type": "City", name: "Ottobeuren" },
+    { "@type": "City", name: "Bad Grönenbach" },
+    { "@type": "City", name: "Babenhausen" },
+    { "@type": "City", name: "Krumbach" },
+    { "@type": "City", name: "Buchloe" },
+    { "@type": "City", name: "Kaufbeuren" },
+    { "@type": "City", name: "Marktoberdorf" },
+    { "@type": "City", name: "Illertissen" },
+    { "@type": "City", name: "Schwabmünchen" },
+    { "@type": "City", name: "Bobingen" },
+    { "@type": "City", name: "Landsberg am Lech" },
+    { "@type": "City", name: "Günzburg" },
+    { "@type": "City", name: "Kempten" },
+    { "@type": "AdministrativeArea", name: "Unterallgäu" },
+    { "@type": "State", name: "Bayern" },
+    { "@type": "Country", name: "Deutschland" },
+  ],
   serviceArea: {
     "@type": "GeoCircle",
     geoMidpoint: {

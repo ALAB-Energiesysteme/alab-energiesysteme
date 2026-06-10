@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import WaermepumpenSection from "@/components/WaermepumpenSection";
-import EinsatzgebietSection from "@/components/EinsatzgebietSection";
 
 const SITE_URL = "https://www.alabenergiesysteme.de";
 
@@ -123,7 +122,6 @@ export default function WaermepumpenPage() {
       <Header />
       <main>
         <WaermepumpenSection />
-        <EinsatzgebietSection leistung="Wärmepumpen" />
       </main>
     </>
   );

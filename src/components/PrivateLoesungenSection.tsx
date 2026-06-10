@@ -4,7 +4,6 @@ import PrivateKomponentenSection from "@/components/private/PrivateKomponentenSe
 import PrivateSolarrechnerSection from "@/components/private/PrivateSolarrechnerSection";
 import PrivateReferenzenSection from "@/components/private/PrivateReferenzenSection";
 import PrivateVorteileSection from "@/components/private/PrivateVorteileSection";
-import EinsatzgebietSection from "@/components/EinsatzgebietSection";
 
 export default function PrivateLoesungenSection() {
   return (
@@ -15,7 +14,6 @@ export default function PrivateLoesungenSection() {
       <PrivateSolarrechnerSection />
       <PrivateReferenzenSection />
       <PrivateVorteileSection />
-      <EinsatzgebietSection leistung="Photovoltaik" />
     </>
   );
 }
