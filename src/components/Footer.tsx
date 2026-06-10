@@ -40,7 +40,8 @@ export default function Footer() {
   const [error, setError] = useState("");
 
   // Auf Ads-Landing-Pages: kein globaler Footer – LP hat eigenen Mini-Footer
-  if (pathname?.startsWith("/lp/")) return null;
+  if (pathname?.startsWith("/lp/") || pathname?.startsWith("/pv-angebot"))
+    return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

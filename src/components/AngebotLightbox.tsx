@@ -187,7 +187,8 @@ export default function AngebotLightbox() {
   }, []);
 
   // Auf Ads-Landing-Pages: keine globale Angebot-Lightbox
-  if (pathname?.startsWith("/lp/")) return null;
+  if (pathname?.startsWith("/lp/") || pathname?.startsWith("/pv-angebot"))
+    return null;
 
   return (
     <>
