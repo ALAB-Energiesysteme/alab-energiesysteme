@@ -25,6 +25,21 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // Schreibweisen-Varianten der Wärmepumpen-Landingpage auf die
+  // kanonische ASCII-URL führen, damit /lp-Wärmepumpen & Co. nicht 404en.
+  async redirects() {
+    const ziel = "/lp-waermepumpen";
+    return [
+      "/lp-Wärmepumpen",
+      "/lp-wärmepumpen",
+      "/lp-W%C3%A4rmepumpen",
+      "/lp-w%C3%A4rmepumpen",
+      "/lp-Waermepumpen",
+      "/lp-Waermepumpe",
+      "/lp-waermepumpe",
+    ].map((source) => ({ source, destination: ziel, permanent: false }));
+  },
+
   // Lange Cache-Header für statische Assets
   async headers() {
     return [
