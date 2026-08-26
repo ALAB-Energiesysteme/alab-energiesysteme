@@ -4,7 +4,6 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import AboutSection from "@/components/AboutSection";
-import DeutschlandSection from "@/components/DeutschlandSection";
 
 export const metadata: Metadata = {
   title: {
@@ -48,7 +47,6 @@ export default function Home() {
         <ServicesSection />
         <FeaturesSection />
         <AboutSection />
-        <DeutschlandSection />
       </main>
     </>
   );

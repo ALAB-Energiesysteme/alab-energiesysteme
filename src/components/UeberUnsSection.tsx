@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import DeutschlandSection from "./DeutschlandSection";
 import LazyVideo from "@/components/LazyVideo";
 
 /* ═══════════════════════════════════════════════
@@ -16,7 +15,6 @@ export default function UeberUnsSection() {
       <UUBanner />
       <UUVision />
       <UUWerte />
-      <DeutschlandSection />
     </>
   );
 }
