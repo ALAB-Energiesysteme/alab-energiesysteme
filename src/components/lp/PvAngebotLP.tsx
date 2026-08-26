@@ -22,6 +22,7 @@ import {
   Zap,
 } from "lucide-react";
 import PrivateKomponentenSection from "@/components/private/PrivateKomponentenSection";
+import { trackFormSubmit } from "@/lib/tracking";
 
 /* ════════════════════════════════════════════════════════════
    PV-Leadgen-Landingpage  /pv-angebot
@@ -330,6 +331,12 @@ function LeadCalculator() {
         form_name: "LP – PV-Angebot (Solarrechner)",
         conversion_value: 150,
         currency: "EUR",
+      });
+      trackFormSubmit({
+        formId: "lp-pv-angebot-solarrechner",
+        formType: "lead",
+        formLocation: "pv-angebot",
+        value: 150,
       });
     } catch {
       /* Lead trotzdem freischalten – Anfrage kann telefonisch nachgeholt werden */
@@ -967,6 +974,12 @@ function LeadFunnel() {
         form_name: "LP – PV-Angebot (Funnel)",
         conversion_value: 150,
         currency: "EUR",
+      });
+      trackFormSubmit({
+        formId: "lp-pv-angebot-funnel",
+        formType: "lead",
+        formLocation: "pv-angebot",
+        value: 150,
       });
       setStep(3);
     } catch {

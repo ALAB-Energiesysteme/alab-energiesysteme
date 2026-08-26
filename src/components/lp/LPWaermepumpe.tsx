@@ -10,6 +10,7 @@ import {
   WPLoslegen,
   WPFaq,
 } from "@/components/WaermepumpenSection";
+import { trackFormSubmit } from "@/lib/tracking";
 
 const MAKE_URL = "https://hook.eu2.make.com/yloo9gmjoxtsua7r2g5z6af9lqs0ei3y";
 const PHONE = "+498261759717";
@@ -324,6 +325,12 @@ function LeadForm({ quelle }: { quelle: string }) {
           currency: "EUR",
         });
       }
+      trackFormSubmit({
+        formId: "lp-waermepumpe",
+        formType: "lead",
+        formLocation: quelle,
+        value: 200,
+      });
       setSent(true);
       setForm({
         vorname: "",

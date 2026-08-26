@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { trackFormSubmit } from "@/lib/tracking";
 
 /**
  * Globales Kontakt-/Angebots-Lightbox.
@@ -154,11 +155,22 @@ export default function AngebotLightbox() {
         await sendWithRetry(data);
       }
       form.reset();
+      trackFormSubmit({
+        formId: "angebot-lightbox",
+        formType: "lead",
+        formLocation: quelle,
+      });
       setOpen(false);
       setShowThanks(true);
       setTimeout(() => setShowThanks(false), 4000);
     } catch {
+      // Offline/Fehler: Lead wird lokal gequeued und später gesendet -> zählt trotzdem
       enqueue(data);
+      trackFormSubmit({
+        formId: "angebot-lightbox",
+        formType: "lead",
+        formLocation: quelle,
+      });
       setOpen(false);
       setShowThanks(true);
       setTimeout(() => setShowThanks(false), 4000);

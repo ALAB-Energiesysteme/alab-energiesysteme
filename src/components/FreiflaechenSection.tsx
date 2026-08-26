@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { trackFormSubmit } from "@/lib/tracking";
 
 export default function FreiflaechenSection() {
   /* ── Carousel state ── */
@@ -91,6 +92,11 @@ export default function FreiflaechenSection() {
   const handleIframeLoad = () => {
     if (submitLoading) {
       setSubmitLoading(false);
+      trackFormSubmit({
+        formId: "freiflaechen-kontakt",
+        formType: "lead",
+        formLocation: "freiflaechen",
+      });
       setFormSubmitted(true);
     }
   };

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
+import { trackFormSubmit } from "@/lib/tracking";
 
 /* ── Link data (synced with Header NAV_ITEMS) ── */
 
@@ -89,6 +90,11 @@ export default function Footer() {
       } catch {}
     }
 
+    trackFormSubmit({
+      formId: "footer-schnellkontakt",
+      formType: "kontakt",
+      formLocation: "footer",
+    });
     setSent(true);
     setForm({ name: "", phone: "", email: "" });
     setConsent(false);

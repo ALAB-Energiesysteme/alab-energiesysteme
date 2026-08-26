@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { trackFormSubmit } from "@/lib/tracking";
 
 const CSS = `
   /* Kontakt – gekapselte Styles */
@@ -306,6 +307,11 @@ export default function KontaktSection() {
         form_location: 'contact_page',
         topic: (($('#topic') as HTMLSelectElement)?.value || ''),
         page_path: location.pathname
+      });
+      trackFormSubmit({
+        formId: 'kontakt-hauptformular',
+        formType: 'kontakt',
+        formLocation: 'kontaktseite',
       });
     }
 

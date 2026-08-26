@@ -29,6 +29,7 @@ import {
   Send,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { trackFormSubmit } from "@/lib/tracking";
 
 /* ── Step data ── */
 
@@ -208,6 +209,11 @@ export default function MultiStepForm() {
       console.error("Lead-Versand fehlgeschlagen:", err);
     }
 
+    trackFormSubmit({
+      formId: "gebaeudeenergie-mehrstufig",
+      formType: "lead",
+      formLocation: "gebaeudeenergie",
+    });
     setSubmitted(true);
     setSubmitting(false);
   }

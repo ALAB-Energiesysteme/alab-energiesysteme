@@ -28,6 +28,7 @@ import { useEffect, useState } from "react";
 import HeroCardShowcase, {
   type HeroCardShowcaseItem,
 } from "@/components/HeroCardShowcase";
+import { trackFormSubmit } from "@/lib/tracking";
 
 /* ═══════════════════════════════════════════════
    SERVICE DATA
@@ -439,6 +440,11 @@ function GKBeratungsformular() {
       console.error("Lead-Versand fehlgeschlagen:", err);
     }
 
+    trackFormSubmit({
+      formId: "geschaeftskunden-funnel",
+      formType: "lead",
+      formLocation: "geschaeftskunden",
+    });
     setStep(steps.length - 1);
     setSubmitting(false);
   };

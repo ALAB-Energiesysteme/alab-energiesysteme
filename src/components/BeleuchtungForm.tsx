@@ -28,6 +28,7 @@ import {
   CalendarCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { trackFormSubmit } from "@/lib/tracking";
 
 /* ── Step data ── */
 
@@ -189,6 +190,11 @@ export default function BeleuchtungForm() {
       console.error("Lead-Versand fehlgeschlagen:", err);
     }
 
+    trackFormSubmit({
+      formId: "beleuchtung-anfrage",
+      formType: "lead",
+      formLocation: "beleuchtungstechnik",
+    });
     setSubmitted(true);
     setSubmitting(false);
   }

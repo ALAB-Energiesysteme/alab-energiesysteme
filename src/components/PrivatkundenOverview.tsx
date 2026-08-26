@@ -7,6 +7,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { trackFormSubmit } from "@/lib/tracking";
 
 interface ServiceItem {
   image: string;
@@ -511,6 +512,11 @@ function PKBeratungsformular() {
       console.error("Lead-Versand fehlgeschlagen:", err);
     }
 
+    trackFormSubmit({
+      formId: "privatkunden-funnel",
+      formType: "lead",
+      formLocation: "privatkunden",
+    });
     setStep(steps.length - 1);
     setSubmitting(false);
   };

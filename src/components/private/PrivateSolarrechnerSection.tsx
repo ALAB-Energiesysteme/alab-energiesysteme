@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useEffect } from 'react';
+import { trackFormSubmit } from "@/lib/tracking";
 
 export default function PrivateSolarrechnerSection() {
   useEffect(() => {
@@ -253,6 +254,12 @@ export default function PrivateSolarrechnerSection() {
               hausverbrauch: elHausv?.textContent ?? ''
             };
           } catch {}
+
+          trackFormSubmit({
+            formId: 'privat-solarrechner',
+            formType: 'rechner',
+            formLocation: 'privatkunden-solarrechner',
+          });
 
           if (!navigator.onLine) {
             enqueue(fields);
