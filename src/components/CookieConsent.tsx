@@ -42,13 +42,16 @@ function readStored(): ConsentChoice | null {
   }
 }
 
-function applyConsent(choice: ConsentChoice) {
+type ConsentAction = "accept_all" | "reject_all" | "custom";
+
+function applyConsent(choice: ConsentChoice, source: "stored" | "banner") {
   if (typeof window === "undefined") return;
   const dl = (window.dataLayer = window.dataLayer || []);
   // GTM/GA4 Consent Mode v2 – Update mit User-Entscheidung
   dl.push({
     event: "cookie_consent_update",
     consent: choice,
+    consent_source: source,
   });
 
   if (typeof window.gtag === "function") {
@@ -78,8 +81,10 @@ export default function CookieConsent() {
       const t = setTimeout(() => setOpen(true), 600);
       return () => clearTimeout(t);
     }
-    // Bei Wiederbesuchen: bereits gespeicherte Zustimmung erneut an GTM senden
-    applyConsent(stored);
+    // Bei Wiederbesuchen: der eigentliche Consent-Update laeuft bereits im
+    // Inline-Skript in layout.tsx, bevor GTM startet. Hier nur noch das
+    // dataLayer-Event fuer GTM nachreichen.
+    applyConsent(stored, "stored");
     setAnalytics(stored.analytics);
     setMarketing(stored.marketing);
     setPreferences(stored.preferences);
@@ -101,13 +106,27 @@ export default function CookieConsent() {
     return () => window.removeEventListener("open-cookie-settings", handler);
   }, []);
 
-  function save(choice: ConsentChoice) {
+  function save(choice: ConsentChoice, action: ConsentAction) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(choice));
     } catch {
       /* localStorage gesperrt – Consent bleibt nur für diese Session */
     }
-    applyConsent(choice);
+    applyConsent(choice, "banner");
+
+    // Zustimmungsrate messbar machen: feuert NUR bei einer echten Entscheidung
+    // im Banner, nicht bei wiederhergestellten Einwilligungen.
+    // GTM-Trigger: Custom Event "consent_decision".
+    if (typeof window !== "undefined") {
+      const dl = (window.dataLayer = window.dataLayer || []);
+      dl.push({
+        event: "consent_decision",
+        consent_action: action,
+        consent_marketing: choice.marketing ? "granted" : "denied",
+        consent_analytics: choice.analytics ? "granted" : "denied",
+        consent_preferences: choice.preferences ? "granted" : "denied",
+      });
+    }
     // Anderen Komponenten Bescheid geben (z. B. ClarityAnalytics)
     if (typeof window !== "undefined") {
       window.dispatchEvent(
@@ -119,30 +138,39 @@ export default function CookieConsent() {
   }
 
   function acceptAll() {
-    save({
-      analytics: true,
-      marketing: true,
-      preferences: true,
-      timestamp: new Date().toISOString(),
-    });
+    save(
+      {
+        analytics: true,
+        marketing: true,
+        preferences: true,
+        timestamp: new Date().toISOString(),
+      },
+      "accept_all",
+    );
   }
 
   function rejectAll() {
-    save({
-      analytics: false,
-      marketing: false,
-      preferences: false,
-      timestamp: new Date().toISOString(),
-    });
+    save(
+      {
+        analytics: false,
+        marketing: false,
+        preferences: false,
+        timestamp: new Date().toISOString(),
+      },
+      "reject_all",
+    );
   }
 
   function saveCustom() {
-    save({
-      analytics,
-      marketing,
-      preferences,
-      timestamp: new Date().toISOString(),
-    });
+    save(
+      {
+        analytics,
+        marketing,
+        preferences,
+        timestamp: new Date().toISOString(),
+      },
+      "custom",
+    );
   }
 
   if (!open) return null;

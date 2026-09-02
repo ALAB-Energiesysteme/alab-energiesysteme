@@ -314,6 +314,33 @@ export default function RootLayout({
               });
               gtag('set', 'ads_data_redaction', true);
               gtag('set', 'url_passthrough', true);
+
+              /*
+                Wiederkehrende Besucher: bereits erteilte Einwilligung SOFORT
+                anwenden – noch bevor GTM laedt. Vorher geschah das erst im
+                useEffect von CookieConsent, also nach der React-Hydration und
+                damit lange nach Ablauf von wait_for_update (500 ms). Ergebnis:
+                die ersten Tags feuerten bei jedem Wiederbesuch im Denied-
+                Zustand, obwohl der Besucher laengst zugestimmt hatte.
+                Der Key muss identisch zu STORAGE_KEY in CookieConsent.tsx sein.
+              */
+              try {
+                var gespeichert = localStorage.getItem('alab-cookie-consent-v1');
+                if (gespeichert) {
+                  var wahl = JSON.parse(gespeichert);
+                  gtag('consent', 'update', {
+                    'ad_storage': wahl.marketing ? 'granted' : 'denied',
+                    'ad_user_data': wahl.marketing ? 'granted' : 'denied',
+                    'ad_personalization': wahl.marketing ? 'granted' : 'denied',
+                    'analytics_storage': wahl.analytics ? 'granted' : 'denied',
+                    'personalization_storage': wahl.preferences ? 'granted' : 'denied',
+                    'functionality_storage': 'granted',
+                    'security_storage': 'granted'
+                  });
+                }
+              } catch (e) {
+                /* localStorage gesperrt -> Banner uebernimmt spaeter */
+              }
             `,
           }}
         />
