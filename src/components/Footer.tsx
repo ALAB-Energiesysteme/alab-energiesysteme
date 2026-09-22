@@ -40,9 +40,10 @@ export default function Footer() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
 
-  // Auf Ads-Landing-Pages: kein globaler Footer – LP hat eigenen Mini-Footer
+  // Auf Ads-Landing-Pages: kein globaler Footer – LP hat eigenen Mini-Footer.
+  // Ausnahme /lp/waermepumpen: nutzt bewusst den normalen Footer (kein eigener).
   if (
-    pathname?.startsWith("/lp/") ||
+    (pathname?.startsWith("/lp/") && pathname !== "/lp/waermepumpen") ||
     pathname?.startsWith("/pv-angebot") ||
     pathname?.startsWith("/lp-waermepumpen")
   )

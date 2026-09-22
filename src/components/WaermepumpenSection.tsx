@@ -365,14 +365,14 @@ function WPCta() {
         >
           <div className="relative rounded-[20px] bg-white/90 px-10 py-12">
             <p className="mb-3 text-[clamp(1.4rem,3vw,1.8rem)] text-ink">
-              Werde jetzt <strong>unabhängiger.</strong>
+              Werden Sie jetzt <strong>unabhängiger.</strong>
             </p>
             <p className="mb-3 text-[clamp(1.4rem,3vw,1.8rem)] text-ink">
-              Leiste deinen Beitrag zum<br />
+              Leisten Sie Ihren Beitrag zum<br />
               <strong>Umweltschutz.</strong>
             </p>
             <p className="mb-8 text-[clamp(1.4rem,3vw,1.8rem)] text-ink">
-              Nutze die Gelegenheit um<br />
+              Nutzen Sie die Gelegenheit,<br />
               <strong>Energiekosten</strong> zu sparen.
             </p>
             <a
@@ -402,7 +402,7 @@ function WPCta() {
 }
 
 /* ═══════════════════════════════════════════════
-   SECTION 6 – Lass uns loslegen
+   SECTION 6 – Starten Sie Ihr Projekt
    ═══════════════════════════════════════════════ */
 export function WPLoslegen() {
   return (
@@ -423,10 +423,10 @@ export function WPLoslegen() {
           {/* Content Card */}
           <div className="-ml-10 rounded-[24px] bg-[#f0f0f0] py-14 pl-20 pr-14 max-[900px]:ml-0 max-[900px]:-mt-10 max-[900px]:px-8 max-[900px]:pt-16">
             <h2 className="mb-5 text-[clamp(1.8rem,3.5vw,2.6rem)] font-bold text-ink">
-              Lass uns loslegen
+              Starten Sie Ihr Projekt
             </h2>
             <p className="mb-10 max-w-[500px] text-[1.05rem] leading-[1.75] text-muted">
-              Bei deinem Wärmepumpen-Projekt steht dir ALAB Energiesysteme als verlässlicher Partner zur Seite – Ingenieurbüro und zertifizierter Elektrofachbetrieb mit eigenen Fachkräften. Von der ersten Beratung über die ingenieurmäßige Auslegung bis zur schlüsselfertigen Inbetriebnahme – alles aus einer Hand.
+              Bei Ihrem Wärmepumpen-Projekt steht Ihnen ALAB Energiesysteme als verlässlicher Partner zur Seite – Ingenieurbüro und zertifizierter Elektrofachbetrieb mit eigenen Fachkräften. Von der ersten Beratung über die ingenieurmäßige Auslegung bis zur schlüsselfertigen Inbetriebnahme – alles aus einer Hand.
             </p>
 
             {/* Features */}
@@ -454,7 +454,7 @@ export function WPLoslegen() {
                 <div>
                   <h3 className="mb-1.5 text-[1.1rem] font-bold text-ink">Vielseitig</h3>
                   <p className="text-[0.95rem] leading-[1.65] text-muted">
-                    Passend zu deinen individuellen Gegebenheiten und Anforderungen wird die optimale Wärmepumpen-Größe für dich von unseren Experten geplant.
+                    Passend zu Ihren individuellen Gegebenheiten und Anforderungen planen unsere Experten die optimale Wärmepumpen-Größe für Sie.
                   </p>
                 </div>
               </div>
@@ -596,7 +596,7 @@ export function WPFaq() {
     <section className="px-7 py-[80px]">
       <div className="mx-auto max-w-[900px]">
         <h2 className="mb-12 text-center text-[clamp(1.8rem,4vw,2.8rem)] font-bold text-ink">
-          Du hast noch Fragen?
+          Sie haben noch Fragen?
         </h2>
 
         <div className="divide-y divide-gray-200">

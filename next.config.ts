@@ -25,19 +25,29 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // Schreibweisen-Varianten der Wärmepumpen-Landingpage auf die
-  // kanonische ASCII-URL führen, damit /lp-Wärmepumpen & Co. nicht 404en.
+  // Schreibweisen-Varianten der Wärmepumpen-Landingpages auf die
+  // kanonischen ASCII-URLs führen, damit /lp-Wärmepumpen & Co. nicht 404en.
+  // ACHTUNG: Next.js vergleicht die Quellen OHNE Groß-/Kleinschreibung.
+  // Eine Quelle, die sich nur in der Schreibung vom Ziel unterscheidet
+  // (z. B. "/lp-Waermepumpen"), leitet auf sich selbst um → Endlosschleife.
   async redirects() {
-    const ziel = "/lp-waermepumpen";
-    return [
+    const lpAlt = [
       "/lp-Wärmepumpen",
       "/lp-wärmepumpen",
       "/lp-W%C3%A4rmepumpen",
       "/lp-w%C3%A4rmepumpen",
-      "/lp-Waermepumpen",
       "/lp-Waermepumpe",
       "/lp-waermepumpe",
-    ].map((source) => ({ source, destination: ziel, permanent: false }));
+    ].map((source) => ({ source, destination: "/lp-waermepumpen", permanent: false }));
+
+    const lpNeu = [
+      "/lp/wärmepumpen",
+      "/lp/Wärmepumpen",
+      "/lp/w%C3%A4rmepumpen",
+      "/lp/W%C3%A4rmepumpen",
+    ].map((source) => ({ source, destination: "/lp/waermepumpen", permanent: false }));
+
+    return [...lpAlt, ...lpNeu];
   },
 
   // Lange Cache-Header für statische Assets

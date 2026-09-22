@@ -121,8 +121,22 @@ const PATH_TO_LABEL: Record<string, string> = {
   "/kontakt": "Kontakt",
 };
 
-export default function Header() {
+/**
+ * ctaHref: Seiten mit eigenem Anfrageformular (z. B. /waermepumpen) lassen den
+ * Header-CTA dorthin springen statt die globale Angebots-Lightbox zu öffnen.
+ * Ohne Prop bleibt das bisherige Verhalten unverändert.
+ */
+export default function Header({
+  ctaHref,
+  ctaLabel = "Angebot einholen",
+}: {
+  ctaHref?: string;
+  ctaLabel?: string;
+} = {}) {
   const pathname = usePathname();
+  const ctaProps = ctaHref
+    ? { href: ctaHref, "data-cta": "header" }
+    : { href: "#angebot" };
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMega, setActiveMega] = useState<string | null>(null);
   const [activeSubFlyout, setActiveSubFlyout] = useState<string | null>(null);
@@ -256,12 +270,12 @@ export default function Header() {
           {/* CTA + Hamburger */}
           <div className="ml-4 flex items-center gap-3 lg:ml-8">
             <a
-              href="#angebot"
-              data-open-angebot="header-desktop"
+              {...ctaProps}
+              data-open-angebot={ctaHref ? undefined : "header-desktop"}
               className="group/cta relative hidden h-11 items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-accent-deep to-accent px-6 text-[13px] font-bold tracking-[-0.005em] text-white shadow-[0_2px_8px_-2px_rgba(30,79,139,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:from-accent-deep hover:to-accent-deep hover:shadow-[0_6px_16px_-4px_rgba(30,79,139,0.4)] lg:inline-flex"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover/cta:translate-x-full" />
-              <span className="relative leading-none">Angebot einholen</span>
+              <span className="relative leading-none">{ctaLabel}</span>
               <ArrowRight className="relative h-4 w-4 shrink-0 transition-transform duration-300 group-hover/cta:translate-x-[3px]" strokeWidth={2.4} />
             </a>
             <button
@@ -345,6 +359,8 @@ export default function Header() {
                         <div className="relative h-[72px] w-[112px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 ring-1 ring-[#e5edf5] transition-all duration-300 group-hover/card:ring-accent/25">
                           <img
                             src={sub.image}
+                            loading="lazy"
+                            decoding="async"
                             alt={sub.title}
                             style={{ transform: `scale(${sub.imageScale ?? 1.25})` }}
                             className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500"
@@ -529,12 +545,16 @@ export default function Header() {
                                 }
                               >
                                 <div className="relative h-12 w-[68px] shrink-0 overflow-hidden rounded-lg bg-gradient-to-br from-slate-100 to-slate-50 ring-1 ring-slate-200/60">
-                                  <img
-                                    src={sub.image}
-                                    alt=""
-                                    style={{ transform: `scale(${sub.imageScale ?? 1.25})` }}
-                                    className="absolute inset-0 h-full w-full object-cover object-center"
-                                  />
+                                  {/* Erst bei geöffnetem Menü laden – sonst lädt jede Seite die Vorschaubilder mit */}
+                                  {mobileOpen && (
+                                    <img
+                                      src={sub.image}
+                                      decoding="async"
+                                      alt=""
+                                      style={{ transform: `scale(${sub.imageScale ?? 1.25})` }}
+                                      className="absolute inset-0 h-full w-full object-cover object-center"
+                                    />
+                                  )}
                                 </div>
                                 <div className="min-w-0 flex-1">
                                   <strong className="flex items-center gap-1 text-[13.5px] font-bold tracking-[-0.005em] text-ink">
@@ -608,12 +628,15 @@ export default function Header() {
                               className="flex items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 transition-all duration-300 hover:border-slate-200/60 hover:bg-white hover:shadow-sm"
                             >
                               <div className="relative h-12 w-[68px] shrink-0 overflow-hidden rounded-lg bg-gradient-to-br from-slate-100 to-slate-50 ring-1 ring-slate-200/60">
-                                <img
-                                  src={sub.image}
-                                  alt=""
-                                  style={{ transform: `scale(${sub.imageScale ?? 1.25})` }}
-                                  className="absolute inset-0 h-full w-full object-cover object-center"
-                                />
+                                {mobileOpen && (
+                                  <img
+                                    src={sub.image}
+                                    decoding="async"
+                                    alt=""
+                                    style={{ transform: `scale(${sub.imageScale ?? 1.25})` }}
+                                    className="absolute inset-0 h-full w-full object-cover object-center"
+                                  />
+                                )}
                               </div>
                               <div className="min-w-0 flex-1">
                                 <strong className="block text-[13.5px] font-bold leading-tight tracking-[-0.005em] text-ink">
@@ -646,12 +669,12 @@ export default function Header() {
           {/* Mobile CTA */}
           <div className="shrink-0 border-t border-slate-100 p-5">
             <a
-              href="#angebot"
-              data-open-angebot="header-mobile"
+              {...ctaProps}
+              data-open-angebot={ctaHref ? undefined : "header-mobile"}
               className="group/mcta flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-accent to-accent-deep px-5 py-3.5 text-[14px] font-bold tracking-[-0.005em] text-white shadow-[0_4px_16px_-2px_var(--color-accent-glow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_var(--color-accent-glow)]"
               onClick={() => setMobileOpen(false)}
             >
-              Angebot einholen
+              {ctaLabel}
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/mcta:translate-x-0.5" />
             </a>
           </div>

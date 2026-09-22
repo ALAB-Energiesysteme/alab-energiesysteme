@@ -2,7 +2,7 @@
  * Zentrales Conversion-Tracking für alle Lead-Formulare.
  *
  * Der GTM-Container GTM-NJZV7GTH feuert die Google-Ads-Lead-Conversion
- * (AW-17194318925, Label DWwlCOuZmLscEM348YZA) und das GA4-Event
+ * (AW-17194318925, Label DWwICOuZmLscEM348YZA – großes I, nicht kleines l) und das GA4-Event
  * `generate_lead` auf genau diesen Trigger:
  *
  *   Custom Event `form_submit`  UND  Data-Layer-Variable `form_status` = "success"
@@ -43,5 +43,23 @@ export function trackFormSubmit({
     });
   } catch {
     /* Tracking darf den Lead-Versand niemals blockieren */
+  }
+}
+
+/**
+ * Einfache Interaktions-Events (cta_click, phone_click, form_start) für GTM.
+ *
+ * NICHT für Lead-Conversions verwenden – dafür gibt es trackFormSubmit().
+ * `generate_lead` wird bewusst nie direkt gepusht: GTM erzeugt es bereits
+ * aus `form_submit`, ein zweiter Push würde den Lead doppelt zählen.
+ */
+export function trackEvent(event: string, params: Record<string, unknown> = {}) {
+  if (typeof window === "undefined") return;
+  try {
+    const w = window as unknown as { dataLayer?: object[] };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ event, page_path: window.location.pathname, ...params });
+  } catch {
+    /* Tracking darf die Bedienung niemals blockieren */
   }
 }
