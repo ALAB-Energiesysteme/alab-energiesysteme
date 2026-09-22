@@ -1,0 +1,5 @@
+# Nicht zur Website gehörende Ordner – beim Vercel-Deploy nicht hochladen
+.claude/
+.codex-screens/
+deepfakes_praesentation/
+*.log
