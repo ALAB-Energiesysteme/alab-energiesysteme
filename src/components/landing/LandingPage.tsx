@@ -79,7 +79,9 @@ type Referenzbild = { src: string; alt: string; label: string; text: string };
  * Bildpaar und Einleitung je Kategorie. Beispielbilder, die keine ALAB-Projekte
  * zeigen, werden in Einleitung bzw. Bildunterschrift als Beispiel benannt.
  */
-function referenzenFuer(category: PageContent["category"]): { eyebrow: string; intro: string; bilder: [Referenzbild, Referenzbild] } {
+type Referenzlink = { href: string; text: string } | null;
+
+function referenzenFuer(category: PageContent["category"]): { eyebrow: string; intro: string; bilder: [Referenzbild, Referenzbild]; link: Referenzlink } {
   switch (category) {
     case "photovoltaik":
       return {
@@ -89,6 +91,7 @@ function referenzenFuer(category: PageContent["category"]): { eyebrow: string; i
           { src: "/optimized/pv-wohnhaus-referenz-856cc714ea.webp", alt: "Photovoltaikanlage auf dem Ziegeldach eines Wohnhauses – ALAB-Referenzprojekt", label: "Photovoltaik", text: "Solarstrom vom eigenen Hausdach" },
           { src: "/optimized/pv-dachmontage-referenz-fd067d535e.webp", alt: "Montierte Unterkonstruktion auf einem Ziegeldach vor dem Auflegen der PV-Module – ALAB-Referenzprojekt", label: "Dachmontage", text: "Unterkonstruktion während der Montage" },
         ],
+        link: { href: "/pv-zuhause#ref-gallery-private", text: "Zu unseren Referenzen" },
       };
     case "elektro":
       return {
@@ -98,6 +101,7 @@ function referenzenFuer(category: PageContent["category"]): { eyebrow: string; i
           { src: "/optimized/elektro-zaehlerschrank-8ce18f2c51.webp", alt: "Geöffneter Zählerschrank mit Zählerplatz, Sicherungsverteilung und Klemmen", label: "Zählerschrank", text: "Zählerplatz und Verteilung übersichtlich aufgebaut" },
           { src: "/optimized/elektro-speicher-wechselrichter-124ae04b35.webp", alt: "Stromspeicher und Wechselrichter mit Kabelführung in einem Technikraum", label: "Speicher & Wechselrichter", text: "Energietechnik sauber in den Technikraum eingebunden" },
         ],
+        link: null,
       };
     case "waermepumpe":
       return {
@@ -107,6 +111,7 @@ function referenzenFuer(category: PageContent["category"]): { eyebrow: string; i
           { src: "/optimized/wp-technikraum-speicher-7343874e9a.webp", alt: "Technikraum mit Warmwasser- und Pufferspeicher und Wärmepumpen-Inneneinheit (Beispielbild)", label: "Technikraum · Beispiel", text: "Warmwasser- und Pufferspeicher mit Inneneinheit" },
           { src: "/referenzen-wp/referenzprojekt-waermepumpe-1.jpg", alt: "Von ALAB installierte Luft-Wasser-Wärmepumpe an einem Wohnhaus", label: "ALAB-Projekt", text: "Außengerät einer Luft-Wasser-Wärmepumpe am Wohnhaus" },
         ],
+        link: null,
       };
     default:
       return {
@@ -116,18 +121,19 @@ function referenzenFuer(category: PageContent["category"]): { eyebrow: string; i
           { src: "/optimized/anlage1-G-b07a12bd8c.webp", alt: "Montierte Photovoltaikmodule auf einem Gewerbedach aus der ALAB-Projektgalerie", label: "Photovoltaik", text: "Installierte Anlage auf einem Gewerbedach" },
           { src: "/optimized/anlage6-M-2a21833081.webp", alt: "ALAB-Montagefahrzeug vor installierten Wechselrichtern", label: "Elektro & Montage", text: "Wechselrichter und elektrische Einbindung" },
         ],
+        link: { href: "/montage", text: "Zur Montagegalerie" },
       };
   }
 }
 
 function References({ page }: { page: PageContent }) {
-  const { eyebrow, intro, bilder } = referenzenFuer(page.category);
+  const { eyebrow, intro, bilder, link } = referenzenFuer(page.category);
   // Originalformat je Bild; Spalten proportional zum Seitenverhältnis → beide Bilder gleich hoch, nichts beschnitten
   const masse = bilder.map(bild => bildMasse(bild.src));
   const verhaeltnis = masse.map(m => (m ? m.width / m.height : 4 / 3));
   const referenzStil = { "--ref-cols": `${verhaeltnis[0].toFixed(3)}fr ${verhaeltnis[1].toFixed(3)}fr` } as React.CSSProperties;
   return <section className={`${s.section} ${s.container}`} aria-labelledby="references-title">
-    <div className={s.referenceHeading}><div className={s.sectionHeading}><span className={s.eyebrow}>{eyebrow}</span><h2 id="references-title">Technik, die vor Ort entsteht.</h2><p>{intro}</p></div><a href="/montage" className={s.textLink}>Zur Montagegalerie<ArrowUpRight size={18} aria-hidden="true" /></a></div>
+    <div className={s.referenceHeading}><div className={s.sectionHeading}><span className={s.eyebrow}>{eyebrow}</span><h2 id="references-title">Technik, die vor Ort entsteht.</h2><p>{intro}</p></div>{link && <a href={link.href} className={s.textLink}>{link.text}<ArrowUpRight size={18} aria-hidden="true" /></a>}</div>
     <div className={s.references} style={referenzStil}>
       {bilder.map((bild, i) => <figure key={bild.src}>
         <div style={masse[i] ? ({ "--ref-ratio": `${masse[i]!.width} / ${masse[i]!.height}` } as React.CSSProperties) : undefined}><Image src={bild.src} alt={bild.alt} fill sizes="(max-width: 760px) 100vw, 50vw" /></div>

@@ -187,6 +187,8 @@ export default function PrivateReferenzenSection() {
   background: var(--bg);
   padding: 4rem 0;
 }
+/* Sprungziel von den PV-Landingpages: Überschrift nicht unter dem festen Header */
+#ref-gallery-private{ scroll-margin-top: 72px; }
 :is(#ref-gallery, #ref-gallery-private) .container{
   max-width:2000px; margin:0 auto; padding:0 2rem;
 }
