@@ -1,0 +1,94 @@
+.bar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .bar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 3500;
+    display: block;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--color-line, #e6edf5);
+    background: rgb(255 255 255 / 95%);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  .bar[hidden] {
+    display: none;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr);
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .phone,
+  .primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    min-height: 46px;
+    padding: 10px 11px;
+    border: 1px solid var(--color-accent, #2b6cb0);
+    border-radius: var(--radius-btn, 8px);
+    font: inherit;
+    font-size: 12px;
+    line-height: 1.35;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .15s ease, border-color .15s ease;
+  }
+
+  .phone {
+    color: var(--color-accent-deep, #1e4f8b);
+    background: #fff;
+  }
+
+  .primary {
+    color: #fff;
+    background: var(--color-accent, #2b6cb0);
+  }
+
+  .primary span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  .phone svg,
+  .primary svg {
+    flex-shrink: 0;
+  }
+
+  .phone:hover {
+    background: #f0f5fa;
+  }
+
+  .primary:hover {
+    border-color: var(--color-accent-deep, #1e4f8b);
+    background: var(--color-accent-deep, #1e4f8b);
+  }
+
+  .phone:focus-visible,
+  .primary:focus-visible {
+    outline: 2px solid var(--color-ink, #0f2533);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone,
+  .primary {
+    transition: none;
+  }
+}
