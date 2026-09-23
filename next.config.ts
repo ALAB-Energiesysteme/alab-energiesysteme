@@ -96,6 +96,13 @@ const nextConfig: NextConfig = {
   // Production-Optimierungen
   poweredByHeader: false,
 
+  // bildMasse() liest Bildmaße per fs aus /public – nur beim statischen Build.
+  // Ohne Ausschluss packt das Tracing den ganzen public-Ordner (>500 MB) in die
+  // Serverfunktion der Landingpages und Vercel lehnt den Deploy ab.
+  outputFileTracingExcludes: {
+    "/lp/*": ["public/**/*"],
+  },
+
   // Experimentelle Features (Next.js 15+ / 16): kleinere Bundles
   experimental: {
     optimizePackageImports: ["lucide-react"],
