@@ -66,8 +66,8 @@ function UUWerWirSind() {
             Elektrofachbetrieb mit Sitz in Mindelheim. Wir verbinden ingenieurmäßige Planung
             mit fachgerechter Ausführung – von der Energieanalyse über die normgerechte
             Elektroinstallation bis hin zu modernen Energiesystemen. Unser Team aus eigenen
-            Ingenieuren und Fachkräften arbeitet in ganz Deutschland an Projekten für
-            Privat- und Geschäftskunden.
+            Ingenieuren und Fachkräften betreut Projekte für Privat- und
+            Geschäftskunden.
           </p>
 
           <p className="mb-8 text-[1rem] leading-[1.8] text-muted">
@@ -119,7 +119,7 @@ function UUBanner() {
         </h2>
         <p className="max-w-[550px] text-[1.1rem] leading-[1.75] text-white/80">
           Als Ingenieurbüro und zertifizierter Elektrofachbetrieb für Energiesysteme begleiten wir Sie
-          deutschlandweit von der ersten Kontaktanfrage bis zur Inbetriebnahme Ihrer Anlage.
+          von der ersten Kontaktanfrage bis zur Inbetriebnahme Ihrer Anlage.
         </p>
       </div>
     </section>

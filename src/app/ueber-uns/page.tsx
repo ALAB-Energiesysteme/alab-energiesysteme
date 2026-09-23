@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Über ALAB Energiesysteme – Ingenieurbüro & Elektrofachbetrieb",
     description:
-      "Inhabergeführtes Ingenieurbüro & Elektrofachbetrieb aus 87719 Mindelheim. Planung und Ausführung aus einer Hand – deutschlandweit.",
+      "Inhabergeführtes Ingenieurbüro & Elektrofachbetrieb aus 87719 Mindelheim. Planung und Ausführung aus einer Hand.",
     url: `${SITE_URL}/ueber-uns`,
     type: "website",
   },
