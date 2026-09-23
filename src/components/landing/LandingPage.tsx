@@ -34,7 +34,7 @@ function Inquiry({ page }: { page: PageContent }) {
         <h2 id="inquiry-title">{page.formTitle}</h2>
         <p>{page.formIntro}</p>
         <p className={s.formStepsNote}>In drei kurzen Schritten zu Ihrer Anfrage.</p>
-        <ul className={s.formBenefits}><li>Keine Adresse nötig – die PLZ genügt</li><li>Ingenieurbüro & Elektrofachbetrieb</li><li>Persönlicher Ansprechpartner aus Mindelheim</li></ul>
+        <ul className={s.formBenefits}><li>Keine Adresse nötig – die PLZ genügt</li><li>Ingenieurbüro & Elektrofachbetrieb</li><li>{page.regional ? "Persönlicher Ansprechpartner aus Mindelheim" : "Persönlicher Ansprechpartner"}</li></ul>
       </div>
       <LandingInquiryForm {...page} />
     </div>
@@ -156,7 +156,7 @@ export default function LandingPage({ page }: { page: PageContent }) {
   const heroMasse = bildMasse(page.heroImage);
   const heroStil = heroMasse ? ({ "--hero-ratio": `${heroMasse.width} / ${heroMasse.height}` } as React.CSSProperties) : undefined;
   const url = `https://www.alabenergiesysteme.de/lp/${page.slug}`;
-  const structuredData = { "@context": "https://schema.org", "@type": "Service", "@id": `${url}#service`, name: page.h1, description: page.description, url, serviceType: page.projectType, provider: { "@id": "https://www.alabenergiesysteme.de/#organization" }, areaServed: ["Mindelheim", "Unterallgäu", "Allgäu"] };
+  const structuredData = { "@context": "https://schema.org", "@type": "Service", "@id": `${url}#service`, name: page.h1, description: page.description, url, serviceType: page.projectType, provider: { "@id": "https://www.alabenergiesysteme.de/#organization" }, ...(page.regional ? { areaServed: ["Mindelheim", "Unterallgäu", "Allgäu"] } : {}) };
   return <div data-landing-page={page.slug} className={s.landing}>
     <a href="#inhalt" className={s.skipLink}>Zum Inhalt</a>
     <Header landingCta={page.cta} />
@@ -168,7 +168,7 @@ export default function LandingPage({ page }: { page: PageContent }) {
           <span className={s.eyebrow}>{page.eyebrow}</span>
           <h1 id="page-title"><Headline text={page.h1} /></h1><p className={s.heroIntro}>{page.intro}</p>
           <div className={s.heroActions}><CTA page={page} placement="hero" /><a href="tel:+4982617597176" className={s.phone}><Phone size={16} aria-hidden="true" /><span>08261 7597176</span></a></div>
-          <ul className={s.benefits}><li>Ingenieur&shy;planung</li><li>Elektro&shy;fachbetrieb</li><li>Eigene Montage</li></ul>
+          <ul className={s.benefits}><li>Ingenieurplanung</li><li>Elektrofachbetrieb</li><li>Eigene Montage</li></ul>
         </div>
         <figure className={`${s.heroVisual} ${page.heroImage.includes("team") ? s.heroTeam : ""}`} style={heroStil}>
           <Image src={page.heroImage} alt={page.heroAlt} fill sizes="(max-width: 1023px) 100vw, 48vw" priority />
@@ -183,7 +183,7 @@ export default function LandingPage({ page }: { page: PageContent }) {
       <References page={page} />
       {page.solarCalculator && <aside className={`${s.container} ${s.calculator}`}><div><span className={s.eyebrow}>Erste Orientierung</span><h2>Wie könnte Ihre PV-Anlage aussehen?</h2><p>Unser bestehender Solarrechner liefert eine modellhafte Einschätzung. Die technische Prüfung und das individuelle Angebot folgen persönlich.</p></div><a href="/pv-zuhause#alab-solarcalc" className={s.textLink}>Zum Solarrechner<ArrowUpRight aria-hidden="true" size={20} /></a></aside>}
       <FAQs page={page} />
-      <section className={s.finalCta}><div className={s.container}><h2>{page.formTitle}</h2><p>Persönliche Einschätzung vom Ingenieurbüro & Elektrofachbetrieb aus Mindelheim.</p><CTA page={page} placement="bottom" /><a href="tel:+4982617597176" className={s.finalPhone}>08261 7597176</a></div></section>
+      <section className={s.finalCta}><div className={s.container}><h2>{page.formTitle}</h2><p>{page.regional ? "Persönliche Einschätzung vom Ingenieurbüro & Elektrofachbetrieb aus Mindelheim." : "Persönliche Einschätzung vom Ingenieurbüro & Elektrofachbetrieb."}</p><CTA page={page} placement="bottom" /><a href="tel:+4982617597176" className={s.finalPhone}>08261 7597176</a></div></section>
       <nav className={`${s.container} ${s.related}`} aria-label="Verwandte Leistungen"><span>Passend zu Ihrem Projekt</span>{page.related.map(slug => { const related = getLandingPage(slug); return related ? <a key={slug} href={`/lp/${slug}`}>{related.projectType}<ArrowUpRight size={15} aria-hidden="true" /></a> : null; })}</nav>
     </main>
     <LandingStickyCTA cta={page.cta} />

@@ -61,8 +61,8 @@
 
   .primary span {
     min-width: 0;
-    overflow-wrap: anywhere;
-    hyphens: auto;
+    overflow-wrap: normal;
+    hyphens: none;
   }
 
   .phone svg,

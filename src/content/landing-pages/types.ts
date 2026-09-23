@@ -1,6 +1,8 @@
 export type LandingPage = {
   slug: string;
   category: "waermepumpe" | "photovoltaik" | "gewerbe" | "elektro";
+  /** Regionsseite (Ort im Keyword): nur dann Mindelheim/Allgäu im Seitentext nennen */
+  regional?: boolean;
   adGroup: string;
   intent: string;
   title: string;

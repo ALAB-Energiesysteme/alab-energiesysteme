@@ -817,10 +817,10 @@ export default function FreiflaechenSection() {
     cursor: pointer;
   }
   #alab-freiflaechen .process-content-modern h3{
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 
   #alab-freiflaechen .process-details-modern{
@@ -849,8 +849,8 @@ export default function FreiflaechenSection() {
     line-height: 1.2 !important;
     margin: 0 0 10px !important;
     padding-right: 40px;
-    word-break: break-word;
-    hyphens: auto;
+    word-break: normal;
+    hyphens: none;
     text-align: center;
   }
 

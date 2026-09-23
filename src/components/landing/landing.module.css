@@ -6,7 +6,9 @@
    "Spei-cherpotenzial". Trennung bleibt erlaubt (sonst sprengen lange Komposita wie
    "Wirtschaftlichkeitsanalyse" schmale Spalten), aber erst ab 14 Zeichen und mit
    mindestens 8 Zeichen davor und 6 danach. */
-.landing.landing :is(h1,h2,h3) { hyphens:auto; hyphenate-limit-chars:14 8 6; -webkit-hyphenate-limit-before:8; -webkit-hyphenate-limit-after:6; overflow-wrap:break-word; }
+/* Arben: nie mitten im Wort trennen – auch keine weichen Trennstellen. Lange Wörter passen über die Schriftgröße. */
+.landing.landing, .landing.landing * { hyphens:none; -webkit-hyphens:none; }
+.landing.landing :is(h1,h2,h3) { overflow-wrap:normal; word-break:normal; }
 .landing h2 { font-size:44px; line-height:1.14; font-weight:700; letter-spacing:-.02em; text-wrap:balance; }
 .landing h3 { font-size:21px; line-height:1.375; font-weight:700; letter-spacing:-.015em; }
 .landing p { line-height:1.6; }
@@ -139,13 +141,14 @@
  .calculator { display:block; } .calculator .textLink { margin-top:20px; }
 }
 @media (max-width:639px) {
- .container,.inquiryGrid { width:calc(100% - 40px); } .landing h2 { font-size:30px; } .landing h3 { font-size:20px; }
- .hero h1 { font-size:36px; } .hero .eyebrow { font-size:10.9px; letter-spacing:.08em; }
+ .container,.inquiryGrid { width:calc(100% - 40px); } .landing h2 { font-size:min(30px,8vw); } .landing h3 { font-size:20px; }
+ /* skaliert mit, damit lange Wörter (Photovoltaikanlage, Elektrofachbetrieb) ungetrennt in eine Zeile passen */
+ .hero h1 { font-size:min(36px,8.8vw); } .hero .eyebrow { font-size:10.9px; letter-spacing:.08em; }
  .heroActions { flex-direction:column; align-items:stretch; gap:12px; }
  .cta { min-height:56px; padding-inline:24px; font-size:15.2px; } .hero .cta { width:100%; } .hero .cta svg { display:none; }
  .hero .phone { width:100%; justify-content:center; min-height:56px; border:1px solid #ffffff59; border-radius:999px; }
  .benefits { display:grid; grid-template-columns:repeat(3,1fr); font-size:13.4px; }
- .benefits li { padding-inline:12px; overflow-wrap:normal; hyphens:manual; }
+ .benefits li { padding-inline:12px; overflow-wrap:normal; }
  .sectionHeading { margin-bottom:40px; } .focusGrid,.twoColumns,.references { grid-template-columns:1fr; gap:28px; }
  .focusCard { padding-top:26px; } .focusCard > svg { margin-bottom:18px; } .sourceNote a { display:inline; margin-left:0; }
  .serviceCard { grid-template-columns:64px 1fr; } .servicesLayout { gap:56px; }
@@ -154,13 +157,13 @@
 
  .referenceHeading { margin-bottom:32px; }
  .faqGrid { gap:40px; } .faq summary { font-size:17.28px; } .faq > p { padding-right:8px; }
- .finalCta h2 { font-size:30px; } .finalCta p { font-size:17px; } .finalCta .cta { width:100%; }
+ .finalCta h2 { font-size:min(30px,8vw); } .finalCta p { font-size:17px; } .finalCta .cta { width:100%; }
  .calculator { padding:28px 24px; } .calculator h2 { font-size:27px; }
  .related { gap:8px 20px; font-size:12px; } .related > span { width:100%; }
 }
 @media (max-width:767px) { .landing ~ :global(footer) { padding-bottom:calc(100px + env(safe-area-inset-bottom)); } }
 @media (max-width:359px) {
- .hero h1 { font-size:32px; } .heroIntro { font-size:16px; } .benefits { font-size:12px; }
+ .heroIntro { font-size:16px; } .benefits { font-size:12px; }
  .benefits li { padding-inline:9px; } .serviceCard { grid-template-columns:44px 1fr; gap:12px; }
 }
 

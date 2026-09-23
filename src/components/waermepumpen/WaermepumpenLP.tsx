@@ -148,8 +148,8 @@ function TelefonLink({ position, hell = false }: { position: string; hell?: bool
    zwei Ebenen, Zweizeiler, CTA, Telefon, Trust-Zeile.
    Desktop: 52 / 48, großes Foto rechts, Höhe folgt der Textspalte.
    ════════════════════════════════════════════════════════════ */
-// Weiche Trennstellen (\u00ad): mobil stehen die drei Begriffe in schmalen Spalten
-const HERO_TRUST = ["Ingenieur\u00adplanung", "Elektro\u00adfachbetrieb", "Eigene Montage"];
+// Keine Trennung im Wort (Arben): mobil umbrechen die Begriffe als Ganzes, ab sm mit Trennlinien
+const HERO_TRUST = ["Ingenieurplanung", "Elektrofachbetrieb", "Eigene Montage"];
 
 function Hero() {
   return (
@@ -192,11 +192,11 @@ function Hero() {
           </div>
 
           {/* Trust-Zeile: feine senkrechte Linien statt Punkte – bricht mobil sauber */}
-          <ul className="mt-9 grid grid-cols-3 border-t border-white/20 pt-5 text-[0.84rem] font-medium leading-snug text-white/85 sm:flex sm:text-[0.92rem] lg:mt-12 lg:border-line lg:text-ink/75">
+          <ul className="mt-9 flex flex-wrap gap-x-5 gap-y-1.5 border-t border-white/20 pt-5 text-[0.84rem] font-medium leading-snug text-white/85 sm:gap-0 sm:text-[0.92rem] lg:mt-12 lg:border-line lg:text-ink/75">
             {HERO_TRUST.map((t) => (
               <li
                 key={t}
-                className="border-l border-white/20 px-3 first:border-l-0 first:pl-0 sm:px-4 lg:border-line"
+                className="sm:border-l sm:border-white/20 sm:px-4 sm:first:border-l-0 sm:first:pl-0 lg:border-line"
               >
                 {t}
               </li>

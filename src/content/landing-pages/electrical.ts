@@ -4,7 +4,8 @@ const technikraum = "/optimized/elektro-zaehlerschrank-wechselrichter-f85da1e7f3
 
 export const electricalPages: LandingPage[] = [
   {
-    slug: "elektriker-mindelheim", category: "elektro", adGroup: "Elektriker Region",
+    slug: "elektriker-mindelheim",
+    regional: true, category: "elektro", adGroup: "Elektriker Region",
     intent: "Regionalen Elektriker für ein konkretes Elektroprojekt finden",
     title: "Elektriker in Mindelheim & Umgebung | ALAB",
     description: "Elektrofachbetrieb in Mindelheim: Installation, Umbau, Verteilungen, PV und Wallbox. Ingenieurplanung und Umsetzung aus einer Hand. Projekt anfragen.",
@@ -48,7 +49,8 @@ export const electricalPages: LandingPage[] = [
     related: ["elektroinstallation-neubau-sanierung", "zaehlerschrank-modernisieren"],
   },
   {
-    slug: "elektromeister-mindelheim", category: "elektro", adGroup: "Elektriker_Elektromeister_Regional",
+    slug: "elektromeister-mindelheim",
+    regional: true, category: "elektro", adGroup: "Elektriker_Elektromeister_Regional",
     intent: "Fachliche Planung und Ausführung komplexerer elektrotechnischer Arbeiten",
     title: "Elektromeister & Elektrofachbetrieb Mindelheim | ALAB",
     description: "Elektromeister gesucht? ALAB in Mindelheim verbindet Ingenieurplanung mit Elektroinstallation: Zähleranlagen, Verteilungen, Umbauten und Energietechnik.",
@@ -95,7 +97,7 @@ export const electricalPages: LandingPage[] = [
     slug: "elektroinstallation-neubau-sanierung", category: "elektro", adGroup: "Elektroinstallation Neubau & Sanierung",
     intent: "Elektroinstallation für Neubau oder Bestandsmodernisierung planen lassen",
     title: "Elektroinstallation Neubau & Sanierung | ALAB",
-    description: "Elektroinstallation für Neubau und Sanierung: Stromkreise, Licht, Netzwerk, Zählerschrank und Vorbereitung für PV, Wallbox und Wärmepumpe. ALAB Mindelheim.",
+    description: "Elektroinstallation für Neubau und Sanierung: Stromkreise, Licht, Netzwerk, Zählerschrank und Vorbereitung für PV, Wallbox und Wärmepumpe – geplant und umgesetzt von ALAB.",
     eyebrow: "Ihr Gebäude · Ihre Elektroinstallation",
     h1: "Elektroinstallation für Neubau & Sanierung",
     intro: "Eine gute Elektroinstallation passt zu Ihrem Alltag und zu Ihrer Energietechnik. Wir planen Anschlüsse, Stromkreise und Verteilungen und setzen die abgestimmte Lösung um.",
@@ -138,7 +140,7 @@ export const electricalPages: LandingPage[] = [
     slug: "zaehlerschrank-modernisieren", category: "elektro", adGroup: "Zählerschrank & Verteilung",
     intent: "Bestehende Zähleranlage oder Sicherungsverteilung prüfen und modernisieren",
     title: "Zählerschrank erneuern & Verteilung modernisieren | ALAB",
-    description: "Zählerschrank für PV, Wärmepumpe oder Wallbox prüfen lassen. ALAB plant die notwendige Anpassung von Zähleranlage und Elektroverteilung in Mindelheim.",
+    description: "Zählerschrank für PV, Wärmepumpe oder Wallbox prüfen lassen. ALAB plant die notwendige Anpassung von Zähleranlage und Elektroverteilung.",
     eyebrow: "Zähleranlage · Verteilung · Energietechnik",
     h1: "Zählerschrank erneuern & Elektroverteilung modernisieren",
     intro: "Neue PV-Anlage, Wärmepumpe oder Wallbox geplant? Wir prüfen Ihren Zählerschrank und zeigen, welche Anpassungen für Ihr Vorhaben tatsächlich erforderlich sind.",
