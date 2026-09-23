@@ -454,21 +454,22 @@ const SYSTEM = ["Photovoltaik", "Stromspeicher", "Wärmepumpe", "Wallbox", "Ener
 function PvKombination() {
   return (
     <section className="bg-white lg:grid lg:min-h-[640px] lg:grid-cols-2">
-      <figure className="relative aspect-[4/3] lg:aspect-auto">
-        {/* Echtes ALAB-Referenzprojekt; Fokus auf das Außengerät (bei ca. 46 % / 60 %) */}
-        <Image
-          src="/referenzen-wp/referenzprojekt-waermepumpe-1.jpg"
-          alt="Von ALAB installierte Luft-Wasser-Wärmepumpe an einem Wohnhaus"
-          fill
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover object-[46%_60%]"
-        />
-        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-5 pb-4 pt-12 text-[0.85rem] font-medium text-white sm:px-8 lg:px-10">
-          Wärmepumpen-Projekt von ALAB Energiesysteme
-        </figcaption>
-      </figure>
+      {/* Mobil auf Textbreite eingerückt und gerundet, damit das Foto zum
+          Abschnitt gehört statt als Streifen davorzuliegen.
+          Ab Desktop randlos über die halbe Breite. */}
+      <div className="px-5 pt-[80px] sm:px-8 lg:p-0">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[16px] shadow-[0_20px_50px_-24px_rgba(15,37,51,0.5)] lg:aspect-auto lg:h-full lg:rounded-none lg:shadow-none">
+          <Image
+            src="/referenzen-wp/referenzprojekt-waermepumpe-1.jpg"
+            alt="Von ALAB installierte Luft-Wasser-Wärmepumpe an einem Wohnhaus"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-[46%_58%]"
+          />
+        </div>
+      </div>
 
-      <div className="flex items-center px-5 py-[72px] sm:px-8 lg:px-[88px] lg:py-[112px]">
+      <div className="flex items-center px-5 pb-[80px] pt-[40px] sm:px-8 lg:px-[88px] lg:py-[112px]">
         <div className="max-w-[540px]">
           <Kicker>Gesamtsystem</Kicker>
           <H2>Wärmepumpe + Photovoltaik</H2>

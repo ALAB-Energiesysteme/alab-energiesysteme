@@ -80,7 +80,6 @@ function UUWerWirSind() {
             {[
               "Inhabergeführtes Ingenieurbüro & Elektrofachbetrieb",
               "Eigene Ingenieure und Fachkräfte – keine Subunternehmer",
-              "Deutschlandweit im Einsatz",
               "Persönliche Betreuung von Anfang bis Ende",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
