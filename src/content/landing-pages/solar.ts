@@ -322,7 +322,7 @@ export const solarPages: LandingPage[] = [
     eyebrow: "Gewerbe-PV · Grundlage für Ihre Investitionsentscheidung",
     h1: "Was kostet eine gewerbliche PV-Anlage – und wann rechnet sie sich?",
     intro: "Die Wirtschaftlichkeit wird projektbezogen aus Verbrauch, Lastgang, Dachfläche und Anlagenkonzept berechnet. ALAB macht Investition, laufende Kosten und Annahmen nachvollziehbar – damit Sie Varianten fundiert vergleichen können.",
-    cta: "Wirtschaftlichkeitsanalyse anfragen",
+    cta: "Wirtschaftlichkeit berechnen lassen",
     benefits: ["Projektbezogene Investitionsbetrachtung", "Eigenverbrauch aus Lastprofil bewerten", "Transparente Annahmen und Varianten"],
     heroImage: "/optimized/gewerbedach-pv-286c2c447c.webp",
     heroAlt: "Photovoltaikanlage auf dem Flachdach einer Gewerbehalle – Projekt von ALAB Energiesysteme",
@@ -334,7 +334,7 @@ export const solarPages: LandingPage[] = [
       { title: "Nutzen realistisch berechnen", text: "Lastgang und Erzeugung bestimmen den Eigenverbrauch. Vermiedener Strombezug und mögliche Erlöse aus Überschüssen werden mit klar benannten Annahmen bewertet." },
       { title: "Betrieb & Finanzierung einbeziehen", text: "Wartung, Monitoring, mögliche Ersatzinvestitionen und Finanzierung verändern den Verlauf. Wir vergleichen Varianten über einen festgelegten Betrachtungszeitraum." },
     ],
-    servicesTitle: "Was in die Wirtschaftlichkeitsanalyse einfließt",
+    servicesTitle: "Diese Faktoren fließen in die Berechnung ein",
     services: [
       { title: "Anlagenleistung & Dach", text: "Nutzbare Fläche, Dachart und Montagekonzept als Grundlage des technischen Umfangs." },
       { title: "Netzanschluss & Elektrik", text: "Vorhandene Infrastruktur sowie notwendige Anschluss- und Verteilungsarbeiten berücksichtigen." },

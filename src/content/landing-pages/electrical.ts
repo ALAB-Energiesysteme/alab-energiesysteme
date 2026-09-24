@@ -26,7 +26,7 @@ export const electricalPages: LandingPage[] = [
       { title: "Installation & Umbau", text: "Leitungen, Anschlüsse, Steckdosen und Beleuchtung für Ihre Nutzung planen und installieren." },
       { title: "Zähler & Verteilungen", text: "Vorhandene Anlagen beurteilen und erforderliche Erweiterungen oder Modernisierungen abstimmen." },
       { title: "PV & Wallbox", text: "Elektrische Einbindung, Schutzkonzept und Anschluss mit dem Anlagenkonzept zusammenführen." },
-      { title: "Wärmepumpenversorgung", text: "Leistungsbedarf, Stromversorgung und erforderliche Anpassungen am Zählerschrank prüfen." },
+      { title: "Versorgung der Wärmepumpe", text: "Leistungsbedarf, Stromversorgung und erforderliche Anpassungen am Zählerschrank prüfen." },
       { title: "Prüfung & Dokumentation", text: "Die ausgeführten Arbeiten prüfen und die zugehörigen Unterlagen für die Übergabe erstellen." },
       { title: "Abstimmung vor Ort", text: "Leitungswege und Arbeitsbereiche besprechen und den Ablauf auf Ihr Gebäude abstimmen." },
     ],
