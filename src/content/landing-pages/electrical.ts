@@ -64,7 +64,7 @@ export const electricalPages: LandingPage[] = [
     focusItems: [
       { title: "Anforderungen erfassen", text: "Bestehende Anschlüsse, neue Verbraucher und Erweiterungswünsche bilden die Grundlage der Planung." },
       { title: "Schnittstellen klären", text: "Zählerkonzept, Netzbetreiber und Anforderungen von PV, Wallbox oder Wärmepumpe werden aufeinander abgestimmt." },
-      { title: "Ausführung nachvollziehbar machen", text: "Ein klarer Leistungsumfang, abgestimmte Arbeitsschritte und Prüfunterlagen schaffen eine belastbare Übergabe." },
+      { title: "Ausführung nachvollziehbar machen", text: "Ein klarer Leistungsumfang, abgestimmte Arbeitsschritte und Prüfunterlagen sorgen für eine saubere Übergabe." },
     ],
     servicesTitle: "Elektrofachbetrieb mit Blick auf das Gesamtsystem",
     services: [
@@ -174,7 +174,7 @@ export const electricalPages: LandingPage[] = [
       { question: "Kann ich einen alten Sicherungskasten erweitern lassen?", answer: "Das hängt unter anderem von Zustand, Platz, Belastbarkeit und Schutzmaßnahmen ab. Nach der Aufnahme lässt sich beurteilen, ob eine Erweiterung oder Erneuerung erforderlich ist." },
       { question: "Wer stimmt einen notwendigen Zählerwechsel ab?", answer: "Ein Zählerwechsel betrifft den zuständigen Messstellenbetreiber. Wir klären im Projekt, welche Abstimmungen und Vorarbeiten erforderlich sind und wer welchen Schritt übernimmt." },
       { question: "Wird der Strom beim Umbau abgeschaltet?", answer: "Für Arbeiten an der Zähleranlage sind in der Regel abgestimmte Abschaltungen nötig. Dauer und Ablauf hängen vom Umbauumfang und den beteiligten Stellen ab und werden vorab besprochen." },
-      { question: "Was kostet die Erneuerung des Zählerschranks?", answer: "Der Preis richtet sich nach Bestand, Größe, erforderlichen Schutzkomponenten, Leitungsanpassungen und Anschlusskonzept. Ein belastbares Angebot folgt der technischen Prüfung." },
+      { question: "Was kostet die Erneuerung des Zählerschranks?", answer: "Der Preis richtet sich nach Bestand, Größe, erforderlichen Schutzkomponenten, Leitungsanpassungen und Anschlusskonzept. Ihr unverbindliches Angebot erhalten Sie nach der technischen Prüfung." },
     ],
     formTitle: "Klären wir, was Ihre Zähleranlage braucht.", formIntro: "Nennen Sie den Anlass der Modernisierung und Ihren Projektort. Die technischen Details besprechen wir gemeinsam.", projectType: "Zählerschrank / Verteilung",
     qualifier: { label: "Anlass der Prüfung", options: ["Photovoltaik", "Wärmepumpe", "Wallbox", "Umbau / alte Verteilung", "Mehrere Erweiterungen"] },

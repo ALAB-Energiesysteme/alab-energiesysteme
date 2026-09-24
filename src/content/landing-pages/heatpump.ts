@@ -227,7 +227,7 @@ export const heatpumpPages: LandingPage[] = [
     heroAlt: "Bosch Wärmepumpe mit Fundament an einer Hausfassade als Produktbeispiel zur Planung der Einbaukosten",
     heroCaption: "Produktbeispiel · Bosch Wärmepumpe",
     focusTitle: "Diese Faktoren bestimmen Ihre Wärmepumpen-Kosten",
-    focusIntro: "Zwei gleich große Häuser können unterschiedliche Anlagen benötigen. Für einen belastbaren Preis prüfen wir drei Bereiche Ihres Projekts.",
+    focusIntro: "Zwei gleich große Häuser können unterschiedliche Anlagen benötigen. Für Ihr unverbindliches Angebot prüfen wir drei Bereiche Ihres Projekts.",
     focusItems: [
       { title: "Gebäude & Wärmebedarf", text: "Heizlast, Gebäudezustand und vorhandene Heizflächen bestimmen Geräteleistung und mögliche Anpassungen." },
       { title: "Einbau & Heizraum", text: "Demontage, Hydraulik, Warmwasserspeicher und Leitungswege beeinflussen Material und Montageaufwand." },
@@ -248,7 +248,7 @@ export const heatpumpPages: LandingPage[] = [
       { title: "Kosten nachvollziehen", text: "Sie erhalten ein Angebot mit abgestimmtem Umfang und besprechen mögliche Optionen." },
     ],
     faqs: [
-      { question: "Warum gibt es hier keinen Pauschalpreis für eine Wärmepumpe?", answer: "Ein Pauschalpreis würde wichtige Unterschiede Ihres Gebäudes ausblenden. Leistung, Speicher, Leitungswege und notwendige Umbauten verändern den Gesamtaufwand. Ein belastbares Angebot entsteht nach der technischen Prüfung und einem klar definierten Leistungsumfang." },
+      { question: "Warum gibt es hier keinen Pauschalpreis für eine Wärmepumpe?", answer: "Ein Pauschalpreis würde wichtige Unterschiede Ihres Gebäudes ausblenden. Leistung, Speicher, Leitungswege und notwendige Umbauten verändern den Gesamtaufwand. Ihr unverbindliches Angebot erstellen wir nach der technischen Prüfung mit einem klar definierten Leistungsumfang." },
       { question: "Reicht die Wohnfläche, um die Kosten zu berechnen?", answer: "Die Wohnfläche ist nur ein erster Anhaltspunkt. Für die Auslegung zählen auch Wärmeverluste, Heizflächen, Warmwasserbedarf und der Gebäudezustand. Deshalb beziehen wir Heizlast und die vorhandene Technik in die Planung ein." },
       { question: "Welche zusätzlichen Einbaukosten werden häufig übersehen?", answer: "Je nach Projekt sind Rückbau, Fundament, Leitungswege, Speicher und Elektroarbeiten zu berücksichtigen. Wir prüfen diese Schnittstellen frühzeitig, damit Sie den vereinbarten Gesamtumfang beurteilen können und nicht nur den Preis des Geräts sehen." },
       { question: "Wie lassen sich zwei Wärmepumpen-Angebote sinnvoll vergleichen?", answer: "Vergleichen Sie neben Gerät und Leistung auch Planung, Montage, Hydraulik, Warmwasserspeicher, Elektroarbeiten und Inbetriebnahme. Achten Sie außerdem auf ausgeschlossene Leistungen und noch ungeklärte Voraussetzungen. Gleiche Endpreise bedeuten nicht automatisch gleichen Umfang." },
@@ -256,7 +256,7 @@ export const heatpumpPages: LandingPage[] = [
       { question: "Sind Anschaffungskosten und laufende Heizkosten dasselbe?", answer: "Nein. Das Angebot beschreibt die vereinbarten Investitionskosten. Die späteren Betriebskosten hängen unter anderem von Wärmebedarf, Anlageneinstellung, Stromtarif und tatsächlicher Nutzung ab. Eine PV-Anlage kann ergänzend betrachtet werden, ersetzt aber keine projektbezogene Berechnung." },
     ],
     formTitle: "Was kostet die Wärmepumpe für Ihr Gebäude?",
-    formIntro: "Für einen belastbaren Preis benötigen wir einige Angaben zu Ihrem Gebäude. Starten Sie mit Standort und Heizsituation; weitere Details klären wir persönlich.",
+    formIntro: "Für Ihr unverbindliches Angebot benötigen wir einige Angaben zu Ihrem Gebäude. Starten Sie mit Standort und Heizsituation; weitere Details klären wir persönlich.",
     projectType: "Wärmepumpe – Kosten inklusive Einbau",
     qualifier: { label: "Welche Ausgangslage trifft zu?", options: ["Bestandsgebäude mit Gasheizung", "Bestandsgebäude mit Ölheizung", "Andere bestehende Heizung", "Neubau", "Noch in der Orientierung"] },
     related: ["waermepumpe-angebot", "waermepumpe-altbau", "waermepumpe-foerderung"],
