@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowRight, Check, CheckCircle2, MapPin, ShieldCheck } from 
 import type { LandingPage } from "@/content/landing-pages/types";
 import { FORM_ERROR_MESSAGE, isLocalPreview, PREVIEW_FORM_MESSAGE, submitForm } from "@/lib/formSubmission";
 import { trackFormSubmit } from "@/lib/tracking";
-import { hasLandingTrackingConsent } from "./LandingTracking";
 import styles from "./LandingInquiryForm.module.css";
 
 const MAKE_URL = "https://hook.eu2.make.com/yloo9gmjoxtsua7r2g5z6af9lqs0ei3y";
@@ -145,9 +144,8 @@ function InquirySteps({ slug, cta, projectType, qualifier, category }: Props) {
     setSending(true);
     try {
       await submitForm(MAKE_URL, payload.toString(), "application/x-www-form-urlencoded;charset=UTF-8");
-      if (hasLandingTrackingConsent()) {
-        trackFormSubmit({ formId: `landing-${slug}`, formType: "lead", formLocation: slug });
-      }
+      // Always report the lead like every other site form; without consent, Consent Mode limits GTM to cookieless pings.
+      trackFormSubmit({ formId: `landing-${slug}`, formType: "lead", formLocation: slug });
       setSent(true);
       setValues(initialValues);
       setProjectChoice("");
