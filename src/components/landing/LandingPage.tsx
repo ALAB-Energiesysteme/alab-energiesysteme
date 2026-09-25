@@ -33,7 +33,7 @@ function Inquiry({ page }: { page: PageContent }) {
         <span className={s.eyebrow}>Persönlich & unverbindlich</span>
         <h2 id="inquiry-title">{page.formTitle}</h2>
         <p>{page.formIntro}</p>
-        <p className={s.formStepsNote}>In drei kurzen Schritten zu Ihrer Anfrage.</p>
+        <p className={s.formStepsNote}>{page.category === "waermepumpe" || page.category === "photovoltaik" ? "Ein paar Klicks bis zu Ihrem Richtpreis." : "In wenigen Klicks zu Ihrer Anfrage."}</p>
         <ul className={s.formBenefits}><li>Keine Adresse nötig – die PLZ genügt</li><li>Ingenieurbüro & Elektrofachbetrieb</li><li>{page.regional ? "Persönlicher Ansprechpartner aus Mindelheim" : "Persönlicher Ansprechpartner"}</li></ul>
       </div>
       <LandingInquiryForm {...page} />
@@ -108,7 +108,7 @@ function referenzenFuer(category: PageContent["category"]): { eyebrow: string; i
         eyebrow: "Wärmepumpe innen und außen",
         intro: "Außengerät aus einem ALAB-Projekt und ein Beispiel für einen aufgeräumten Technikraum mit Speichern.",
         bilder: [
-          { src: "/optimized/wp-technikraum-speicher-7343874e9a.webp", alt: "Technikraum mit Warmwasser- und Pufferspeicher und Wärmepumpen-Inneneinheit (Beispielbild)", label: "Technikraum · Beispiel", text: "Warmwasser- und Pufferspeicher mit Inneneinheit" },
+          { src: "/optimized/wp-technikraum-speicher-7343874e9a.webp", alt: "Technikraum mit Warmwasser- und Pufferspeicher und Wärmepumpen-Inneneinheit (Beispielbild)", label: "Technikraum (Beispiel)", text: "Warmwasser- und Pufferspeicher mit Inneneinheit" },
           { src: "/referenzen-wp/referenzprojekt-waermepumpe-1.jpg", alt: "Von ALAB installierte Luft-Wasser-Wärmepumpe an einem Wohnhaus", label: "ALAB-Projekt", text: "Außengerät einer Luft-Wasser-Wärmepumpe am Wohnhaus" },
         ],
         link: null,
