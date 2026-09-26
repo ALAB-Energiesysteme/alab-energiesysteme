@@ -211,7 +211,9 @@ function InquirySteps(page: Props) {
     }
 
     const angaben = summarize(page, answers);
-    const richtpreis = result.range ? `ca. ${formatRange(result.range)} (${result.basis})` : "kein Richtpreis angezeigt";
+    const richtpreis = result.range
+      ? `ca. ${formatRange(result.range)} (${result.basis})${result.eigenanteilAb && result.foerderQuote ? `; nach Förderung von bis zu ${Math.round(result.foerderQuote * 100)} % ca. ${deZahl(result.eigenanteilAb)} €` : ""}`
+      : "kein Richtpreis angezeigt";
     const nachricht = [
       contact.message.trim(),
       `Kontaktwunsch: ${channelLabel(channel)}`,
@@ -262,14 +264,14 @@ function InquirySteps(page: Props) {
       <p>{channel === "telefon" ? "Wir melden uns telefonisch bei Ihnen und stimmen die Analyse Ihres Objekts ab."
         : channel === "video" ? "Wir senden Ihnen per E-Mail einen Terminvorschlag für das Videogespräch."
         : "Wir melden uns per E-Mail bei Ihnen und stimmen die Analyse Ihres Objekts ab."}</p>
-      {result.range && <p className={styles.successPrice}>Ihre Ersteinschätzung: ca. {formatRange(result.range)}</p>}
+      {result.range && <p className={styles.successPrice}>Ihre Ersteinschätzung: ca. {formatRange(result.range)}{result.eigenanteilAb && result.foerderQuote ? `, nach Förderung von bis zu ${Math.round(result.foerderQuote * 100)} % ca. ${deZahl(result.eigenanteilAb)} €` : ""}</p>}
     </div>;
   }
 
   const stepLabel = stage === "question" ? `Frage ${index + 1} von ${questions.length}` : stage === "result" ? (result.range ? "Ihre Ersteinschätzung" : "Ihre Auswertung") : stage === "channel" ? "Fast geschafft" : "Letzter Schritt";
   const title = stage === "question" ? question?.title
     : stage === "result" ? (result.range
-      ? <>Nach Auswertung Ihrer Angaben könnte <span className={styles.nowrap}>{result.subject}</span> ca. <span className={styles.pricePhrase}>{deZahl(result.range[0])} – {deZahl(result.range[1])}&nbsp;€</span> kosten.</>
+      ? <>Nach Auswertung Ihrer Angaben könnte <span className={styles.nowrap}>{result.subject}</span> ca. <span className={styles.pricePhrase}>{deZahl(result.range[0])} bis {deZahl(result.range[1])}&nbsp;€</span> kosten.</>
       : result.title ?? "Danke, Ihre Angaben sind vollständig.")
     : stage === "channel" ? "Wie möchten Sie Ihr genaues Angebot besprechen?"
     : "Wohin dürfen wir uns melden?";
@@ -317,9 +319,12 @@ function InquirySteps(page: Props) {
 
       {stage === "result" && <>
         {result.range ? <p className={styles.basis}>{result.basis}</p> : result.note && <p className={styles.explain}>{result.note}</p>}
+        {result.eigenanteilAb && result.foerderQuote && <div className={styles.subsidy}>
+          <p className={styles.subsidyMain}>Nach einer Förderung von bis zu {Math.round(result.foerderQuote * 100)}&nbsp;% zahlen Sie ca. <strong className={styles.nowrap}>{deZahl(result.eigenanteilAb)}&nbsp;€</strong>.</p>
+          <p className={styles.subsidyService}><Check size={15} strokeWidth={2.6} aria-hidden="true" /><span>Wir begleiten Sie durch den Förderantrag, bis der Zuschuss auf Ihrem Konto ist.</span></p>
+        </div>}
         {/* Hauptziel dieser Stufe: das genaue Angebot, nicht der Richtpreis */}
         <div className={styles.offer} ref={offerRef}>
-          <p className={styles.offerText}>{result.range ? "Der genaue Preis kann darunter oder darüber liegen. " : ""}Ihr genaues Angebot erhalten Sie nach einer kurzen Analyse Ihres Objekts.</p>
           <button className={`${styles.primary} ${styles.ctaMain}`} type="button" onClick={() => show("channel")}>Genaues Angebot kostenfrei anfordern</button>
           <ul className={styles.trust}>{TRUST.map(item => <li key={item}><Check size={14} strokeWidth={2.6} aria-hidden="true" />{item}</li>)}</ul>
         </div>
@@ -359,7 +364,7 @@ function InquirySteps(page: Props) {
       </>}
 
       {stage === "contact" && channel && <>
-        <p className={styles.intro}>{channel === "telefon" ? "Nur Name und Telefonnummer – wir rufen Sie an." : channel === "video" ? "Nur Name und E-Mail – wir senden Ihnen einen Terminvorschlag mit Link." : "Nur Name und E-Mail – wir melden uns schriftlich."}</p>
+        <p className={styles.intro}>{channel === "telefon" ? "Nur Name und Telefonnummer, wir rufen Sie an." : channel === "video" ? "Nur Name und E-Mail, wir senden Ihnen einen Terminvorschlag mit Link." : "Nur Name und E-Mail, wir melden uns schriftlich."}</p>
         <fieldset className={styles.contactFields} disabled={sending}>
           <legend className={styles.srOnly}>Kontaktdaten für Ihre Anfrage</legend>
           <div className={styles.fields}>

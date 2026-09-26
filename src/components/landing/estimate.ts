@@ -33,6 +33,10 @@ export const PREISE = {
     heizkoerperAnpassungUnsaniert: [0, 2000],
     verteilungUnbekannt: [0, 1500],
     wohnflaecheAnnahme: 140,
+    /** KfW-Heizungsförderung (Programm 458) laut ALAB-Förderseite, Stand 28.07.2026 (wp-info/FoerderTeil.tsx):
+        30 % Grund + 16 % Klimageschwindigkeitsbonus + bis 40 % Einkommensbonus, gedeckelt bei 80 %,
+        auf höchstens 28.000 € förderfähige Kosten (erste Wohneinheit) → max. 22.400 €. Nicht für Neubauten. */
+    foerderung: { quoteMax: 0.8, quoteOhneKlimabonus: 0.7, foerderfaehigeKosten: 28000 },
   },
   photovoltaik: {
     /** kWp-Spanne je Jahresverbrauch */
@@ -61,6 +65,10 @@ export type Estimate = {
   basis: string;
   facts: string[];
   note?: string;
+  /** Höchster möglicher Fördersatz (nur Wärmepumpe im Bestand) */
+  foerderQuote?: number;
+  /** Eigenanteil „ab“: unteres Ende der Preisspanne nach höchstmöglicher Förderung (inkl. Förderdeckel) */
+  eigenanteilAb?: number;
   /** Überschrift, wenn bewusst kein Preis genannt wird */
   title?: string;
 };
@@ -96,8 +104,8 @@ function wpFragen(answers: Answers): Question[] {
   const { neubau, heizung } = wpVorgaben(answers.vorhaben);
   const fragen: Question[] = [flaeche("Die beheizte Fläche aller Etagen, grob geschätzt.")];
   if (!neubau) fragen.push(choice("zustand", "Dämmzustand", "Wie gut ist das Gebäude gedämmt?", [
-    ["neubau", "Sehr gut – Neubau oder Neubau-Standard"],
-    ["saniert", "Saniert – Dämmung und Fenster erneuert"],
+    ["neubau", "Sehr gut, Neubau oder Neubau-Standard"],
+    ["saniert", "Saniert, Dämmung und Fenster erneuert"],
     ["teilsaniert", "Teilweise saniert"],
     ["unsaniert", "Weitgehend unsaniert"],
   ]));
@@ -132,10 +140,11 @@ function wpSchaetzung(answers: Answers): Estimate {
   return {
     subject: "Ihre Wärmepumpe",
     range,
-    basis: "inklusive Gerät, Montage und Inbetriebnahme, vor Abzug möglicher Förderung",
+    basis: vorgaben.neubau ? "inklusive Gerät, Montage und Inbetriebnahme" : "inklusive Gerät, Montage und Inbetriebnahme, vor Abzug möglicher Förderung",
     facts,
-    note: heizung === "strom" ? "Bei Nachtspeicher- oder Elektroheizung kommt eine neue Wärmeverteilung hinzu. Sie ist im Richtpreis nicht enthalten und wird im Angebot eigens kalkuliert."
-      : heizlast > 17 ? "Bei dieser Heizlast prüfen wir auch eine Lösung aus zwei Geräten." : undefined,
+    // Klimageschwindigkeitsbonus nur beim Austausch fossiler Heizungen bzw. Nachtspeicher – nicht bei Pellets, Fernwärme oder alter Wärmepumpe
+    foerderQuote: vorgaben.neubau ? undefined : heizung === "wp" || heizung === "andere" ? p.foerderung.quoteOhneKlimabonus : p.foerderung.quoteMax,
+    note: heizlast > 17 ? "Bei dieser Heizlast prüfen wir auch eine Lösung aus zwei Geräten." : undefined,
   };
 }
 
@@ -150,14 +159,14 @@ function pvVorgaben(vorhaben = "") {
 }
 
 const verbrauchFrage = choice("verbrauch", "Stromverbrauch", "Wie hoch ist Ihr Stromverbrauch pro Jahr?", [
-  ["bis3", "bis 3.000 kWh"], ["3bis5", "3.000 – 5.000 kWh"], ["5bis8", "5.000 – 8.000 kWh"], ["ueber8", "über 8.000 kWh"], ["unbekannt", "Weiß ich nicht"],
+  ["bis3", "bis 3.000 kWh"], ["3bis5", "3.000 bis 5.000 kWh"], ["5bis8", "5.000 bis 8.000 kWh"], ["ueber8", "über 8.000 kWh"], ["unbekannt", "Weiß ich nicht"],
 ], "Steht auf Ihrer Jahresabrechnung. Mit Wärmepumpe oder E-Auto meist über 5.000 kWh.");
 
 function pvFragen(answers: Answers): Question[] {
   const v = pvVorgaben(answers.vorhaben);
   if (v.nurSpeicher) return [
     choice("bestand", "Vorhandene Anlage", "Wie groß ist Ihre vorhandene PV-Anlage?", [
-      ["bis7", "bis 7 kWp"], ["7bis10", "7 – 10 kWp"], ["10bis15", "10 – 15 kWp"], ["ueber15", "über 15 kWp"], ["unbekannt", "Weiß ich nicht"],
+      ["bis7", "bis 7 kWp"], ["7bis10", "7 bis 10 kWp"], ["10bis15", "10 bis 15 kWp"], ["ueber15", "über 15 kWp"], ["unbekannt", "Weiß ich nicht"],
     ]),
     verbrauchFrage,
     plz(),
@@ -169,7 +178,7 @@ function pvFragen(answers: Answers): Question[] {
     verbrauchFrage,
   ];
   if (!v.speicher) fragen.push(choice("speicher", "Stromspeicher", "Soll ein Stromspeicher dazukommen?", [
-    ["ja", "Ja, mit Speicher"], ["nein", "Nein, ohne Speicher"], ["offen", "Noch offen – bitte beides zeigen"],
+    ["ja", "Ja, mit Speicher"], ["nein", "Nein, ohne Speicher"], ["offen", "Noch offen, bitte beides zeigen"],
   ]));
   if (!v.wallbox) fragen.push(choice("wallbox", "Wallbox", "Soll eine Wallbox mit eingeplant werden?", [
     ["ja", "Ja"], ["nein", "Nein"], ["spaeter", "Vielleicht später"],
@@ -187,7 +196,7 @@ function pvSchaetzung(answers: Answers): Estimate {
       subject: "Ihr Stromspeicher",
       range: add([kwh[0] * p.nachruestungEuroProKwh[0], kwh[1] * p.nachruestungEuroProKwh[1]], p.speicherNachruestung),
       basis: "inklusive Montage, Einbindung und Inbetriebnahme",
-      facts: [`Speichergröße ca. ${deZahl(kwh[0])} – ${deZahl(kwh[1])} kWh`],
+      facts: [`Speichergröße ca. ${deZahl(kwh[0])} bis ${deZahl(kwh[1])} kWh`],
     };
   }
 
@@ -197,10 +206,10 @@ function pvSchaetzung(answers: Answers): Estimate {
   const offen = !v.speicher && answers.speicher === "offen";
   const proKwp = p.euroProKwp + (mitSpeicher ? p.speicherAufschlagProKwp : 0) + (mitWallbox ? p.wallboxAufschlagProKwp : 0);
 
-  const facts = [`Anlagengröße ca. ${kwp[0]} – ${kwp[1]} kWp`];
-  if (mitSpeicher) facts.push(`Stromspeicher ca. ${kwp[0]} – ${kwp[1]} kWh eingerechnet`);
+  const facts = [`Anlagengröße ca. ${kwp[0]} bis ${kwp[1]} kWp`];
+  if (mitSpeicher) facts.push(`Stromspeicher ca. ${kwp[0]} bis ${kwp[1]} kWh eingerechnet`);
   if (mitWallbox) facts.push("Wallbox eingerechnet");
-  if (offen) facts.push(`Mit Stromspeicher (ca. ${kwp[0]} – ${kwp[1]} kWh) kämen ca. ${formatRange([kwp[0] * p.speicherAufschlagProKwp, kwp[1] * p.speicherAufschlagProKwp])} hinzu`);
+  if (offen) facts.push(`Mit Stromspeicher (ca. ${kwp[0]} bis ${kwp[1]} kWh) kämen ca. ${formatRange([kwp[0] * p.speicherAufschlagProKwp, kwp[1] * p.speicherAufschlagProKwp])} hinzu`);
   const range: [number, number] = [kwp[0] * proKwp, kwp[1] * proKwp];
   return {
     subject: "Ihre PV-Anlage",
@@ -220,7 +229,7 @@ function gewerbeFragen(): Question[] {
       ["trapez", "Trapezblech"], ["sandwich", "Sandwichpaneele"], ["flach", "Flachdach mit Folie oder Bitumen"], ["faserzement", "Faserzement / Wellplatten"], ["unbekannt", "Weiß ich nicht"],
     ]),
     choice("verbrauch", "Stromverbrauch", "Wie hoch ist Ihr Stromverbrauch pro Jahr?", [
-      ["bis50", "bis 50.000 kWh"], ["50bis200", "50.000 – 200.000 kWh"], ["200bis1000", "200.000 kWh – 1 Mio. kWh"], ["ueber1000", "über 1 Mio. kWh"], ["unbekannt", "Weiß ich nicht"],
+      ["bis50", "bis 50.000 kWh"], ["50bis200", "50.000 bis 200.000 kWh"], ["200bis1000", "200.000 kWh bis 1 Mio. kWh"], ["ueber1000", "über 1 Mio. kWh"], ["unbekannt", "Weiß ich nicht"],
     ]),
     plz("Wo steht das Gebäude?"),
   ];
@@ -256,10 +265,10 @@ function elektroFragen(slug: string, answers: Answers): Question[] {
   if (art === "zaehler") return [
     choice("zaehler", "Anzahl Zähler", "Wie viele Stromzähler hat das Gebäude?", [["1", "Einen"], ["2", "Zwei"], ["3", "Drei oder mehr"]]),
     choice("alter", "Alter der Anlage", "Wie alt ist die Elektroanlage ungefähr?", [
-      ["vor1970", "vor 1970"], ["1970bis1990", "1970 – 1990"], ["1991bis2010", "1991 – 2010"], ["nach2010", "nach 2010"], ["unbekannt", "Weiß ich nicht"],
+      ["vor1970", "vor 1970"], ["1970bis1990", "1970 bis 1990"], ["1991bis2010", "1991 bis 2010"], ["nach2010", "nach 2010"], ["unbekannt", "Weiß ich nicht"],
     ]),
     choice("uv", "Unterverteilung", "Soll der Sicherungskasten (Unterverteilung) mit erneuert werden?", [
-      ["ja", "Ja, mit erneuern"], ["nein", "Nein, nur den Zählerschrank"], ["unbekannt", "Weiß ich nicht – bitte prüfen"],
+      ["ja", "Ja, mit erneuern"], ["nein", "Nein, nur den Zählerschrank"], ["unbekannt", "Weiß ich nicht, bitte prüfen"],
     ]),
     plz(),
   ];
@@ -279,7 +288,7 @@ function elektroFragen(slug: string, answers: Answers): Question[] {
   if (answers.umfang === "pruefung") return [...fragen, gebaeude, plz()];
   return [...fragen, gebaeude, flaeche("Grob geschätzt genügt."),
     choice("ausstattung", "Ausstattung", "Welche Ausstattung wünschen Sie?", [
-      ["standard", "Standard"], ["komfort", "Komfort – mehr Steckdosen, Netzwerk, Außenbereich"], ["smart", "Smart Home (z. B. KNX)"],
+      ["standard", "Standard"], ["komfort", "Komfort: mehr Steckdosen, Netzwerk, Außenbereich"], ["smart", "Smart Home (z. B. KNX)"],
     ]),
     plz()];
 }
@@ -316,7 +325,12 @@ export function estimate(page: Page, answers: Answers): Estimate {
   let range = result.range && roundRange(page.category === "waermepumpe" ? narrow(result.range) : result.range);
   const hoechstpreis = page.category === "waermepumpe" ? PREISE.waermepumpe.hoechstpreis : Infinity;
   if (range && range[1] > hoechstpreis) range = [Math.min(range[0], hoechstpreis - 3000), hoechstpreis];
-  return { ...result, range };
+  const f = PREISE.waermepumpe.foerderung;
+  // Nur der günstigste Wert als „ab“ – ohne hohe Obergrenze, aber mit Förderdeckel, damit die Zahl stimmt
+  const eigenanteilAb = range && result.foerderQuote
+    ? Math.floor((range[0] - Math.min(range[0], f.foerderfaehigeKosten) * result.foerderQuote) / 100) * 100
+    : undefined;
+  return { ...result, range, eigenanteilAb };
 }
 
 /** Richtpreis bewusst als schmale Spanne: höchstens ±9 % um die Mitte der errechneten Werte */
@@ -327,7 +341,7 @@ function narrow([min, max]: [number, number]): [number, number] {
 
 /** Anzeige einer Antwort in der Zusammenfassung */
 export function answerLabel(question: Question, value: string | undefined): string {
-  if (value === undefined || value === "") return "–";
+  if (value === undefined || value === "") return "keine Angabe";
   if (question.kind === "choice") return question.options.find(option => option.value === value)?.label ?? value;
   if (question.kind === "number") return value === UNKNOWN ? question.unknownLabel : `${deZahl(Number(value))} ${question.unit}`;
   return value;
@@ -348,5 +362,5 @@ export function deZahl(value: number) {
 
 export function formatRange(range: [number, number]) {
   const [min, max] = roundRange(range);
-  return `${deZahl(min)} – ${deZahl(max)} €`;
+  return `${deZahl(min)} bis ${deZahl(max)} €`;
 }

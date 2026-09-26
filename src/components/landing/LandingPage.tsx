@@ -34,7 +34,7 @@ function Inquiry({ page }: { page: PageContent }) {
         <h2 id="inquiry-title">{page.formTitle}</h2>
         <p>{page.formIntro}</p>
         <p className={s.formStepsNote}>{page.category === "waermepumpe" || page.category === "photovoltaik" ? "Ein paar Klicks bis zu Ihrem Richtpreis." : "In wenigen Klicks zu Ihrer Anfrage."}</p>
-        <ul className={s.formBenefits}><li>Keine Adresse nötig – die PLZ genügt</li><li>Ingenieurbüro & Elektrofachbetrieb</li><li>{page.regional ? "Persönlicher Ansprechpartner aus Mindelheim" : "Persönlicher Ansprechpartner"}</li></ul>
+        <ul className={s.formBenefits}><li>Keine Adresse nötig, die PLZ genügt</li><li>Ingenieurbüro & Elektrofachbetrieb</li><li>{page.regional ? "Persönlicher Ansprechpartner aus Mindelheim" : "Persönlicher Ansprechpartner"}</li></ul>
       </div>
       <LandingInquiryForm {...page} />
     </div>
@@ -88,8 +88,8 @@ function referenzenFuer(category: PageContent["category"]): { eyebrow: string; i
         eyebrow: "Einblicke in unsere Arbeit",
         intro: "Bilder aus unserer bestehenden Projekt- und Montagegalerie.",
         bilder: [
-          { src: "/optimized/pv-wohnhaus-referenz-856cc714ea.webp", alt: "Photovoltaikanlage auf dem Ziegeldach eines Wohnhauses – ALAB-Referenzprojekt", label: "Photovoltaik", text: "Solarstrom vom eigenen Hausdach" },
-          { src: "/optimized/pv-dachmontage-referenz-fd067d535e.webp", alt: "Montierte Unterkonstruktion auf einem Ziegeldach vor dem Auflegen der PV-Module – ALAB-Referenzprojekt", label: "Dachmontage", text: "Unterkonstruktion während der Montage" },
+          { src: "/optimized/pv-wohnhaus-referenz-856cc714ea.webp", alt: "Photovoltaikanlage auf dem Ziegeldach eines Wohnhauses, ALAB-Referenzprojekt", label: "Photovoltaik", text: "Solarstrom vom eigenen Hausdach" },
+          { src: "/optimized/pv-dachmontage-referenz-fd067d535e.webp", alt: "Montierte Unterkonstruktion auf einem Ziegeldach vor dem Auflegen der PV-Module, ALAB-Referenzprojekt", label: "Dachmontage", text: "Unterkonstruktion während der Montage" },
         ],
         link: { href: "/pv-zuhause#ref-gallery-private", text: "Zu unseren Referenzen" },
       };
@@ -184,7 +184,7 @@ export default function LandingPage({ page }: { page: PageContent }) {
       {page.solarCalculator && <aside className={`${s.container} ${s.calculator}`}><div><span className={s.eyebrow}>Erste Orientierung</span><h2>Wie könnte Ihre PV-Anlage aussehen?</h2><p>Unser bestehender Solarrechner liefert eine modellhafte Einschätzung. Die technische Prüfung und das individuelle Angebot folgen persönlich.</p></div><a href="/pv-zuhause#alab-solarcalc" className={s.textLink}>Zum Solarrechner<ArrowUpRight aria-hidden="true" size={20} /></a></aside>}
       <FAQs page={page} />
       <section className={s.finalCta}><div className={s.container}><h2>{page.formTitle}</h2><p>{page.regional ? "Persönliche Einschätzung vom Ingenieurbüro & Elektrofachbetrieb aus Mindelheim." : "Persönliche Einschätzung vom Ingenieurbüro & Elektrofachbetrieb."}</p><CTA page={page} placement="bottom" /><a href="tel:+4982617597176" className={s.finalPhone}>08261 7597176</a></div></section>
-      <nav className={`${s.container} ${s.related}`} aria-label="Verwandte Leistungen"><span>Passend zu Ihrem Projekt</span>{page.related.map(slug => { const related = getLandingPage(slug); return related ? <a key={slug} href={`/lp/${slug}`}>{related.projectType}<ArrowUpRight size={15} aria-hidden="true" /></a> : null; })}</nav>
+      <nav className={`${s.container} ${s.related}`} aria-label="Verwandte Leistungen"><span>Passend zu Ihrem Projekt</span>{page.related.map(slug => { const related = getLandingPage(slug); return related ? <a key={slug} href={`/lp/${slug}`}>{related.projectType.replace(" – ", ": ")}<ArrowUpRight size={15} aria-hidden="true" /></a> : null; })}</nav>
     </main>
     <LandingStickyCTA cta={page.cta} />
   </div>;

@@ -1,7 +1,7 @@
 import type { LandingPage } from "./types";
 
 const kfwSource = {
-  title: "KfW: Heizungsförderung für Privatpersonen – Wohngebäude (458), geprüft am 22.09.2026",
+  title: "KfW: Heizungsförderung für Privatpersonen, Wohngebäude (458), geprüft am 22.09.2026",
   url: "https://www.kfw.de/inlandsfoerderung/Privatpersonen/Bestehende-Immobilie/F%C3%B6rderprodukte/Heizungsf%C3%B6rderung-f%C3%BCr-Privatpersonen-Wohngeb%C3%A4ude-%28458%29/",
 };
 
@@ -66,7 +66,7 @@ export const heatpumpPages: LandingPage[] = [
     description: "Wärmepumpe kaufen mit Planung, Montage und Elektroarbeiten aus einer Hand. Individuelles Komplettangebot von ALAB anfragen.",
     eyebrow: "Ihr Wärmepumpen-Angebot",
     h1: "Wärmepumpe kaufen – individuelles Komplettangebot erhalten",
-    intro: "Sie möchten eine Wärmepumpe kaufen und wissen, was der Einbau umfasst? ALAB plant Ihre Anlage inklusive Hydraulik, Warmwasser und Elektroarbeiten – passend zu Ihrem Gebäude.",
+    intro: "Sie möchten eine Wärmepumpe kaufen und wissen, was der Einbau umfasst? ALAB plant Ihre Anlage inklusive Hydraulik, Warmwasser und Elektroarbeiten, passend zu Ihrem Gebäude.",
     cta: "Wärmepumpen-Angebot anfordern",
     benefits: ["Auf Ihr Gebäude ausgelegt", "Leistungsumfang klar beschrieben", "Planung, Montage und Elektroarbeiten"],
     heroImage: "/optimized/waermepumpe-bosch-7bd7fd7c72.webp",
@@ -119,7 +119,7 @@ export const heatpumpPages: LandingPage[] = [
     description: "Wärmepumpen von ALAB in Mindelheim: Ingenieurbüro und Elektrofachbetrieb für Planung, Montage und Inbetriebnahme im Unterallgäu und Allgäu.",
     eyebrow: "Mindelheim, Unterallgäu und Allgäu",
     h1: "Wärmepumpen-Fachbetrieb für Mindelheim, Unterallgäu & Allgäu",
-    intro: "Ihre Wärmepumpe braucht einen Fachbetrieb, der Gebäude und Elektrotechnik zusammen plant. ALAB verbindet Ingenieurplanung mit eigenen Fachkräften und einem persönlichen Ansprechpartner – von Mindelheim aus für Ihr Projekt im Allgäu.",
+    intro: "Ihre Wärmepumpe braucht einen Fachbetrieb, der Gebäude und Elektrotechnik zusammen plant. ALAB verbindet Ingenieurplanung mit eigenen Fachkräften und einem persönlichen Ansprechpartner, von Mindelheim aus für Ihr Projekt im Allgäu.",
     cta: "Wärmepumpen-Projekt besprechen",
     benefits: ["Standort in Mindelheim", "Ingenieurbüro und Elektrofachbetrieb", "Persönliche Begleitung bis zur Übergabe"],
     heroImage: "/optimized/waermepumpe-hochformat-4fc396c70d.webp",
@@ -129,7 +129,7 @@ export const heatpumpPages: LandingPage[] = [
     focusIntro: "Ein Heizungstausch betrifft mehr als den Heizraum. Bei ALAB laufen Gebäudeplanung, Wärmepumpentechnik und Elektroinstallation in einem abgestimmten Projekt zusammen.",
     focusItems: [
       { title: "Ein konkreter Ansprechpartner", text: "Sie besprechen Ihr Vorhaben mit dem Betrieb, der Planung und Umsetzung organisiert. Offene Punkte klären wir direkt mit Ihnen." },
-      { title: "Ihr Gebäude vor Ort verstehen", text: "Heizflächen, Aufstellort und Stromversorgung prüfen wir am tatsächlichen Bestand – als Grundlage für ein passendes Konzept." },
+      { title: "Ihr Gebäude vor Ort verstehen", text: "Heizflächen, Aufstellort und Stromversorgung prüfen wir am tatsächlichen Bestand, als Grundlage für ein passendes Konzept." },
       { title: "Elektrotechnik im eigenen Betrieb", text: "Wärmepumpe, Zählerschrank, PV und Wallbox werden gemeinsam betrachtet. Das vermeidet ungeklärte Schnittstellen in der Planung." },
     ],
     servicesTitle: "Wärmepumpen im Allgäu: Von der Planung bis zum Betrieb",
@@ -176,7 +176,7 @@ export const heatpumpPages: LandingPage[] = [
     heroAlt: "Bosch Wärmepumpe vor einer Hausfassade als Produktbeispiel für einen geplanten Heizungstausch",
     heroCaption: "Produktbeispiel: Bosch Wärmepumpe",
     focusTitle: "Wärmepumpen-Förderung beginnt mit guter Vorbereitung",
-    focusIntro: "Die Förderstelle entscheidet über den Zuschuss. Wir schaffen mit Ihnen die technische Grundlage und orientieren uns am aktuellen Förderprogramm – ohne pauschale Zusage.",
+    focusIntro: "Die Förderstelle entscheidet über den Zuschuss. Wir schaffen mit Ihnen die technische Grundlage und orientieren uns am aktuellen Förderprogramm, ohne pauschale Zusage.",
     focusItems: [
       { title: "Ihr Vorhaben einordnen", text: "Gebäude, Eigentumssituation und bestehende Heizung helfen, das passende Programm zu finden. Die KfW bietet eine Heizungsförderung für private Wohngebäude." },
       { title: "Technik und Kosten vorbereiten", text: "Für den KfW-Antrag ist eine Bestätigung zum Antrag erforderlich. Sie enthält unter anderem technische Angaben und förderfähige Kosten." },
@@ -220,7 +220,7 @@ export const heatpumpPages: LandingPage[] = [
     description: "Was kostet eine Wärmepumpe mit Einbau? ALAB prüft Gebäude, Hydraulik, Warmwasser und Elektroarbeiten für einen nachvollziehbaren Projektpreis.",
     eyebrow: "Kosten & Einbau nachvollziehbar planen",
     h1: "Was kostet eine Wärmepumpe inklusive Einbau?",
-    intro: "Der Gesamtpreis hängt von Ihrem Gebäude und dem Umbau ab. ALAB erfasst Heizlast, Hydraulik, Warmwasser und Elektroarbeiten – damit Sie die Kosten Ihrer Wärmepumpe inklusive Einbau nachvollziehen können.",
+    intro: "Der Gesamtpreis hängt von Ihrem Gebäude und dem Umbau ab. ALAB erfasst Heizlast, Hydraulik, Warmwasser und Elektroarbeiten, damit Sie die Kosten Ihrer Wärmepumpe inklusive Einbau nachvollziehen können.",
     cta: "Individuelle Kosten berechnen lassen",
     benefits: ["Gerät und Einbau zusammen betrachten", "Umbauaufwand im Bestand prüfen", "Nachvollziehbares Angebot erhalten"],
     heroImage: "/optimized/waermepumpe-bosch-7bd7fd7c72.webp",
@@ -251,7 +251,7 @@ export const heatpumpPages: LandingPage[] = [
       { question: "Reicht die Wohnfläche, um die Kosten zu berechnen?", answer: "Die Wohnfläche ist nur ein erster Anhaltspunkt. Für die Auslegung zählen auch Wärmeverluste, Heizflächen, Warmwasserbedarf und der Gebäudezustand. Deshalb beziehen wir Heizlast und die vorhandene Technik in die Planung ein." },
       { question: "Welche zusätzlichen Einbaukosten werden häufig übersehen?", answer: "Je nach Projekt sind Rückbau, Fundament, Leitungswege, Speicher und Elektroarbeiten zu berücksichtigen. Wir prüfen diese Schnittstellen frühzeitig, damit Sie den vereinbarten Gesamtumfang beurteilen können und nicht nur den Preis des Geräts sehen." },
       { question: "Wie lassen sich zwei Wärmepumpen-Angebote sinnvoll vergleichen?", answer: "Vergleichen Sie neben Gerät und Leistung auch Planung, Montage, Hydraulik, Warmwasserspeicher, Elektroarbeiten und Inbetriebnahme. Achten Sie außerdem auf ausgeschlossene Leistungen und noch ungeklärte Voraussetzungen. Gleiche Endpreise bedeuten nicht automatisch gleichen Umfang." },
-      { question: "Wie berücksichtige ich Förderung in meiner Kostenplanung?", answer: "Betrachten Sie zuerst die vollständigen Projektkosten. Eine mögliche Förderung wird anschließend gesondert anhand des passenden Programms geprüft. Ein erwarteter Zuschuss sollte nicht wie eine bereits bestätigte Preisreduzierung behandelt werden." },
+      { question: "Wie berücksichtige ich Förderung in meiner Kostenplanung?", answer: "Betrachten Sie zuerst die vollständigen Projektkosten. Davon geht die KfW-Heizungsförderung ab: bis zu 80 %, höchstens 22.400 € für die erste Wohneinheit, je nach Einkommen und bisheriger Heizung. Wir gehen alle Schritte des Förderantrags mit Ihnen durch und begleiten Sie, bis der Zuschuss auf Ihrem Konto ist. Verbindlich ist die Förderzusage der KfW." },
       { question: "Sind Anschaffungskosten und laufende Heizkosten dasselbe?", answer: "Nein. Das Angebot beschreibt die vereinbarten Investitionskosten. Die späteren Betriebskosten hängen unter anderem von Wärmebedarf, Anlageneinstellung, Stromtarif und tatsächlicher Nutzung ab. Eine PV-Anlage kann ergänzend betrachtet werden, ersetzt aber keine projektbezogene Berechnung." },
     ],
     formTitle: "Was kostet die Wärmepumpe für Ihr Gebäude?",

@@ -56,7 +56,7 @@ export const electricalPages: LandingPage[] = [
     description: "Elektromeister gesucht? ALAB in Mindelheim verbindet Ingenieurplanung mit Elektroinstallation: Zähleranlagen, Verteilungen, Umbauten und Energietechnik.",
     eyebrow: "Planung und Ausführung in der Elektrotechnik",
     h1: "Elektromeister & Elektrofachbetrieb für Mindelheim und Umgebung",
-    intro: "Für elektrotechnische Umbauten zählt das Gesamtkonzept. ALAB verbindet Ingenieurplanung und Elektrofachbetrieb – von der Bestandsaufnahme bis zur geprüften Ausführung.",
+    intro: "Für elektrotechnische Umbauten zählt das Gesamtkonzept. ALAB verbindet Ingenieurplanung und Elektrofachbetrieb, von der Bestandsaufnahme bis zur geprüften Ausführung.",
     cta: "Elektroplanung anfragen", benefits: ["Technische Planung im eigenen Haus", "Abgestimmte Zähler- und Schutzkonzepte", "Ausführung mit Dokumentation"],
     heroImage: technikraum, heroAlt: "Geöffneter Zählerschrank neben Wechselrichter und Stromspeicher in einem Technikraum", heroCaption: "Zählerschrank, Wechselrichter und Speicher im Technikraum",
     focusTitle: "Komplexe Elektrotechnik braucht einen gemeinsamen Plan.",
@@ -97,7 +97,7 @@ export const electricalPages: LandingPage[] = [
     slug: "elektroinstallation-neubau-sanierung", category: "elektro", adGroup: "Elektroinstallation Neubau & Sanierung",
     intent: "Elektroinstallation für Neubau oder Bestandsmodernisierung planen lassen",
     title: "Elektroinstallation Neubau & Sanierung | ALAB",
-    description: "Elektroinstallation für Neubau und Sanierung: Stromkreise, Licht, Netzwerk, Zählerschrank und Vorbereitung für PV, Wallbox und Wärmepumpe – geplant und umgesetzt von ALAB.",
+    description: "Elektroinstallation für Neubau und Sanierung: Stromkreise, Licht, Netzwerk, Zählerschrank und Vorbereitung für PV, Wallbox und Wärmepumpe, geplant und umgesetzt von ALAB.",
     eyebrow: "Ihr Gebäude, Ihre Elektroinstallation",
     h1: "Elektroinstallation für Neubau & Sanierung",
     intro: "Eine gute Elektroinstallation passt zu Ihrem Alltag und zu Ihrer Energietechnik. Wir planen Anschlüsse, Stromkreise und Verteilungen und setzen die abgestimmte Lösung um.",
@@ -151,7 +151,7 @@ export const electricalPages: LandingPage[] = [
     focusItems: [
       { title: "Was ist vorhanden?", text: "Wir erfassen Aufbau, Platzreserven, Schutzmaßnahmen und die vorhandene Anschluss- und Zählersituation." },
       { title: "Was kommt hinzu?", text: "PV, Wärmepumpe und Wallbox stellen unterschiedliche Anforderungen an Leistung, Messung und Steuerung." },
-      { title: "Was muss angepasst werden?", text: "Aus Bestand und neuem Anlagenkonzept ergibt sich der notwendige Umfang – einschließlich relevanter Netzbetreibervorgaben." },
+      { title: "Was muss angepasst werden?", text: "Aus Bestand und neuem Anlagenkonzept ergibt sich der notwendige Umfang, einschließlich relevanter Netzbetreibervorgaben." },
     ],
     servicesTitle: "Zählerschrank modernisieren: den gesamten Anschluss betrachten",
     services: [

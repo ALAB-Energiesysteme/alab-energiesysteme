@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import LandingPage from "@/components/landing/LandingPage";
+import LandingPageModern from "@/components/landing/LandingPageModern";
 import { getLandingPage, landingPages } from "@/content/landing-pages";
 
 export const dynamicParams = false;
@@ -21,5 +22,5 @@ export async function generateMetadata({ params }: { params: Promise<{ landingSl
 export default async function Page({ params }: { params: Promise<{ landingSlug: string }> }) {
   const page = getLandingPage((await params).landingSlug);
   if (!page) notFound();
-  return <LandingPage page={page} />;
+  return page.design === "modern" ? <LandingPageModern page={page} /> : <LandingPage page={page} />;
 }

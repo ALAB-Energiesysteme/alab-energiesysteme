@@ -27,6 +27,10 @@ export type LandingPage = {
   projectType: string;
   qualifier: { label: string; options: string[] };
   earlyForm?: boolean;
+  /** Neue Designsprache (LandingPageModern); ohne Angabe gilt das bisherige Layout */
+  design?: "modern";
+  /** Hersteller, mit denen ALAB arbeitet (Abschnitt im modernen Layout) */
+  manufacturers?: string[];
   solarCalculator?: boolean;
   sources?: { title: string; url: string }[];
   related: string[];

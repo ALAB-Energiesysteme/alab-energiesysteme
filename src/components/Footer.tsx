@@ -223,7 +223,7 @@ export default function Footer() {
           ) : (
             <form onSubmit={handleSubmit} className="mt-3 space-y-2.5">
               <p className="text-xs text-muted">
-                Kurze Nachricht schicken – wir melden uns zeitnah telefonisch
+                Kurze Nachricht schicken, wir melden uns zeitnah telefonisch
                 oder per E-Mail.
               </p>
               <div className="grid grid-cols-2 gap-2">
@@ -294,7 +294,7 @@ export default function Footer() {
       {/* ── Bottom bar ── */}
       <div className="border-t border-[var(--color-line)] bg-[#f4f6f8]">
         <div className="mx-auto flex max-w-[1320px] flex-col items-center justify-between gap-3 px-6 py-4 text-xs text-muted sm:flex-row lg:px-8">
-          <p>&copy; {new Date().getFullYear()} ALAB Energiesysteme – Alle Rechte vorbehalten</p>
+          <p>&copy; {new Date().getFullYear()} ALAB Energiesysteme. Alle Rechte vorbehalten</p>
           <p>
             Kastanienweg 6 · 87719 Mindelheim · Tel.{" "}
             <a href="tel:+4982617597176" className="transition hover:text-accent">
